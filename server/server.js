@@ -1,0 +1,80 @@
+// dependencies
+import express from 'express';
+import session from 'express-session';
+import passport from 'passport';
+import connectMongo from 'connect-mongo';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import config from '../config';
+import cors from 'cors';
+
+import authMiddleware from './middleware/authMiddleware';
+import devmtnCtrl from './controllers/devmtnAuthCtrl';
+import DevmtnAuthConfig from './devmtnAuthConfig.js';
+
+// require('./controllers/passport')(passport);
+
+// express init
+const app = express();
+const port = 8006;
+
+require('./config/mongoose.js')(config);
+
+const MongoStore = connectMongo(session);
+const Schema = mongoose.Schema;
+
+app.use(require('express-session')({
+    secret: config.sessionSecret,
+    resave: true,
+    maxAge: new Date(Date.now() + 3600000),
+    store: new MongoStore({
+            mongooseConnection: mongoose.connection
+        },
+        function(err) {
+            console.log(err || 'connect-mongodb setup ok');
+        }
+    ),
+    saveUninitialized: true
+}));
+
+app.use(bodyParser.json());
+
+app.set('view engine', 'html');
+
+// cors init
+const corsOptions = {
+    origin: 'http://localhost:9001'
+};
+
+app.use(cors(corsOptions));
+
+// passport init
+app.use(passport.initialize());
+
+app.use(passport.session());
+
+// Define routes
+app.use(authMiddleware.validateQueryToken);
+
+console.log("config", config);
+
+//DevMtn Auth
+app.get('/auth/devmtn', passport.authenticate('devmtn'));
+// app.get('/auth/devmtn/callback', passport.authenticate('devmtn', {failureRedirect: '/#/'}), devmtnCtrl.loginSuccessRouter);
+app.get('/auth/devmtn/callback', passport.authenticate('devmtn', {failureRedirect: '/#/', successRedirect: 'http://localhost:9001/#/'}), () => {
+  console.log("hit callback");
+});
+
+// serialize / deserialize for passport
+passport.serializeUser((user, done) => {
+    done(null, user);
+});
+
+passport.deserializeUser((obj, done) => {
+    done(null, obj);
+});
+
+// listen
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+});
