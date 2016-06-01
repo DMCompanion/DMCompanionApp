@@ -9878,6 +9878,18 @@ a.button {
   position: absolute;
   top: 45px; }
 
+.activities .list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.49s all linear; }
+
+.activities .list .item.item-accordion.ng-hide {
+  line-height: 0; }
+
+.activities .list .item.item-accordion.ng-hide-add, .activities .list .item.item-accordion.ng-hide-remove {
+  display: block !important; }
+
 .calendar ion-content {
   background: #343434;
   position: absolute;

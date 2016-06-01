@@ -104,10 +104,26 @@ $button-positive-bg: $positive !default
     margin-top: 2vh
     float: left
 .activities
-  ion-content
-    background: $dmMidGray
-    position: absolute
-    top: $headerW
+    ion-content
+        background: $dmMidGray
+        position: absolute
+        top: $headerW
+
+    // Accordion styles
+    .list .item.item-accordion
+        line-height: 38px
+        padding-top: 0
+        padding-bottom: 0
+        transition: 0.49s all linear
+
+    .list .item.item-accordion.ng-hide
+        line-height: 0
+
+    .list .item.item-accordion.ng-hide-add, .list .item.item-accordion.ng-hide-remove
+        display: block !important
+
+    // End Accordion styles
+
 .calendar
   ion-content
     background: $dmMidGray
