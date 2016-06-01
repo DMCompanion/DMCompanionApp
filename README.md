@@ -33,6 +33,12 @@ Serve the Ionic app in a seperate terminal with:
 $ ionic serve --port 9001
 ```
 
+## Editing the front-end
+
+Any javascript files / changes should be edited in the /src folder.
+
+Babel will compile any js files in the /src folder into the www/js folder on the front-end automagically
+
 Project Board: [Companion Trello](https://trello.com/b/kJjFH4UV/dm-companion)
 
 ## Issues
