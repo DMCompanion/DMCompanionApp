@@ -9840,3 +9840,6 @@ ion-content {
 .home .activated {
   border: 0;
   background: #2999E3; }
+
+.home .button .icon:before, .home .button.icon:before, .home .button.icon-left:before, .home .button.icon-right:before {
+  font-size: 10vw; }
