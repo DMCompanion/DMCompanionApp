@@ -11,6 +11,7 @@ import cors from 'cors';
 import authMiddleware from './middleware/authMiddleware';
 import devmtnCtrl from './controllers/devmtnAuthCtrl';
 import DevmtnAuthConfig from './devmtnAuthConfig.js';
+import placeCtrl from './controllers/places.server.ctrl';
 
 // require('./controllers/passport')(passport);
 
@@ -61,9 +62,13 @@ console.log("config", config);
 //DevMtn Auth
 app.get('/auth/devmtn', passport.authenticate('devmtn'));
 // app.get('/auth/devmtn/callback', passport.authenticate('devmtn', {failureRedirect: '/#/'}), devmtnCtrl.loginSuccessRouter);
-app.get('/auth/devmtn/callback', passport.authenticate('devmtn', {failureRedirect: '/#/', successRedirect: 'http://localhost:9001/#/'}), () => {
-  console.log("hit callback");
+app.get('/auth/devmtn/callback', passport.authenticate('devmtn', {
+    failureRedirect: '/#/',
+    successRedirect: 'http://localhost:9001/#/'
+}), () => {
+    console.log("hit callback");
 });
+
 
 // serialize / deserialize for passport
 passport.serializeUser((user, done) => {
@@ -73,6 +78,13 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((obj, done) => {
     done(null, obj);
 });
+
+// Places Routes
+app.post('/api/v1/place', placeCtrl.postPlace);
+app.get('/api/v1/places', placeCtrl.getPlaces);
+app.put('/api/v1/place/:id', placeCtrl.editPlace);
+app.delete('/api/v1/place/:id', placeCtrl.deletePlace);
+
 
 // listen
 app.listen(port, () => {
