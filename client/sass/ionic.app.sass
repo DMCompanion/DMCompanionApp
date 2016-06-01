@@ -1,8 +1,3 @@
-// To customize the look and feel of Ionic, you can override the variables
-// in ionic's _variables.scss file.
-//
-// For example, you might change some of the default colors:
-//
 // $light:                           #fff !default;
 // $stable:                          #f8f8f8 !default;
 // $positive:                        #387ef5 !default;
@@ -18,132 +13,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic"
-@import 'colors.sass'
+
 @import '_variables.sass'
 
-$positive: $dmBlue
-$dark: $dmDarkGray
-$flatYellow: #EDB900
+@import 'home.sass'
+@import 'places.sass'
+@import 'activities.sass'
+@import 'calendar.sass'
+@import 'deals.sass'
+@import 'blog.sass'
 
-$button-positive-bg: $positive !default
-
-@mixin vertical-align($position: relative)
-  position: $position
-  top: -50%
-  -webkit-transform: translateY(-50%)
-  -ms-transform: translateY(-50%)
-  transform: translateY(-50%)
-
-@mixin horizontal-align($position: relative)
-  position: $position
-  left: 50%
-  -webkit-transform: translateX(-50%)
-  -ms-transform: translateX(-50%)
-  transform: translateX(-50%)
-
-.home
-  ion-content
-    background: $dmMidGray
-    position: absolute
-    overflow: hidden
-  .headerlogo
-    width: 60%
-    margin: 20%
-    margin-top: 25%
-    margin-bottom: 15%
-  .hr-line
-    width: 80%
-    height: 2px
-    position: absolute
-    top: 180px
-    left: 50%
-    transform: translateX(-50%)
-    background: $seperator
-  .home-icons
-    padding: 10%
-    display: flex
-    justify-content: center
-  .column
-    margin: 5%
-  .home-icon
-    width: 20vw
-    height: 20vw
-    border-radius: 100%
-    background: $dmBleu
-    margin: 3%
-    margin-bottom: 50%
-    // display: flex
-    // justify-content: center
-    // align-items: center
-  .icon
-    color: white
-    font-size: 20vw !important
-  .activated
-    border: 0
-    background: $dmBlue2
-  .button .icon:before, .button.icon:before, .button.icon-left:before, .button.icon-right:before
-    font-size: 10vw
-  .home-icon:first-child
-  //   background: $dmBlue
-  // .icon:nth-child(2)
-  //   background: $flatRed
-  // .icon:nth-child(3)
-  //   background: $flatYellow
-
-.places
-  ion-content
-    background: $dmMidGray
-    position: absolute
-    top: $headerW
-  .poopoobrown
-    background: brown
-  .search-bar
-    // width: 90vw
-    // @include horizontal-align()
-  .tags
-    display: flex
-    flex-wrap: wrap
-    justify-content: space-between
-    margin: 2vw
-  .tag
-    margin: 1vh
-    width: 28vw
-    font-size: 2vh
-    // background: $dmBleu
-    // color: white
-  .activated
-    border: 0
-    background: $dmBlue2
-  img
-    border-radius: 100%
-  .miles
-    @include vertical-align()
-    height: 100%
-    float: right
-    margin: 5vw
-    margin-right: 1vw
-  .miles>h2
-    color: $dmLightGray
-  .places--content
-    margin-top: 2vh
-    float: left
-.activities
-  ion-content
-    background: $dmMidGray
-    position: absolute
-    top: $headerW
-.calendar
-  ion-content
-    background: $dmMidGray
-    position: absolute
-    top: $headerW
-.deals
-  ion-content
-    background: $dmMidGray
-    position: absolute
-    top: $headerW
-.blog
-  ion-content
-    background: $dmMidGray
-    position: absolute
-    top: $headerW
+body
+  font-family: 'ProximaNova', sans-serif
