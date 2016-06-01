@@ -17,3 +17,5 @@ bower_components/
 css/
 js/
 min_css/
+
+.DS_Store
