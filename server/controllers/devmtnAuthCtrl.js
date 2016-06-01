@@ -1,7 +1,7 @@
 /* jshint esversion: 6 */
 import passport from 'passport';
 import mongoose from 'mongoose';
-import config from '../../config';
+import devmtnAuthConfig from '../devmtnAuthConfig';
 
 // DevMtn Auth Init
 import Devmtn from 'devmtn-auth';
@@ -9,7 +9,7 @@ import User from '../models/usersModel';
 const DevmtnStrategy = Devmtn.Strategy;
 
 // Passport Strategy
-passport.use('devmtn', new DevmtnStrategy(config.auth, (jwtoken, user, done) => {
+passport.use('devmtn', new DevmtnStrategy(devmtnAuthConfig, (jwtoken, user, done) => {
     console.log("DEV USER: ", user);
     if (!user.cohortId || user.cohortId === 0) {
         // Reject user
