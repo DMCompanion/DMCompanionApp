@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import ReviewSchema from './ReviewSchema';
 
 const Schema = mongoose.Schema;
 
@@ -39,17 +40,19 @@ const PlaceSchema = new Schema({
             type: String
         }
     },
-    rating: {
+    ratings: [{
         type: Number
-    },
+    }],
     reviews: [reviewSchema],
-    photos: [photoSchema],
+    photos: [{
+        type: String
+    }],
     googleId: {
         type: String
     },
     placeType: {
         type: String,
     }
-})
+});
 
 module.exports = mongoose.model('Place', PlaceSchema);
