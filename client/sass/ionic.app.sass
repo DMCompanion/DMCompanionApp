@@ -23,7 +23,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default
 
 $positive: $dmBlue
 $dark: $dmDarkGray
-$flatRed: #DC3227
 $flatYellow: #EDB900
 
 $button-positive-bg: $positive !default
@@ -34,6 +33,13 @@ $button-positive-bg: $positive !default
   -webkit-transform: translateY(-50%)
   -ms-transform: translateY(-50%)
   transform: translateY(-50%)
+
+@mixin horizontal-align($position: relative)
+  position: $position
+  left: 50%
+  -webkit-transform: translateX(-50%)
+  -ms-transform: translateX(-50%)
+  transform: translateX(-50%)
 
 .home
   ion-content
@@ -89,12 +95,30 @@ $button-positive-bg: $positive !default
     background: $dmMidGray
     position: absolute
     top: $headerW
+  .poopoobrown
+    background: brown
+  .search-bar
+    // width: 90vw
+    // @include horizontal-align()
+  .tags
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    margin: 2vw
+  .tag
+    margin: 1vh
+    width: 28vw
+    font-size: 2vh
+    // background: $dmBleu
+    // color: white
+  .activated
+    border: 0
+    background: $dmBlue2
   img
     border-radius: 100%
   .miles
     @include vertical-align()
     height: 100%
-    width: 15%
     float: right
     margin: 5vw
     margin-right: 1vw
