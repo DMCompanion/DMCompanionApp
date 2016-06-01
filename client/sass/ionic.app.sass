@@ -23,6 +23,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default
 
 $positive: $dmBlue
 $dark: $dmDarkGray
+$flatRed: #DC3227
+$flatYellow: #EDB900
 
 $button-positive-bg: $positive !default
 
@@ -31,4 +33,45 @@ ion-content
 
 .home
   .headerlogo
-    width: 100%
+    width: 60%
+    margin: 20%
+    margin-top: 25%
+    margin-bottom: 15%
+  .hr-line
+    width: 80%
+    height: 2px
+    position: absolute
+    top: 180px
+    left: 50%
+    transform: translateX(-50%)
+    background: $seperator
+  .home-icons
+    padding: 10%
+    display: flex
+    // flex-wrap: wrap
+    justify-content: center
+  .column
+    margin: 5%
+  .home-icon
+    width: 20vw
+    height: 20vw
+    border-radius: 100%
+    background: $dmBlue2
+    margin: 3%
+    margin-bottom: 50%
+    // display: flex
+    // justify-content: center
+    // align-items: center
+  .icon
+    color: white
+    font-size: 20vw !important
+    // margin-bottom: 5px
+  .activated
+    border: 0
+    background: $dmBleu
+  .home-icon:first-child
+  //   background: $dmBlue
+  // .icon:nth-child(2)
+  //   background: $flatRed
+  // .icon:nth-child(3)
+  //   background: $flatYellow
