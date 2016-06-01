@@ -12,6 +12,7 @@ import authMiddleware from './middleware/authMiddleware';
 import devmtnCtrl from './controllers/devmtnAuthCtrl';
 import DevmtnAuthConfig from './devmtnAuthConfig.js';
 import placeCtrl from './controllers/places.server.ctrl';
+import activityCtrl from './controllers/activities.server.ctrl';
 
 // require('./controllers/passport')(passport);
 
@@ -84,6 +85,12 @@ app.post('/api/v1/place', placeCtrl.postPlace);
 app.get('/api/v1/places', placeCtrl.getPlaces);
 app.put('/api/v1/place/:id', placeCtrl.editPlace);
 app.delete('/api/v1/place/:id', placeCtrl.deletePlace);
+
+// Activities Routes
+app.post('/api/v1/activity', activityCtrl.postActivity);
+app.get('/api/v1/activities', activityCtrl.getActivities);
+app.put('/api/v1/activity/:id', activityCtrl.editActivity);
+app.delete('/api/v1/activity/:id', activityCtrl.deleteActivity);
 
 
 // listen

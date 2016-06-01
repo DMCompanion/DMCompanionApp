@@ -40,9 +40,6 @@ const PlaceSchema = new Schema({
             type: String
         }
     },
-    ratings: [{
-        type: Number
-    }],
     reviews: [ReviewSchema],
     photos: [{
         type: String
