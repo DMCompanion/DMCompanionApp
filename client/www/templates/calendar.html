@@ -1,8 +1,28 @@
 <ion-view class="calendar">
   <div class="bar bar-header bar-dark">
-    <a href="/#/home"><button class="button button-icon icon ion-navicon"></button></a>
+    <a href="/#/home">
+      <button class="button button-icon icon ion-navicon"></button>
+    </a>
     <h1 class="title">Calendar</h1>
   </div>
   <ion-content>
+
+    <label class="item item-input search-bar">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" placeholder="Search" ng-model="searchText">
+    </label>
+
+    <div class="card" ng-repeat="event in events | filter: searchText">
+      <div class="item item-divider">
+        {{event.title}}
+      </div>
+      <div class="item item-text-wrap">
+        {{ event.description }}
+        <p/>
+        <strong>When: {{event.date | amCalendar:referenceTime:formats}}</strong>
+      </div>
+    </div>
+
+
   </ion-content>
 </ion-view>
