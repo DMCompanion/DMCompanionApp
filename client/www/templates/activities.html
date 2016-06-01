@@ -5,16 +5,17 @@
     </div>
     <ion-content class="padding">
         <ion-list>
-          <div ng-repeat="activity in activities">
-            <ion-item ng-class="{active: isGroupShown(activities)}" ng-click="toggleGroup(activities); getItems()" class="button button-clear button-positive" ng-class="isGroupShown(activities) ? 'ion-minus' : 'ion-plus'">
-                {{activity.name}}
-            </ion-item>
-            <div ng-show="shownGroup === activities">
-                <ion-item class="item-accordion" ng-click="showDetailActions(item)" ng-repeat="item in activity.items" >
+            <div ng-repeat="activity in activities">
+                <ion-item ng-class="{active: isGroupShown(activity)}" ng-click="toggleGroup(activity)">
+                    <button  class="button button-clear button-positive" ng-class="isGroupShown(activity)"></button>
+                    <button ng-click="showActions(activity)" class="button button-clear button-dark">
+                        {{activity.name}}
+                    </button>
+                </ion-item>
+                <ion-item class="item-accordion" ng-click="showDetailActions(activities)" ng-repeat="item in activity.items" ng-show="isGroupShown(activity)">
                     {{item}}
                 </ion-item>
             </div>
-          </div>
         </ion-list>
     </ion-content>
 </ion-view>
