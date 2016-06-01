@@ -1,21 +1,49 @@
 angular.module( 'companion' )
-	.controller( 'activitiesCtrl', function ( $scope, activitiesSvc ) {
+	.controller( 'activitiesCtrl', function ( $scope, $ionicActionSheet ,activitiesSvc ) {
 
 		$scope.activities = activitiesSvc.getActivities();
 
-		$scope.test = function ( activities ) {
-			alert( activities );
-		};
+		$scope.showActions = function(item) {
+		    $ionicActionSheet.show({
+		      titleText: 'Actions for ' + item.name,
+		      buttons: [{
+		        text: '<b>All done</b>'
+		      }, {
+		        text: 'Do something else'
+		      }, {
+		        text: 'Show details'
+		      }],
+		      buttonClicked: function(index) {
+		        return true;
+		      }
+		    });
+		  };
 
-		$scope.toggleGroup = function ( activities ) {
-			if ( $scope.isGroupShown( activities ) ) {
+		  $scope.showDetailActions = function(item) {
+		    $ionicActionSheet.show({
+		      titleText: 'Actions for detail ' + item,
+		      buttons: [{
+		        text: '<b>Done</b>'
+		      }, {
+		        text: 'Do something else'
+		      }, {
+		        text: 'Show details'
+		      }],
+		      buttonClicked: function(index) {
+		        return true;
+		      }
+		    });
+		  };
+
+		$scope.toggleGroup = function ( activity ) {
+			if ( $scope.isGroupShown( activity ) ) {
 				$scope.shownGroup = null;
 			} else {
-				$scope.shownGroup = activities;
+				$scope.shownGroup = activity;
 			}
 		};
-		$scope.isGroupShown = function ( activities ) {
-			return $scope.shownGroup === activities;
+		$scope.isGroupShown = function ( activity ) {
+			return $scope.shownGroup === activity;
 		};
 
 	} );

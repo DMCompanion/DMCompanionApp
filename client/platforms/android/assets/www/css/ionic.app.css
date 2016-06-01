@@ -9799,16 +9799,14 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-<<<<<<< HEAD
-=======
 @font-face {
   font-family: 'ProximaNova';
-  src: url("../resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
 
-body {
-  font-family: fantasy; }
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
 
->>>>>>> 0a6f9cc9afa47ea6418b224d7da5a144487e3d7f
 .home ion-content {
   background: #343434;
   position: absolute;
@@ -9855,6 +9853,93 @@ body {
 
 .home .button .icon:before, .home .button.icon:before, .home .button.icon-left:before, .home .button.icon-right:before {
   font-size: 10vw; }
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+
+.places ion-content {
+  background: #343434;
+  position: absolute;
+  top: 45px; }
+
+.places .poopoobrown {
+  background: brown; }
+
+.places .tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 2vw; }
+
+.places .tag {
+  margin: 1vh;
+  width: 28vw;
+  font-size: 2vh; }
+
+.places .activated {
+  border: 0;
+  background: #3576CE; }
+
+.places img {
+  border-radius: 100%; }
+
+.places .miles {
+  position: relative;
+  top: -50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 100%;
+  float: right;
+  margin: 5vw;
+  margin-right: 1vw; }
+
+.places .miles > h2 {
+  color: #D9D9D9; }
+
+.places .places--content {
+  margin-top: 2vh;
+  float: left; }
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+
+.activities ion-content {
+  background: #343434;
+  position: absolute;
+  top: 45px; }
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+
+.calendar ion-content {
+  background: #343434;
+  position: absolute;
+  top: 45px; }
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+
+.deals ion-content {
+  background: #343434;
+  position: absolute;
+  top: 45px; }
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+
+.blog ion-content {
+  background: #343434;
+  position: absolute;
+  top: 45px; }
+
+body {
+  font-family: 'ProximaNova', sans-serif; }
 
 .places ion-content {
   background: #343434;

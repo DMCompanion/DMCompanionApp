@@ -4,3 +4,26 @@
     background: $dmMidGray
     position: absolute
     top: $headerW
+
+    // Accordion styles
+    .item
+        background: $dmMidGray
+
+    @keyframes accordion
+        0%
+            opacity: 0
+        100%
+            opacity: 1
+    .list .item.item-accordion
+        line-height: 38px
+        padding-top: 0
+        padding-bottom: 0
+        animation: accordion .5s infinite
+
+    .list .item.item-accordion.ng-hide
+        line-height: 0
+
+    .list .item.item-accordion.ng-hide-add, .list .item.item-accordion.ng-hide-remove
+        display: block !important
+
+    // End Accordion styles
