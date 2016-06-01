@@ -9799,6 +9799,14 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+
 .home ion-content {
   background: #343434;
   position: absolute;
@@ -9846,6 +9854,10 @@ a.button {
 .home .button .icon:before, .home .button.icon:before, .home .button.icon-left:before, .home .button.icon-right:before {
   font-size: 10vw; }
 
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+
 .places ion-content {
   background: #343434;
   position: absolute;
@@ -9890,22 +9902,41 @@ a.button {
   margin-top: 2vh;
   float: left; }
 
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+
 .activities ion-content {
   background: #343434;
   position: absolute;
   top: 45px; }
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
 
 .calendar ion-content {
   background: #343434;
   position: absolute;
   top: 45px; }
 
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+
 .deals ion-content {
   background: #343434;
   position: absolute;
   top: 45px; }
 
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+
 .blog ion-content {
   background: #343434;
   position: absolute;
   top: 45px; }
+
+body {
+  font-family: 'ProximaNova', sans-serif; }
