@@ -5,8 +5,9 @@
 config.js
 devmtnAuthConfig.js
 
-# Node
+# Node / Bower
 node_modules/
+bower_components/
 
 # Ionic
 #platforms/
