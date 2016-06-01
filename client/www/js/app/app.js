@@ -23,7 +23,11 @@ angular.module('companion', ['ionic']).run(function ($ionicPlatform) {
     }
   });
 }).config(function ($stateProvider, $urlRouterProvider) {
-  $stateProvider.state('index', { url: '/home', templateUrl: './templates/home.html' }).state('activites', { url: '/activities', templateUrl: './templates/activities.html' }).state('deals', { url: '/deals', templateUrl: './templates/deals.html' }).state('calendar', { url: '/calendar', templateUrl: './templates/calendar.html' }).state('places', {
+  $stateProvider.state('index', { url: '/home', templateUrl: './templates/home.html' }).state('activities', {
+    url: '/activities',
+    templateUrl: './templates/activities.html',
+    controller: 'activitiesCtrl'
+  }).state('deals', { url: '/deals', templateUrl: './templates/deals.html' }).state('calendar', { url: '/calendar', templateUrl: './templates/calendar.html' }).state('places', {
     url: '/places',
     templateUrl: './templates/places.html',
     controller: 'placesCtrl'

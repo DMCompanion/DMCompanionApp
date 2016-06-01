@@ -1,8 +1,18 @@
 <ion-view class="activities">
-  <div class="bar bar-header bar-dark">
-    <a href="/#/home"><button class="button button-icon icon ion-navicon"></button></a>
-    <h1 class="title">Activities</h1>
-  </div>
-  <ion-content>
-  </ion-content>
+    <div class="bar bar-header bar-dark">
+        <a href="/#/home"><button class="button button-icon icon ion-navicon"></button></a>
+        <h1 class="title">Activities</h1>
+    </div>
+    <ion-content class="padding">
+        <ion-list>
+          <div ng-repeat="activity in activities">
+            <ion-item ng-class="{active: isGroupShown(activities)}" ng-click="toggleGroup(activities)" class="button button-clear button-positive" ng-class="isGroupShown(activities) ? 'ion-minus' : 'ion-plus'">
+                {{activity.name}}
+            </ion-item>
+            <ion-item class="item-accordion" ng-click="showDetailActions(item)" ng-repeat="item in activities.items" ng-show="isGroupShown(activities)">
+              {{item}}
+            </ion-item>
+          </div>
+        </ion-list>
+    </ion-content>
 </ion-view>
