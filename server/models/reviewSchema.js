@@ -10,6 +10,9 @@ const ReviewSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    rating: {
+        type: Number
+    }
 
 }, {
     timestamps: true
