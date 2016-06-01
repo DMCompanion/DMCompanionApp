@@ -12,7 +12,7 @@ $ npm install
 Then run:
 
 ```bash
-$ ionic serve
+$ ionic serve --port 9001
 ```
 
 The node server should be run in a seperate terminal instance:
