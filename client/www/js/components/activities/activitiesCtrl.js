@@ -3,10 +3,6 @@
 angular.module('companion').controller('activitiesCtrl', function ($scope, activitiesSvc) {
 
 	$scope.activities = activitiesSvc.getActivities();
-	// $scope.getActivities = function() {
-	//     $scope.activities = activitiesSvc.getActivities();
-	// };
-	// $scope.getActivities();
 
 	$scope.test = function (activities) {
 		alert(activities);
