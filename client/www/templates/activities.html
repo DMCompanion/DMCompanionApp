@@ -9,9 +9,11 @@
             <ion-item ng-class="{active: isGroupShown(activities)}" ng-click="toggleGroup(activities); getItems()" class="button button-clear button-positive" ng-class="isGroupShown(activities) ? 'ion-minus' : 'ion-plus'">
                 {{activity.name}}
             </ion-item>
-            <ion-item class="item-accordion" ng-click="showDetailActions(item)" ng-repeat="item in activity.items" ng-show="isGroupShown(activities)">
-              {{item}}
-          </ion-item>
+            <div ng-show="shownGroup === activities">
+                <ion-item class="item-accordion" ng-click="showDetailActions(item)" ng-repeat="item in activity.items" >
+                    {{item}}
+                </ion-item>
+            </div>
           </div>
         </ion-list>
     </ion-content>
