@@ -13,7 +13,7 @@ const PlaceSchema = new Schema({
     phoneNumber: {
         type: Number
     },
-    webite: {
+    website: {
         type: String
     },
     openHours: {

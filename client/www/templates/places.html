@@ -1,0 +1,35 @@
+<ion-view class="places">
+  <div class="bar bar-header bar-dark">
+    <a href="/#/home"><button class="button button-icon icon ion-navicon"></button></a>
+    <h1 class="title">Places Nearby</h1>
+  </div>
+  <ion-content>
+
+    <div class="places--container" ng-repeat="place in places">
+
+      <!-- <div class="card">
+        <div class="item item-text-wrap">
+          This is a basic Card which contains an item that has wrapping text.
+        </div>
+      </div> -->
+
+      <div class="list">
+
+          <a class="item item-thumbnail-left" href="#">
+            <img src="{{place.photos[0]}}">
+            <div class="miles">
+              <h2>{{place.distance}}mi</h2>
+            </div>
+
+            <div class="places--content">
+              <h2>{{place.name}}</h2>
+              <p>{{place.placeType}}</p>
+            </div>
+          </a>
+
+      </div>
+
+    </div>
+
+  </ion-content>
+</ion-view>
