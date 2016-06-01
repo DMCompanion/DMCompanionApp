@@ -16,3 +16,5 @@ node_modules/
 css/
 js/
 min_css/
+
+.DS_Store
