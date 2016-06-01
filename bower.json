@@ -1,0 +1,17 @@
+{
+  "name": "ionic-project",
+  "description": "An Ionic project",
+  "main": "./server/index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/DMCompanion/DMCompanionApp",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flex-calendar": "*"
+  }
+}
