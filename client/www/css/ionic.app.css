@@ -9851,6 +9851,24 @@ a.button {
   position: absolute;
   top: 45px; }
 
+.places .poopoobrown {
+  background: brown; }
+
+.places .tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 2vw; }
+
+.places .tag {
+  margin: 1vh;
+  width: 28vw;
+  font-size: 2vh; }
+
+.places .activated {
+  border: 0;
+  background: #3576CE; }
+
 .places img {
   border-radius: 100%; }
 
@@ -9861,7 +9879,6 @@ a.button {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   height: 100%;
-  width: 15%;
   float: right;
   margin: 5vw;
   margin-right: 1vw; }
