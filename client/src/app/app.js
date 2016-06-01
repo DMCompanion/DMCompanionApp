@@ -27,7 +27,14 @@ angular.module('companion', ['ionic'])
     $stateProvider
       .state('index', { url: '/home', templateUrl: './templates/home.html'})
       .state('activites', { url: '/activities', templateUrl: './templates/activities.html'})
-      .state('deals', { url: '/deals', templateUrl: './templates/deals.html'});
+      .state('deals', { url: '/deals', templateUrl: './templates/deals.html'})
+      .state('calendar', { url: '/calendar', templateUrl: './templates/calendar.html'})
+      .state('places', {
+        url: '/places',
+        templateUrl: './templates/places.html',
+        controller: 'placesCtrl'
+       })
+      .state('blog', { url: '/blog', templateUrl: './templates/blog.html'});
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/home');
