@@ -9799,6 +9799,16 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+<<<<<<< HEAD
+=======
+@font-face {
+  font-family: 'ProximaNova';
+  src: url("../resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+
+body {
+  font-family: fantasy; }
+
+>>>>>>> 0a6f9cc9afa47ea6418b224d7da5a144487e3d7f
 .home ion-content {
   background: #343434;
   position: absolute;
