@@ -4,24 +4,29 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        trim: true
     },
     dm_id: {
-        type: String
+        type: String,
+        trim: true
     },
     roles: {
         type: mongoose.Schema.Types.Mixed
     },
     name: {
         first: {
-            type: String
+            type: String,
+            trim: true
         },
         last: {
-            type: String
+            type: String,
+            trim: true
         }
     },
     cohortId: {
-        type: Number
+        type: Number,
+        trim: true
     }
 });
 
