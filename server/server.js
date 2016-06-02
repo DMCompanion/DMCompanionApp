@@ -108,17 +108,10 @@ app.put('/api/v1/event/:id', eventCtrl.editEvent);
 app.delete('/api/v1/event/:id', eventCtrl.deleteEvent);
 
 // Review Routes
-app.post('/api/v1/place/:id/review', reviewCtrl.postPlaceReview);
-app.post('/api/v1/activity/:id/review', reviewCtrl.postActivityReview);
+app.post('/api/v1/review', reviewCtrl.postReview);
 app.get('/api/v1/reviews', reviewCtrl.getReviews);
-app.get('/api/v1/place/:id/review/:reviewId', reviewCtrl.getPlaceReviews);
-app.get('/api/v1/activity/:id/review/:reviewId', reviewCtrl.getActivityReviews);
 app.put('/api/v1/review/:id', reviewCtrl.editReview);
-app.delete('/api/v1/place/:id/review/:reviewId', reviewCtrl.deletePlaceReview);
-app.delete('/api/v1/activity/:id/review/:reviewId', reviewCtrl.deleteActivityReview);
-
-
-
+app.delete('/api/v1/review/:id/', reviewCtrl.deleteReview);
 
 // listen
 app.listen(port, () => {
