@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import ReviewSchema from './ReviewSchema';
 
 const Schema = mongoose.Schema;
 
@@ -38,6 +37,11 @@ const EventSchema = new Schema({
 
 }, {
     timestamps: true
+});
+
+EventSchema.pre('find', (next) => {
+    this.populate('peopleGoing');
+    next();
 });
 
 module.exports = mongoose.model('Event', EventSchema);

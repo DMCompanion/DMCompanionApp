@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import ReviewSchema from './ReviewSchema';
 
 const Schema = mongoose.Schema;
 
@@ -16,7 +15,20 @@ const ActivitySchema = new Schema({
     photos: [{
         type: String
     }],
-    reviews: [ReviewSchema]
+    reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Review'
+    }],
+    category: {
+        type: String,
+        enum: ['Outdoor', 'Arts & Entertainment', 'Winter', 'Summer', 'Spring', 'Fall', 'Night Life', 'Active Life', 'Beauty & Spa']
+    },
+    photos: [{
+        type: String
+    }],
+    photoHeader: {
+        type: String
+    }
 
 }, {
     timestamps: true
