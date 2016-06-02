@@ -18,7 +18,7 @@ angular.module( 'companion' )
 
 		// CRUD ACTIVITIES
 			$scope.showActivities = () => {
-				calendarSvc.getActivities()
+				activitiesSvc.getActivities()
 				.then((response) => {
 					console.log(response);
 					// $scope.activities = response;
@@ -26,7 +26,7 @@ angular.module( 'companion' )
 			}
 
 			$scope.addActivity = (userActivity) => {
-				calendarSvc.createActivity(userActivity)
+				activitiesSvc.createActivity(userActivity)
 				.then((response) => {
 					console.log(response);
 
@@ -34,7 +34,7 @@ angular.module( 'companion' )
 			}
 
 			$scope.updateActivity = (id, upActivity) => {
-				calendarSvc.editActivity(id, upActivity)
+				activitiesSvc.editActivity(id, upActivity)
 				.then((response) => {
 					console.log(response);
 
@@ -42,7 +42,7 @@ angular.module( 'companion' )
 			}
 
 			$scope.destroyActivity = (id) => {
-				calendarSvc.deleteActivity(id)
+				activitiesSvc.deleteActivity(id)
 				.then((response) => {
 					console.log(response);
 
