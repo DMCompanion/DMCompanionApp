@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('placesCtrl', ($scope, $http) => {
+  .controller('placesCtrl', ($scope, $http, $ionicModal) => {
 
     $scope.places = [
       {
@@ -85,5 +85,16 @@ angular.module('companion')
         $scope.searchType = '';
       }
     }
+
+    $ionicModal.fromTemplateUrl('templates/modal.html', {
+        scope: $scope
+      }).then(function(modal) {
+        $scope.modal = modal;
+      });
+
+      $scope.createContact = function(u) {
+        $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
+        $scope.modal.hide();
+      };
 
   });
