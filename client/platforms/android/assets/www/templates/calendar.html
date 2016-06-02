@@ -1,8 +1,32 @@
 <ion-view class="calendar">
   <div class="bar bar-header bar-dark">
-    <a href="/#/home"><button class="button button-icon icon ion-navicon"></button></a>
+    <a href="/#/home">
+      <button class="button button-icon icon ion-navicon"></button>
+    </a>
     <h1 class="title">Calendar</h1>
   </div>
   <ion-content>
+
+    <flex-calendar options="calOptions" events="events"></flex-calendar>
+
+    <!-- <label class="item item-input search-bar">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" placeholder="Search" ng-model="searchText">
+    </label>
+
+    <h4 class="today">Today: </h4> -->
+
+    <div class="card" ng-repeat="event in dateEvents | orderBy: 'time'">
+      <div class="item item-divider">
+        {{event.title}}
+      </div>
+      <div class="item item-text-wrap">
+        {{ event.description }}
+        <p/>
+        <strong>When:</strong>
+        <strong>{{event.time}}</strong>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>

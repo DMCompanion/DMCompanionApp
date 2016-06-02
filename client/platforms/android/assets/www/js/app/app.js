@@ -5,7 +5,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('companion', ['ionic']).run(function ($ionicPlatform) {
+angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcalendar.defaultTranslation', 'ionic-pullup']).run(function ($ionicPlatform) {
   $ionicPlatform.ready(function () {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -23,11 +23,19 @@ angular.module('companion', ['ionic']).run(function ($ionicPlatform) {
     }
   });
 }).config(function ($stateProvider, $urlRouterProvider) {
-  $stateProvider.state('index', { url: '/home', templateUrl: './templates/home.html' }).state('activities', {
+  $stateProvider.state('index', {
+    url: '/home',
+    templateUrl: './templates/home.html',
+    controller: 'homeCtrl'
+  }).state('activities', {
     url: '/activities',
     templateUrl: './templates/activities.html',
     controller: 'activitiesCtrl'
-  }).state('deals', { url: '/deals', templateUrl: './templates/deals.html' }).state('calendar', { url: '/calendar', templateUrl: './templates/calendar.html' }).state('places', {
+  }).state('deals', { url: '/deals', templateUrl: './templates/deals.html' }).state('calendar', {
+    url: '/calendar',
+    templateUrl: './templates/calendar.html',
+    controller: 'calendarCtrl'
+  }).state('places', {
     url: '/places',
     templateUrl: './templates/places.html',
     controller: 'placesCtrl'
