@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('calendarCtrl', ($scope, $http) => {
+  .controller('calendarCtrl', ($scope, $http, calendarSvc) => {
 
     // FLEXCALENDAR
 
@@ -75,5 +75,38 @@ angular.module('companion')
     $scope.$watchCollection('events', function() {
       console.log("Events changed: WATCH");
     });
+
+    // CRUD EVENTS
+      $scope.showEvents = () => {
+        calendarSvc.getEvents()
+        .then((response) => {
+          console.log(response);
+          // $scope.events = response;
+        })
+      }
+
+      $scope.addEvent = (userEvent) => {
+        calendarSvc.createEvent(userEvent)
+        .then((response) => {
+          console.log(response);
+
+        })
+      }
+
+      $scope.updateEvent = (id, upEvent) => {
+        calendarSvc.editEvent(id, upEvent)
+        .then((response) => {
+          console.log(response);
+
+        })
+      }
+
+      $scope.destroyEvent = (id) => {
+        calendarSvc.deleteEvent(id)
+        .then((response) => {
+          console.log(response);
+
+        })
+      }
 
   });
