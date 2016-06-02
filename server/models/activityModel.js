@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import ReviewSchema from './ReviewSchema';
 
 const Schema = mongoose.Schema;
 
@@ -16,7 +15,10 @@ const ActivitySchema = new Schema({
     photos: [{
         type: String
     }],
-    reviews: [ReviewSchema]
+    reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Review'
+    }]
 
 }, {
     timestamps: true
