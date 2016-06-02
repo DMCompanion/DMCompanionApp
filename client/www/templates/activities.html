@@ -5,12 +5,11 @@
     </div>
     <ion-content class="padding">
         <ion-list>
-            <div ng-repeat="activity in activities" ng-click="toggleGroup(activity)">
-                <ion-item class="button button-clear button-positive" ng-class="{active: isGroupShown(activity)}">
-                    <button class="button button-clear button-dark activity">
+            <div class="card" ng-repeat="activity in activities" ng-click="toggleGroup(activity)">
+                <img src="{{activity.img}}" alt="" />
+                <div class="button button-clear button-positive" ng-class="{active: isGroupShown(activity)}">
                         {{activity.name}}
-                    </button>
-                </ion-item>
+                </div>
                 <ion-item class="item-accordion" ng-repeat="item in activity.items" ng-show="isGroupShown(activity)">
                     {{item}}
                 </ion-item>
