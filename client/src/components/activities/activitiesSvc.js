@@ -1,6 +1,11 @@
 angular.module('companion')
 .service('activitiesSvc', function() {
 
+    this.getActivities = () => {
+        return activities;
+    };
+
+
     const activities = [ {
         id: 0,
         name: 'Active Life',
@@ -11,47 +16,55 @@ angular.module('companion')
 
         name: 'Arts & Entertainment',
         items: ['Cool Stuff Here', 'And Here', 'Oh, and here too'],
-        img: 'img/artsy.png'
+        img: 'img/movie.png'
     }, {
         id: 2,
         name: 'Beauty & Spa',
         items: ['Nails by Karam', 'Pedicures by Karam', 'Backrubs by Karam'],
         img: 'img/spa.png'
-    }, {
+    },  {
         id: 3,
-        name: 'Food',
-        items: ['Food Trucks', 'Asian', 'Mexican', 'BBQ', 'Burgers'],
-        img: 'img/food.png'
-    }, {
-        id: 4,
         name: 'Night Life',
         items: ['Nightclubs', 'Bars', 'Karam\'s Apartment'],
         img: 'img/night.png'
     }, {
-        id: 5,
+        id: 4,
         name: 'Outdoors',
         items: ['Climmbing', 'Biking', 'Hiking', 'Water Sports'],
         img: 'img/hiking.png'
     }, {
-        id: 6,
+        id: 5,
         name: 'Religion',
         items: ['Cool Stuff Here', 'And Here', 'Oh, and here too'],
         img: 'img/church.png'
     }, {
-        id: 7,
-        name: 'Restaurants',
-        items: ['Cool Stuff Here', 'And Here', 'Oh, and here too'],
-        img: 'img/restaurants.png'
-    }, {
-        id: 8,
+        id: 6,
         name: 'Shopping',
         items: ['Cool Stuff Here', 'And Here', 'Oh, and here too'],
         img: 'img/shopping.png'
+    },{
+        id: 7,
+        name: 'Summer',
+        items: ['Hot Stuff Here', 'And Here', 'Oh, and here too'],
+        img: 'img/summer.png'
+    },{
+        id: 8,
+        name: 'Winter',
+        items: ['Cold Stuff Here', 'And Here', 'Oh, and here too'],
+        img: 'img/winter.png'
+    },{
+        id: 9,
+        name: 'Spring',
+        items: ['Flowers and Stuff Here', 'And Here', 'Oh, and here too'],
+        img: 'img/spring.png'
+    },{
+        id: 10,
+        name: 'Fall',
+        items: ['Leaves and Stuff Here', 'And Here', 'Oh, and here too'],
+        img: 'img/fall.png'
     }, ];
 
 
-    this.getActivities = () => {
-        return activities;
-    };
+
 
 } );
