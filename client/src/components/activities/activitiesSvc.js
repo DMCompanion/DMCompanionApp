@@ -5,6 +5,7 @@ angular.module('companion')
         return activities;
     };
 
+    
 
     const activities = [ {
         id: 0,
@@ -13,10 +14,9 @@ angular.module('companion')
         img: 'img/active.png'
     }, {
         id: 1,
-
         name: 'Arts & Entertainment',
         items: ['Cool Stuff Here', 'And Here', 'Oh, and here too'],
-        img: 'img/movie.png'
+        img: 'img/movie1.png'
     }, {
         id: 2,
         name: 'Beauty & Spa',
