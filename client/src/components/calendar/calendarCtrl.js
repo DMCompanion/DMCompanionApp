@@ -4,6 +4,7 @@ angular.module('companion')
     // FLEXCALENDAR
 
     let today = new Date().toLocaleString().split(',').shift();
+    
 
     $scope.calOptions = {
       defaultDate: new Date(),
