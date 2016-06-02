@@ -13,6 +13,9 @@ import devmtnCtrl from './controllers/devmtnAuthCtrl';
 import DevmtnAuthConfig from './devmtnAuthConfig.js';
 import placeCtrl from './controllers/places.server.ctrl';
 import activityCtrl from './controllers/activities.server.ctrl';
+import eventCtrl from './controllers/event.server.ctrl';
+import userCtrl from './controllers/user.server.ctrl';
+import reviewCtrl from './controllers/review.server.ctrl';
 
 // require('./controllers/passport')(passport);
 
@@ -80,6 +83,12 @@ passport.deserializeUser((obj, done) => {
     done(null, obj);
 });
 
+// User Routes
+app.post('/api/v1/user', userCtrl.postUser);
+app.get('/api/v1/users', userCtrl.getUsers);
+app.put('/api/v1/user/:id', userCtrl.editUser);
+app.delete('/api/v1/user/:id', userCtrl.deleteUser);
+
 // Places Routes
 app.post('/api/v1/place', placeCtrl.postPlace);
 app.get('/api/v1/places', placeCtrl.getPlaces);
@@ -91,6 +100,24 @@ app.post('/api/v1/activity', activityCtrl.postActivity);
 app.get('/api/v1/activities', activityCtrl.getActivities);
 app.put('/api/v1/activity/:id', activityCtrl.editActivity);
 app.delete('/api/v1/activity/:id', activityCtrl.deleteActivity);
+
+// Event Routes
+app.post('/api/v1/event', eventCtrl.postEvent);
+app.get('/api/v1/events', eventCtrl.getEvents);
+app.put('/api/v1/event/:id', eventCtrl.editEvent);
+app.delete('/api/v1/event/:id', eventCtrl.deleteEvent);
+
+// Review Routes
+app.post('/api/v1/place/:id/review', reviewCtrl.postPlaceReview);
+app.post('/api/v1/activity/:id/review', reviewCtrl.postActivityReview);
+app.get('/api/v1/reviews', reviewCtrl.getReviews);
+app.get('/api/v1/place/:id/review/:reviewId', reviewCtrl.getPlaceReviews);
+app.get('/api/v1/reviews/:id/review/:reviewId', reviewCtrl.getActivityReviews);
+app.put('/api/v1/review/:id', reviewCtrl.editReview);
+app.delete('/api/v1/place/:id/review/:reviewId', reviewCtrl.deletePlaceReview);
+app.delete('/api/v1/activity/:id/review/:reviewId', reviewCtrl.deleteActivityReview);
+
+
 
 
 // listen
