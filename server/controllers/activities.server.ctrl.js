@@ -12,11 +12,11 @@ module.exports = {
         });
     },
     getActivities: (req, res) => {
-        Activity.find(req.query, (err, activities) => {
+        Activity.find(req.query).populate('reviews').exec((err, activity) => {
             if (err) {
                 res.status(500).send(err);
             } else {
-                res.status(200).send(activities);
+                res.status(200).send(activity);
             }
         });
     },

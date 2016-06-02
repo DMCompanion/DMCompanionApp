@@ -1,36 +1,31 @@
 import Place from '../models/placesModel';
+import Review from '../models/reviewModel';
 
 module.exports = {
 
     postPlace: (req, res) => {
         Place.create(req.body, (err, place) => {
             if (err) {
-                console.log('post place failed');
                 res.status(500).send(err);
             } else {
-                console.log('post place success');
                 res.status(200).send(place);
             }
         });
     },
     getPlaces: (req, res) => {
-        Place.find(req.query, (err, places) => {
+        Place.find(req.query).populate('reviews').exec((err, place) => {
             if (err) {
-                console.log('get places failed');
                 res.status(500).send(err);
             } else {
-                console.log('get places success');
-                res.status(200).send(places);
+                res.status(200).send(place);
             }
         });
     },
     editPlace: (req, res) => {
         Place.findByIdAndUpdate(req.params.id, req.body, (err, place) => {
             if (err) {
-                console.log('get places failed');
                 res.status(500).send(err);
             } else {
-                console.log('get places success');
                 res.status(200).send(place);
             }
         });
@@ -38,13 +33,10 @@ module.exports = {
     deletePlace: (req, res) => {
         Place.findByIdAndRemove(req.params.id, (err, place) => {
             if (err) {
-                console.log('delete place failed');
                 res.status(500).send(err);
             } else {
-                console.log('get places success');
                 res.status(200).send(place);
             }
         });
     }
-
 };
