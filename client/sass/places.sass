@@ -1,5 +1,7 @@
 @import '_variables'
+
 .places
+  overflow: scroll
   ion-content
     background: $dmMidGray
     position: absolute
@@ -25,6 +27,10 @@
     background: $dmBlue2
   img
     border-radius: 100%
+  .places--container
+    overflow: scroll
+    // height: 100%
+    // max-height: inherit
   .miles
     @include vertical-align()
     height: 100%
@@ -36,3 +42,37 @@
   .places--content
     margin-top: 2vh
     float: left
+  .comments
+    height: 70vh
+  .comment
+    margin-top: 20px
+    color: white
+  #star
+    padding-top: 10%
+  #addReview
+    display: flex
+    justify-content: space-around
+    margin-bottom: 20px
+  .edits
+    display: flex
+    justify-content: space-around
+  .writeComment
+    height: 40vh
+
+.item-input.reviewText
+  height: 30vh
+.icon.ion-star
+  font-size: 8vw
+.button.button-positive.reviewButton
+  width: 30vw
+  margin-top: 2vh
+.stars
+  width: 40%
+  text-align: center
+  font-size: 10vw !important
+  display: flex
+  justify-content: flex-start
+  margin-bottom: 2vh
+  margin-top: 2vh
+.star
+  width: 100%
