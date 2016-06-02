@@ -1,5 +1,5 @@
 angular.module('companion')
-.service('activitiesSvc', function() {
+.service('activitiesSvc', function($http) {
 
     const activities = [ {
         id: 0,
@@ -39,9 +39,41 @@ angular.module('companion')
         items: ['Cool Stuff Here', 'And Here', 'Oh, and here too']
     }, ];
 
-
+    // CRUD ACTIVITIES
     this.getActivities = () => {
-        return activities;
-    };
+      return $http({
+        method: 'GET',
+        url: '/api/v1/activities'
+      }).then((response) => {
+        return response;
+      })
+    }
+
+    this.createActivity = (activity) => {
+      return $http({
+        method: 'POST',
+        url: '/api/v1/activity',
+        data: activity
+      })
+    }
+
+    this.editActivity = (id, upActivity) => {
+      return $http({
+        method: 'PUT',
+        url: '/api/v1/activity/' + id,
+        data: upActivity
+      }).then((response) => {
+        return response;
+      })
+    }
+
+    this.deleteActivity = (id) => {
+      return $http({
+        method: 'DELETE',
+        url: '/api/v1/activity/' + id
+      }).then((response) => {
+        return response;
+      })
+    }
 
 } );
