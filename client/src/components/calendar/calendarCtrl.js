@@ -3,30 +3,38 @@ angular.module('companion')
 
     // FLEXCALENDAR
 
+    let today = new Date().toLocaleString().split(',').shift();
+
     $scope.calOptions = {
       defaultDate: new Date(),
       minDate: "2016-01-01",
       maxDate: "2016-12-31",
       disabledDates: [],
       dayNamesLength: 1, // 1 for "M", 2 for "Mo", 3 for "Mon"; 9 will show full day names. Default is 1.
-      mondayIsFirstDay: true, //set monday as first day of week. Default is false
+      mondayIsFirstDay: false, //set monday as first day of week. Default is false
       eventClick: function(date) { // called before dateClick and only if clicked day has events
+        let todayClick = date.date.toLocaleString().split(',').shift();
+        $scope.dateEvents = date.event;
+        console.log("dateClick date: ", date.date);
+        console.log("today's date: ", today);
+        if (todayClick === today) {
+          console.log("is today.");
+          document.getElementById('eventHeader').innerHTML = '<h4 class="eventHeader">Events for Today</h4>';
+        } else {
+          document.getElementById('eventHeader').innerHTML = '<h4 class="eventHeader">Events for ' + moment(date.date).format("dddd, MMMM Do") + '</h4>';
+        }
       },
       dateClick: function(date) { // called every time a day is clicked
-        $scope.dateEvents = date.event;
+
       },
       changeMonth: function(month, year) {
-        console.log(month, year);
+        // console.log(month, year);
       },
       filteredEventsChange: function(filteredEvents) {
-        console.log(filteredEvents);
+        console.log("events changed");
       },
     };
 
-    // $scope.events = [
-    //   {foo: 'bar', eventClass: 'expired', date: "2015-08-18"}, //value of eventClass will be added to CSS class of the day element
-    //   {foo: 'bar', date: "2015-08-20"}
-    // ];
 
     $scope.events = [{
       "title": "Meetup on Ionic",
@@ -50,17 +58,21 @@ angular.module('companion')
       "time": '2:00pm'
     }];
 
-    let today = new Date().toLocaleString().split(',').shift();
+    let newEvent = {
+      "title": "Meetup on ES6",
+      "description": "We'll talk about ES6.",
+      "date": '2016/6/4 14:00',
+      "time": '2:00pm'
+    };
 
-    console.log(today);
+    setTimeout(function () {
+      $scope.events.push(newEvent);
+      console.log("added newEvent: ", $scope.events);
+      $scope.$digest();
+    }, 5000);
 
-    for (var i = 0; i < $scope.events.length; i++) {
-      if ($scope.events[i].date === today) {
-        console.log("Event " + i + " is today.");
-        $scope.events[i].today = true;
-      } else {
-        console.log("Event " + i + " is not today.");
-      }
-    }
+    $scope.$watchCollection('events', function() {
+      console.log("Events changed: WATCH");
+    });
 
   });
