@@ -1,36 +1,46 @@
 @import '_variables'
 
 .places
-  overflow: scroll
+
   ion-content
     background: $dmMidGray
     position: absolute
     top: $headerW
   .poopoobrown
     background: brown
-  .search-bar
-    // width: 90vw
-    // @include horizontal-align()
+  .item.search-bar
+    margin: 1vh 3vw
+  .item-input.search-bar
+    border-radius: 1vw
+  .list.card
+    margin-bottom: 0
   .tags
     display: flex
     flex-wrap: wrap
     justify-content: space-between
-    margin: 2vw
+    margin: 1vw
   .tag
     margin: 1vh
     width: 28vw
-    font-size: 2vh
-    // background: $dmBleu
-    // color: white
+    font-size: 1rem
+  .card
+    margin-bottom: 1vh
+  .card:first-child
+    margin-top: 1vh
+  .review-summary
+    display: flex
+    justify-content: space-around
+  .card.review
+    width: 80vw
+  .reviewButton
+    float: right
+    margin-right: 10vw
   .activated
     border: 0
     background: $dmBlue2
-  img
-    border-radius: 100%
+  .item img
+    border-radius: 1vw
   .places--container
-    overflow: scroll
-    // height: 100%
-    // max-height: inherit
   .miles
     @include vertical-align()
     height: 100%
@@ -45,14 +55,11 @@
   .comments
     height: 70vh
   .comment
-    margin-top: 20px
     color: white
   #star
     padding-top: 10%
   #addReview
-    display: flex
-    justify-content: space-around
-    margin-bottom: 20px
+    margin: 2vh
   .edits
     display: flex
     justify-content: space-around

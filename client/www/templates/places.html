@@ -10,17 +10,17 @@
       <input type="search" placeholder="Search" ng-model="searchText">
     </label>
 
-    <div class="tags">
+    <!-- <div class="tags">
     <div ng-repeat="tag in tags" ng-show="!searchText">
       <button class="button tag button-medium button-assertive" ng-click="setSearchType($index, tag.name)" ng-style="{background: tag.selected == true ? '#E62B25' : '#ef473a'}">
         {{tag.name}}
       </button>
     </div>
-    </div>
+    </div> -->
 
     <div class="places--container" ng-repeat="place in places | orderBy: 'distance' | filter:searchText | filter:{placeType: searchType}">
 
-      <div class="list">
+      <div class="list card">
 
           <a class="item item-thumbnail-left" ng-click="commentShown = !commentShown">
             <img src="{{place.photos[0]}}">

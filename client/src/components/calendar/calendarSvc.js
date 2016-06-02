@@ -1,5 +1,6 @@
-angular.module('companion').service('calendarSvc', ($http) => {
+angular.module('companion').service('calendarSvc', function($http) {
 
+    // CRUD EVENTS
     this.getEvents = () => {
       return $http({
         method: 'GET',
@@ -19,7 +20,7 @@ angular.module('companion').service('calendarSvc', ($http) => {
 
     this.editEvent = (id, upEvent) => {
       return $http({
-        method: 'GET',
+        method: 'PUT',
         url: '/api/v1/event/' + id,
         data: upEvent
       }).then((response) => {
@@ -30,7 +31,7 @@ angular.module('companion').service('calendarSvc', ($http) => {
     this.deleteEvent = (id) => {
       return $http({
         method: 'DELETE',
-        url: '/api/v1/event'
+        url: '/api/v1/event/' + id
       }).then((response) => {
         return response;
       })
