@@ -10,20 +10,20 @@
       <input type="search" placeholder="Search" ng-model="searchText">
     </label>
 
-    <div class="tags">
+    <!-- <div class="tags">
     <div ng-repeat="tag in tags" ng-show="!searchText">
-      <button class="button tag button-medium button-assertive" ng-click="setSearchType($index, tag.name)" ng-style="{background: tag.selected == true ? '#E62B25' : '#ef473a'}">
+      <button class="button tag button-medium button-positive" ng-click="setSearchType($index, tag.name)" ng-style="{background: tag.selected == true ? '#3462A0' : '#2999E3'}">
         {{tag.name}}
       </button>
     </div>
-    </div>
+    </div> -->
 
     <div class="places--container" ng-repeat="place in places | orderBy: 'distance' | filter:searchText | filter:{placeType: searchType}">
 
-      <div class="list">
+          <div class="card">
 
-          <a class="item item-thumbnail-left" ng-click="commentShown = !commentShown">
-            <img src="{{place.photos[0]}}">
+          <div class="item item-avatar" ng-click="commentShown = !commentShown">
+            <img ng-src="{{place.photos[0]}}" />
             <div class="miles">
               <h2>{{place.distance}}mi</h2>
             </div>
@@ -35,39 +35,38 @@
                 <h6>{{rate}}</h6>
               </div>
             </div>
-          </a>
+          </div>
+
+          </div>
 
           <div class="comments" ng-show="commentShown">
             <div class="comment">
 
-              <div id="addReview">
+              <!-- <div id="addReview">
                 <div class="stars">
-                  <div id="star">STARS</div>
+                  <div id="star">Reviews</div>
                 </div>
-                <button id="review" class="button icon-left ion-compose button-positive" ng-click="modal.show()">Write a review</button>
-              </div>
+              </div> -->
 
               <div class="review-summary">
-                <div class="list">
+                <div>
 
-                  <div class="list card">
-                    <div class="item item-avatar">
-                        <img src="avatar.jpg">
+                  <div class="card review">
+                    <div class="item">
                         <h2>{{place.name}}</h2>
-                    </div>
-
-                    <div class="item item-image">
-                      <img src="cover.jpg">
+                        <hr />
+                        <p>Place is awesome.</p>
                     </div>
 
                   </div>
 
                 </div>
               </div>
+              <div class="reviewButton">
+              <button id="review" class="button icon-left ion-compose bleu" ng-click="modal.show()">Write a Review</button>
+              </div>
             </div>
           </div>
-
-      </div>
 
     </div>
 
