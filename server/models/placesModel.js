@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import ReviewSchema from './ReviewSchema';
 
 const Schema = mongoose.Schema;
 
@@ -40,10 +39,16 @@ const PlaceSchema = new Schema({
             type: String
         }
     },
-    reviews: [ReviewSchema],
+    reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Review'
+    }],
     photos: [{
         type: String
     }],
+    photoHeader: {
+        type: String
+    },
     googleId: {
         type: String
     },

@@ -22,7 +22,7 @@
 
       <div class="list">
 
-          <a class="item item-thumbnail-left" href="#">
+          <a class="item item-thumbnail-left" ng-click="commentShown = !commentShown">
             <img src="{{place.photos[0]}}">
             <div class="miles">
               <h2>{{place.distance}}mi</h2>
@@ -32,10 +32,40 @@
               <h2>{{place.name}}</h2>
               <p>{{place.placeType}}</p>
               <div class="rating" ng-repeat="rate in place.rating">
-                <h6>?</h6>
+                <h6>{{rate}}</h6>
               </div>
             </div>
           </a>
+
+          <div class="comments" ng-show="commentShown">
+            <div class="comment">
+
+              <div id="addReview">
+                <div class="stars">
+                  <div id="star">STARS</div>
+                </div>
+                <button id="review" class="button icon-left ion-compose button-positive" ng-click="modal.show()">Write a review</button>
+              </div>
+
+              <div class="review-summary">
+                <div class="list">
+
+                  <div class="list card">
+                    <div class="item item-avatar">
+                        <img src="avatar.jpg">
+                        <h2>{{place.name}}</h2>
+                    </div>
+
+                    <div class="item item-image">
+                      <img src="cover.jpg">
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
 
       </div>
 
