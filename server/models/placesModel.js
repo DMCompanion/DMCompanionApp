@@ -46,6 +46,9 @@ const PlaceSchema = new Schema({
     photos: [{
         type: String
     }],
+    photoHeader: {
+        type: String
+    },
     googleId: {
         type: String
     },
