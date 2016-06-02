@@ -1,4 +1,5 @@
 import Place from '../models/placesModel';
+import Review from '../models/reviewModel';
 
 module.exports = {
 
@@ -12,11 +13,11 @@ module.exports = {
         });
     },
     getPlaces: (req, res) => {
-        Place.find(req.query, (err, places) => {
+        Place.find(req.query).populate('reviews').exec((err, place) => {
             if (err) {
                 res.status(500).send(err);
             } else {
-                res.status(200).send(places);
+                res.status(200).send(place);
             }
         });
     },
@@ -38,5 +39,4 @@ module.exports = {
             }
         });
     }
-
 };
