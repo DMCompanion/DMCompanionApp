@@ -18,7 +18,17 @@ const ActivitySchema = new Schema({
     reviews: [{
         type: Schema.Types.ObjectId,
         ref: 'Review'
-    }]
+    }],
+    category: {
+        type: String,
+        enum: ['Outdoor', 'Arts & Entertainment', 'Winter', 'Summer', 'Spring', 'Fall', 'Night Life', 'Active Life', 'Beauty & Spa']
+    },
+    photos: [{
+        type: String
+    }],
+    photoHeader: {
+        type: String
+    }
 
 }, {
     timestamps: true
