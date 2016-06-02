@@ -1,0 +1,24 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">STUDENT REVIEW</h1>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <div class="list">
+      <div class="rank">
+        <div id="star">RANK</div>
+      </div>
+      <div class="stars">
+        <div class="star" ng-repeat="star in [1, 2, 3, 4, 5]">
+          <i class="icon ion-star"></i>
+        </div>
+      </div>
+      <div class="writeComment">
+        <label class="item item-input reviewText">
+          <input type="text" id="thought" placeholder="did you have thought? i thought not">
+        </label>
+      </div>
+      <button class="button button-positive reviewButton" ng-click="modal.hide()">Cancel</button>
+      <button class="button button-positive reviewButton">Post</button>
+    </div>
+   </ion-content>
+</ion-modal-view>
