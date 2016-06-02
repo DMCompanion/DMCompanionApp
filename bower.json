@@ -12,6 +12,7 @@
     "tests"
   ],
   "dependencies": {
-    "flex-calendar": "*"
+    "flex-calendar": "*",
+    "ionic-pullup": "^1.1.0"
   }
 }

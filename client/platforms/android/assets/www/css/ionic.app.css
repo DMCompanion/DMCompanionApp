@@ -9801,11 +9801,11 @@ a.button {
 
 @font-face {
   font-family: 'ProximaNova';
-  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+  src: url("../fonts/proximanova-webfont.ttf") format("truetype"); }
 
 @font-face {
   font-family: 'ProximaNova';
-  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+  src: url("../fonts/proximanova-webfont.ttf") format("truetype"); }
 
 .home ion-content {
   background: #343434;
@@ -9815,8 +9815,8 @@ a.button {
 .home .headerlogo {
   width: 60%;
   margin: 20%;
-  margin-top: 25%;
-  margin-bottom: 15%; }
+  margin-top: 15vh;
+  margin-bottom: 5vh; }
 
 .home .hr-line {
   width: 80%;
@@ -9854,9 +9854,12 @@ a.button {
 .home .button .icon:before, .home .button.icon:before, .home .button.icon-left:before, .home .button.icon-right:before {
   font-size: 10vw; }
 
+.home .icon.ion-chevron-up {
+  font-size: 1.5em !important; }
+
 @font-face {
   font-family: 'ProximaNova';
-  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+  src: url("../fonts/proximanova-webfont.ttf") format("truetype"); }
 
 .places ion-content {
   background: #343434;
@@ -9904,25 +9907,59 @@ a.button {
 
 @font-face {
   font-family: 'ProximaNova';
-  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+  src: url("../fonts/proximanova-webfont.ttf") format("truetype"); }
 
 .activities ion-content {
   background: #343434;
   position: absolute;
   top: 45px; }
+  .activities ion-content .item {
+    background: #343434;
+    color: #2999E3 !important; }
+
+@keyframes accordion {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+  .activities ion-content .list .item.item-accordion {
+    line-height: 38px;
+    padding-top: 0;
+    padding-bottom: 0;
+    animation: accordion .40s ease-in-out; }
+  .activities ion-content .list .item.item-accordion.ng-hide-add, .activities ion-content .list .item.item-accordion.ng-hide-remove {
+    display: block !important; }
+  .activities ion-content .activity {
+    color: #2999E3 !important; }
 
 @font-face {
   font-family: 'ProximaNova';
-  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+  src: url("../fonts/proximanova-webfont.ttf") format("truetype"); }
 
 .calendar ion-content {
   background: #343434;
   position: absolute;
   top: 45px; }
 
+.calendar .today {
+  color: white;
+  margin-left: 5vw; }
+
+.calendar .flex-calendar .week {
+  background-color: #2999E3; }
+
+.calendar .flex-calendar .days .day.selected .number {
+  background-color: #2999E3; }
+
+.calendar .flex-calendar .days .day.event:before {
+  background-color: #ef473a; }
+
+.calendar .flex-calendar .month {
+  background-color: #2999E3; }
+
 @font-face {
   font-family: 'ProximaNova';
-  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+  src: url("../fonts/proximanova-webfont.ttf") format("truetype"); }
 
 .deals ion-content {
   background: #343434;
@@ -9931,7 +9968,7 @@ a.button {
 
 @font-face {
   font-family: 'ProximaNova';
-  src: url("./resources/fonts/proximanova-webfont.ttf") format("truetype"); }
+  src: url("../fonts/proximanova-webfont.ttf") format("truetype"); }
 
 .blog ion-content {
   background: #343434;
@@ -9989,18 +10026,6 @@ body {
   background: #343434;
   position: absolute;
   top: 45px; }
-
-.activities .list .item.item-accordion {
-  line-height: 38px;
-  padding-top: 0;
-  padding-bottom: 0;
-  transition: 0.49s all linear; }
-
-.activities .list .item.item-accordion.ng-hide {
-  line-height: 0; }
-
-.activities .list .item.item-accordion.ng-hide-add, .activities .list .item.item-accordion.ng-hide-remove {
-  display: block !important; }
 
 .calendar ion-content {
   background: #343434;
