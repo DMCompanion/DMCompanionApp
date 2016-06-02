@@ -1,4 +1,4 @@
-angular.module('companion').service('calendarSvc', ($http) => {
+angular.module('companion').service('calendarSvc', function($http) {
 
     // CRUD EVENTS
     this.getEvents = () => {

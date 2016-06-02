@@ -20,7 +20,7 @@
 
     <div class="places--container" ng-repeat="place in places | orderBy: 'distance' | filter:searchText | filter:{placeType: searchType}">
 
-      <div class="list">
+      <div class="list card">
 
           <a class="item item-thumbnail-left" ng-click="commentShown = !commentShown">
             <img src="{{place.photos[0]}}">
