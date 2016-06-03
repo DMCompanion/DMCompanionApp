@@ -66,6 +66,19 @@ angular.module('companion')
       return $http.delete('/api/v1/review/' + reviewId);
     };
 
+    // Comment Endpoints
+    this.getEvents = () => {
+      return $http.get('/api/v1/events').then((response) => {
+        console.log(response);
+        return response;
+      });
+    };
+    this.editEvent = (event) => {
+      return $http.put('/api/v1/event/' + event._id, event);
+    };
+    this.deleteEvent = (eventId) => {
+      return $http.delete('/api/v1/event/' + event._id);
+    };
 
 
   });

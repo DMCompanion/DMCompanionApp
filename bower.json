@@ -13,6 +13,6 @@
   ],
   "dependencies": {
     "flex-calendar": "*",
-    "ionic-pullup": "^1.1.0"
+    "ionic-pullup": "^1.1.0",
   }
 }
