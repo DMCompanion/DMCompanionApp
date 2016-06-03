@@ -39,15 +39,11 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
         url: '/deals',
         templateUrl: './templates/deals.html'
       })
-<<<<<<< HEAD
       .state('activitiesDetails', {
           url: '/activitiesDetails/:category',
           templateUrl: './templates/activitiesDetails.html',
           controller: 'activitiesDetailsCtrl'
       })
-      .state('deals', { url: '/deals', templateUrl: './templates/deals.html'})
-=======
->>>>>>> master
       .state('calendar', {
         url: '/calendar',
         templateUrl: './templates/calendar.html',

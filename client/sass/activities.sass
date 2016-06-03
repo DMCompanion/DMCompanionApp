@@ -1,9 +1,10 @@
 @import '_variables'
-.activities, .activitiesDetails
+.activities, .activitiesDetails, .activitiesItem
   ion-content
-    background-color: $dmMidGray
+    background-color: $dmMidGray !important
     position: absolute
     top: $headerW
+
 
 
     // Accordion styles
@@ -33,8 +34,9 @@
     .activity
         // color: $dmLightGray !important
     .card
-        min-height: 34vw
+        min-height: 18vw
         background-color: $dmLightGray
+        margin-top: 10vw
         img
             width: 100% !important
             max-height: 28vw !important
@@ -48,7 +50,9 @@
                 font-size: 4vw !important
                 font-weight: bold !important
                 color: $seperator !important
+        p
+            padding: 0 3vw 0 3vw
 
     .divider
-        height: 10vw !important
+        height: 5vw !important
         background-color: $dmMidGray !important
