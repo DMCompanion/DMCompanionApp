@@ -49,7 +49,7 @@ app.set('view engine', 'html');
 
 // cors init
 const corsOptions = {
-    origin: 'http://localhost:9001'
+    origin: '*'
 };
 
 app.use(cors(corsOptions));
