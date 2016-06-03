@@ -4,7 +4,7 @@ angular.module('companion').service('calendarSvc', function($http) {
     this.getEvents = () => {
       return $http({
         method: 'GET',
-        url: '/api/v1/events'
+        url: 'http://localhost:8006/api/v1/events'
       }).then((response) => {
         return response;
       })
@@ -13,7 +13,7 @@ angular.module('companion').service('calendarSvc', function($http) {
     this.createEvent = (event) => {
       return $http({
         method: 'POST',
-        url: '/api/v1/event',
+        url: 'http://localhost:8006/api/v1/event',
         data: event
       })
     }
@@ -21,7 +21,7 @@ angular.module('companion').service('calendarSvc', function($http) {
     this.editEvent = (id, upEvent) => {
       return $http({
         method: 'PUT',
-        url: '/api/v1/event/' + id,
+        url: 'http://localhost:8006/api/v1/event' + id,
         data: upEvent
       }).then((response) => {
         return response;
@@ -31,7 +31,7 @@ angular.module('companion').service('calendarSvc', function($http) {
     this.deleteEvent = (id) => {
       return $http({
         method: 'DELETE',
-        url: '/api/v1/event/' + id
+        url: 'http://localhost:8006/api/v1/event' + id
       }).then((response) => {
         return response;
       })
