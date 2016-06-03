@@ -1,7 +1,7 @@
 @import '_variables'
 
 .places
-  overflow: scroll
+
   ion-content
     background: $dmMidGray
     position: absolute
@@ -12,6 +12,8 @@
     margin: 1vh 3vw
   .item-input.search-bar
     border-radius: 1vw
+  .list.card
+    margin-bottom: 0
   .tags
     display: flex
     flex-wrap: wrap
@@ -39,7 +41,6 @@
   .item img
     border-radius: 1vw
   .places--container
-    overflow: scroll
   .miles
     @include vertical-align()
     height: 100%
@@ -52,7 +53,7 @@
     margin-top: 2vh
     float: left
   .comments
-    height: 100%
+    height: 70vh
   .comment
     color: white
   #star

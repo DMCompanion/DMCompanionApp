@@ -97,4 +97,39 @@ angular.module('companion')
         $scope.modal.hide();
       };
 
+      // CRUD ACTIVITIES
+        $scope.showPlaces = () => {
+          calendarSvc.getPlaces()
+          .then((response) => {
+            console.log(response);
+            // $scope.places = response;
+          })
+        }
+
+        $scope.addPlace = (userPlace) => {
+          calendarSvc.createPlace(userPlace)
+          .then((response) => {
+            console.log(response);
+
+          })
+        }
+
+        $scope.updatePlace = (id, upPlace) => {
+          calendarSvc.editPlace(id, upPlace)
+          .then((response) => {
+            console.log(response);
+
+          })
+        }
+
+        $scope.destroyPlace = (id) => {
+          calendarSvc.deletePlace(id)
+          .then((response) => {
+            console.log(response);
+
+          })
+        }
+
+
+
   });

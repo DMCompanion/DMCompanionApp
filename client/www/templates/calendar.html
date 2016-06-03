@@ -3,9 +3,34 @@
     <a href="/#/home">
       <button class="button button-icon icon ion-navicon"></button>
     </a>
-    <h1 class="title">Calendar</h1>
+    <h1 class="title">Events</h1>
   </div>
   <ion-content>
+
+    <!-- <div class="adminApprove" ng-show="isAdmin">
+      <div class="card">
+        <div class="item item-divider">
+          Scott's Party
+        </div>
+        <div class="eventDescription item item-text-wrap">
+          Coem hang out at my dope-ass crib. yo.
+            Coem hang out at my dope-ass crib. yo.
+              Coem hang out at my dope-ass crib. yo.
+                Coem hang out at my dope-ass crib. yo.
+                  Coem hang out at my dope-ass crib. yo.
+                    Coem hang out at my dope-ass crib. yo.
+          <p/>
+          <strong>When:</strong>
+          <strong>6/21/16</strong>
+        </div>
+        <button class="disapprovalButton button button-assertive">
+          <i class="icon ion-close"></i>
+        </button>
+        <button class="approvalButton button button-balanced">
+          <i class="icon ion-checkmark"></i>
+        </button>
+      </div>
+    </div> -->
 
     <flex-calendar options="calOptions" events="events"></flex-calendar>
 
@@ -16,17 +41,25 @@
 
     <h4 class="today">Today: </h4> -->
 
-    <div class="card" ng-repeat="event in dateEvents | orderBy: 'time'">
+      <div id="eventHeader">
+
+      </div>
+
+    <div class="card" ng-repeat="event in dateEvents | orderBy: 'time' track by $index">
       <div class="item item-divider">
         {{event.title}}
       </div>
       <div class="item item-text-wrap">
         {{ event.description }}
         <p/>
-        <strong>When:</strong>
-        <strong>{{event.time}}</strong>
+        <div class="when">
+          <strong>When: {{event.time}}</strong>
+        </div>
+        <a class="trashButton" ng-click="destroyEvent(event._id)">
+          <i class="icon ion-trash-a"></i>
+        </button>
+        </a>
       </div>
-    </div>
 
   </ion-content>
 </ion-view>

@@ -25,6 +25,18 @@ const EventSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
+    postedBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    approved: {
+        type: Boolean,
+        default: false
+    },
     photoHeader: {
         type: String
     },
@@ -40,7 +52,7 @@ const EventSchema = new Schema({
 });
 
 EventSchema.pre('find', (next) => {
-    this.populate('peopleGoing');
+    this.populate('peopleGoing comments');
     next();
 });
 

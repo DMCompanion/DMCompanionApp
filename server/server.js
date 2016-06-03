@@ -16,6 +16,7 @@ import activityCtrl from './controllers/activities.server.ctrl';
 import eventCtrl from './controllers/event.server.ctrl';
 import userCtrl from './controllers/user.server.ctrl';
 import reviewCtrl from './controllers/review.server.ctrl';
+import commentCtrl from './controllers/comment.server.ctrl';
 
 // require('./controllers/passport')(passport);
 
@@ -108,17 +109,16 @@ app.put('/api/v1/event/:id', eventCtrl.editEvent);
 app.delete('/api/v1/event/:id', eventCtrl.deleteEvent);
 
 // Review Routes
-app.post('/api/v1/place/:id/review', reviewCtrl.postPlaceReview);
-app.post('/api/v1/activity/:id/review', reviewCtrl.postActivityReview);
+app.post('/api/v1/review', reviewCtrl.postReview);
 app.get('/api/v1/reviews', reviewCtrl.getReviews);
-app.get('/api/v1/place/:id/review/:reviewId', reviewCtrl.getPlaceReviews);
-app.get('/api/v1/reviews/:id/review/:reviewId', reviewCtrl.getActivityReviews);
 app.put('/api/v1/review/:id', reviewCtrl.editReview);
-app.delete('/api/v1/place/:id/review/:reviewId', reviewCtrl.deletePlaceReview);
-app.delete('/api/v1/activity/:id/review/:reviewId', reviewCtrl.deleteActivityReview);
+app.delete('/api/v1/review/:id/', reviewCtrl.deleteReview);
 
-
-
+// Comment Routes
+app.post('/api/v1/comment', commentCtrl.postComment);
+app.get('/api/v1/comments', commentCtrl.getComments);
+app.put('/api/v1/comment/:id', commentCtrl.editComment);
+app.delete('/api/v1/comment/:id', commentCtrl.deleteComment);
 
 // listen
 app.listen(port, () => {
