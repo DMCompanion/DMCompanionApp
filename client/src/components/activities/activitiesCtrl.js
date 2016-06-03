@@ -1,24 +1,23 @@
 angular.module( 'companion' )
-	.controller( 'activitiesCtrl', function ( $scope ,activitiesSvc ) {
+	.controller( 'activitiesCtrl', function ( $scope, activitiesSvc, $ionicGesture ) {
 
 		$scope.activities = activitiesSvc.getActivities();
 
-		$scope.passActivityDetails = (index) => {
-			// $scope.i = index;
-			$scope.details = $scope.activities[index];
-			// console.log($scope.details);
-		};
-
-		$scope.toggleGroup = function ( activity ) {
+		$scope.toggleGroup = ( activity ) => {
 			if ( $scope.isGroupShown( activity ) ) {
 				$scope.shownGroup = null;
 			} else {
 				$scope.shownGroup = activity;
 			}
 		};
-		$scope.isGroupShown = function ( activity ) {
+		$scope.isGroupShown = ( activity ) => {
 			return $scope.shownGroup === activity;
 		};
+
+		$scope.swipeRight = () => {
+		    window.history.back();
+		};
+
 
 
 	} );

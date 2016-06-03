@@ -23,7 +23,7 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
       }
     });
   })
-  .config(function($stateProvider, $urlRouterProvider) {
+  .config(($stateProvider, $urlRouterProvider) => {
     $stateProvider
       .state('index', {
           url: '/home',

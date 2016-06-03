@@ -11,7 +11,7 @@
         background-color: $dmMidGray
         color: $dmLightGray !important
         height: 15vw
-    @keyframes accordion
+    @keyframes expand
         0%
             opacity: 0
         100%
@@ -36,15 +36,19 @@
         min-height: 34vw
         background-color: $dmLightGray
         img
-            width: 100%
-            max-height: 28vw
-            object-fit: cover
-            margin-top: -1vh
+            width: 100% !important
+            max-height: 28vw !important
+            object-fit: cover !important
+            margin-top: -1px !important
         .button
             height: 10px !important
-            min-height: 20px
-            line-height: normal
+            min-height: 20px !important
+            line-height: normal !important
         .button.button-positive.button-clear
-                font-size: 4vw
-                font-weight: bold
+                font-size: 4vw !important
+                font-weight: bold !important
                 color: $seperator !important
+
+    .divider
+        height: 10vw !important
+        background-color: $dmMidGray !important

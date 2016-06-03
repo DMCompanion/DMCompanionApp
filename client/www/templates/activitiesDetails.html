@@ -3,16 +3,28 @@
         <a href="/#/home"><button class="button button-icon icon ion-navicon"></button></a>
         <h1 class="title">Activities Details</h1>
     </div>
-    <ion-content class="padding">
+    <ion-content class="padding" on-swipe-right="swipeRight()">
         <ion-list>
             <div class="card">
                 <img src="{{details.img}}" alt="" />
                 <div class="button button-clear button-positive">
                         {{details.name}}
                 </div>
-                <ion-item class="item-accordion" ng-repeat="item in details.items">
-                    {{item}}
-                </ion-item>
+                <div class="divider"></div>
+                <div ng-repeat="item in details.items">
+                    <h4 ng-class="{active: isGroupShown(activity)}">
+                        {{item.name}}
+                    </h4>
+                    <div class="card">
+                        <p>
+                            {{item.rating}}
+                        </p>
+                        <p>
+                            {{item.description}}
+                        </p>
+                        <div class="divider"></div>
+                    </div>
+                </div>
             </div>
         </ion-list>
     </ion-content>
