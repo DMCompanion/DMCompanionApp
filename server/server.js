@@ -16,6 +16,7 @@ import activityCtrl from './controllers/activities.server.ctrl';
 import eventCtrl from './controllers/event.server.ctrl';
 import userCtrl from './controllers/user.server.ctrl';
 import reviewCtrl from './controllers/review.server.ctrl';
+import commentCtrl from './controllers/comment.server.ctrl';
 
 // require('./controllers/passport')(passport);
 
@@ -112,6 +113,12 @@ app.post('/api/v1/review', reviewCtrl.postReview);
 app.get('/api/v1/reviews', reviewCtrl.getReviews);
 app.put('/api/v1/review/:id', reviewCtrl.editReview);
 app.delete('/api/v1/review/:id/', reviewCtrl.deleteReview);
+
+// Comment Routes
+app.post('/api/v1/comment', commentCtrl.postComment);
+app.get('/api/v1/comments', commentCtrl.getComments);
+app.put('/api/v1/comment/:id', commentCtrl.editComment);
+app.delete('/api/v1/comment/:id/', commentCtrl.deleteComment);
 
 // listen
 app.listen(port, () => {
