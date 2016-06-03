@@ -1,11 +1,11 @@
 angular.module('companion')
 .service('activitiesSvc', function ($http) {
 
-    this.getActivities = () => {
-        return activities;
+    this.getDummyActivities = () => {
+        return dummyActivities;
     };
 
-    const activities = [ {
+    const dummyActivities = [ {
         id: 0,
         name: 'Active Life',
         items: [
@@ -152,7 +152,7 @@ angular.module('companion')
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
                 rating: `5-stars`,
             }, {
-                name: `Water Skiiing`,
+                name: `Water Skiing`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
                 rating: `5-stars`,
             }, {
@@ -167,15 +167,15 @@ angular.module('companion')
         name: 'Winter',
         items: [
             {
-                name: `Snow Skiing`,
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
-            }, {
-                name: `Snow Skiing`,
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
-            }, {
                 name: `Pair-coding with Karam`,
+                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                rating: `5-stars`,
+            }, {
+                name: `Snow Skiing`,
+                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                rating: `5-stars`,
+            }, {
+                name: `Snow Skiing`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
                 rating: `5-stars`,
             }
@@ -229,16 +229,16 @@ angular.module('companion')
         url: '/api/v1/activities'
       }).then((response) => {
         return response;
-      })
-    }
+    });
+};
 
     this.createActivity = (activity) => {
       return $http({
         method: 'POST',
         url: '/api/v1/activity',
         data: activity
-      })
-    }
+    });
+};
 
     this.editActivity = (id, upActivity) => {
       return $http({
@@ -247,8 +247,8 @@ angular.module('companion')
         data: upActivity
       }).then((response) => {
         return response;
-      })
-    }
+    });
+};
 
     this.deleteActivity = (id) => {
       return $http({
@@ -256,8 +256,8 @@ angular.module('companion')
         url: '/api/v1/activity/' + id
       }).then((response) => {
         return response;
-      })
-    }
+    });
+};
 
 
 } );

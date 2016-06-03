@@ -6,7 +6,7 @@
     <ion-content class="padding" on-swipe-right="swipeRight()">
         <ion-list>
             <div class="card" ng-repeat="activity in activities">
-                <a ui-sref="activitiesDetails({category:activity.name})" ng-click="passActivityDetails($index)">
+                <a ui-sref="activitiesDetails({category:activity.name})">
                     <img src="{{activity.img}}" alt="" />
                     <div class="button button-clear button-positive">
                         {{activity.name}}
