@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
     cohortId: {
         type: Number,
         trim: true
+    },
+    campus: {
+        type: String,
+        enum: ['Provo', 'Dallas', 'Salt Lake City']
     }
 });
 
