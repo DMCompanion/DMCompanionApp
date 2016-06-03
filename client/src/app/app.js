@@ -26,27 +26,33 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('index', {
-          url: '/home',
-          templateUrl: './templates/home.html',
-          controller: 'homeCtrl'
+        url: '/home',
+        templateUrl: './templates/home.html',
+        controller: 'homeCtrl'
       })
       .state('activities', {
-          url: '/activities',
-          templateUrl: './templates/activities.html',
-          controller: 'activitiesCtrl'
+        url: '/activities',
+        templateUrl: './templates/activities.html',
+        controller: 'activitiesCtrl'
       })
-      .state('deals', { url: '/deals', templateUrl: './templates/deals.html'})
+      .state('deals', {
+        url: '/deals',
+        templateUrl: './templates/deals.html'
+      })
       .state('calendar', {
         url: '/calendar',
         templateUrl: './templates/calendar.html',
         controller: 'calendarCtrl'
-       })
+      })
       .state('places', {
         url: '/places',
         templateUrl: './templates/places.html',
         controller: 'placesCtrl'
-       })
-      .state('blog', { url: '/blog', templateUrl: './templates/blog.html'});
+      })
+      .state('blog', {
+        url: '/blog',
+        templateUrl: './templates/blog.html'
+      });
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/home');
