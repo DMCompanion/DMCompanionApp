@@ -14,10 +14,46 @@ angular.module( 'companion' )
 			return $scope.shownGroup === activity;
 		};
 
+
 		$scope.swipeRight = () => {
 		    window.history.back();
 		};
 
+
+
+
+		// CRUD ACTIVITIES
+			$scope.showActivities = () => {
+				activitiesSvc.getActivities()
+				.then((response) => {
+					console.log(response);
+					// $scope.activities = response;
+				})
+			}
+
+			$scope.addActivity = (userActivity) => {
+				activitiesSvc.createActivity(userActivity)
+				.then((response) => {
+					console.log(response);
+
+				})
+			}
+
+			$scope.updateActivity = (id, upActivity) => {
+				activitiesSvc.editActivity(id, upActivity)
+				.then((response) => {
+					console.log(response);
+
+				})
+			}
+
+			$scope.destroyActivity = (id) => {
+				activitiesSvc.deleteActivity(id)
+				.then((response) => {
+					console.log(response);
+
+				})
+			}
 
 
 	} );

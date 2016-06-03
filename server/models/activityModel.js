@@ -5,12 +5,15 @@ const Schema = mongoose.Schema;
 const ActivitySchema = new Schema({
     name: {
         type: String,
+        trim: true
     },
     description: {
-        type: String
+        type: String,
+        trim: true
     },
     location: {
-        type: String
+        type: String,
+        trim: true
     },
     photos: [{
         type: String
@@ -23,11 +26,16 @@ const ActivitySchema = new Schema({
         type: String,
         enum: ['Outdoor', 'Arts & Entertainment', 'Winter', 'Summer', 'Spring', 'Fall', 'Night Life', 'Active Life', 'Beauty & Spa']
     },
-    photos: [{
-        type: String
-    }],
     photoHeader: {
         type: String
+    },
+    approved: {
+        type: Boolean,
+        default: false
+    },
+    postedBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 
 }, {
