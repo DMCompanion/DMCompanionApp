@@ -118,7 +118,7 @@ app.delete('/api/v1/review/:id/', reviewCtrl.deleteReview);
 app.post('/api/v1/comment', commentCtrl.postComment);
 app.get('/api/v1/comments', commentCtrl.getComments);
 app.put('/api/v1/comment/:id', commentCtrl.editComment);
-app.delete('/api/v1/comment/:id/', commentCtrl.deleteComment);
+app.delete('/api/v1/comment/:id', commentCtrl.deleteComment);
 
 // listen
 app.listen(port, () => {
