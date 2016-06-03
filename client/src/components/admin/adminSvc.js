@@ -67,17 +67,17 @@ angular.module('companion')
     };
 
     // Comment Endpoints
-    this.getEvents = () => {
-      return $http.get('/api/v1/events').then((response) => {
+    this.getComments = () => {
+      return $http.get('/api/v1/comments').then((response) => {
         console.log(response);
         return response;
       });
     };
-    this.editEvent = (event) => {
-      return $http.put('/api/v1/event/' + event._id, event);
+    this.editComment = (comment) => {
+      return $http.put('/api/v1/event/' + comment._id, comment);
     };
-    this.deleteEvent = (eventId) => {
-      return $http.delete('/api/v1/event/' + event._id);
+    this.deleteComment = (commentId) => {
+      return $http.delete('/api/v1/comment/' + commentId);
     };
 
 
