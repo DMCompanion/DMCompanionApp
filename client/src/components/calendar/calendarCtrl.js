@@ -5,12 +5,12 @@ angular.module('companion')
 
     let today = new Date().toLocaleString().split(',').shift();
 
-    let $scope.events;
-
     $scope.isAdmin = true;
 
+    $scope.events = [];
+
     $scope.calOptions = {
-      defaultDate: new Date(),
+      defaultDate: today,
       minDate: "2016-01-01",
       maxDate: "2016-12-31",
       disabledDates: [],
@@ -22,6 +22,7 @@ angular.module('companion')
       dateClick: function(date) { // called every time a day is clicked
         let todayClick = date.date.toLocaleString().split(',').shift();
         $scope.dateEvents = date.event;
+        console.log($scope.dateEvents);
         if (todayClick === today) {
           document.getElementById('eventHeader').innerHTML = '<h4 class="eventHeader">Events for Today</h4>';
         } else {
@@ -35,49 +36,6 @@ angular.module('companion')
         console.log("events changed");
       },
     };
-
-
-    // $scope.events = [{
-    //   "title": "Meetup on Ionic",
-    //   "description": "We'll talk about Ionic.",
-    //   "date": '2016/6/1',
-    //   "time": '6:30pm'
-    // }, {
-    //   "title": "Meetup on React",
-    //   "description": "We'll talk about beer, not React.",
-    //   "date": '2016/6/1',
-    //   "time": '2:00pm'
-    // }, {
-    //   "title": "Meetup on Angular",
-    //   "description": "We'll talk about Angular.",
-    //   "date": '2016/6/2 14:00',
-    //   "time": '2:00pm'
-    // }, {
-    //   "title": "Meetup on ES6",
-    //   "description": "We'll talk about ES6.",
-    //   "date": '2016/6/3 14:00',
-    //   "time": '2:00pm'
-    // }];
-
-    // let newEvent = {
-    //   "title": "Meetup on ES6",
-    //   "description": "We'll talk about ES6.",
-    //   "date": '2016/6/4 14:00',
-    //   "time": '2:00pm'
-    // };
-    //
-    // setTimeout(function () {
-    //   $scope.events.push(newEvent);
-    //   console.log("added newEvent: ", $scope.events);
-    //   $scope.$digest();
-    // }, 5000);
-
-    let tempList = [];
-
-    // $scope.$watchCollection('events', function() {
-    //   console.log("Events changed: WATCH");
-    //   $scope.$digest();
-    // });
 
     // CRUD EVENTS
       $scope.showEvents = () => {
@@ -100,7 +58,6 @@ angular.module('companion')
         calendarSvc.editEvent(id, upEvent)
         .then((response) => {
           console.log(response);
-
         })
       }
 
@@ -108,12 +65,10 @@ angular.module('companion')
         calendarSvc.deleteEvent(id)
         .then((response) => {
           console.log(response);
-
+          $scope.showEvents();
         })
       }
 
       $scope.showEvents();
-
-
 
   });
