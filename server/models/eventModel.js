@@ -46,14 +46,13 @@ const EventSchema = new Schema({
     photos: [{
         type: String
     }],
+    campus: {
+        type: String,
+        enum: ['Provo', 'Dallas', 'Salt Lake City']
+    }
 
 }, {
     timestamps: true
-});
-
-EventSchema.pre('find', (next) => {
-    this.populate('peopleGoing comments');
-    next();
 });
 
 module.exports = mongoose.model('Event', EventSchema);

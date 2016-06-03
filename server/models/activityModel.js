@@ -36,6 +36,10 @@ const ActivitySchema = new Schema({
     postedBy: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    campus: {
+        type: String,
+        enum: ['Provo', 'Dallas', 'Salt Lake City']
     }
 
 }, {
