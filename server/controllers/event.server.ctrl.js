@@ -12,7 +12,7 @@ module.exports = {
         });
     },
     getEvents: (req, res) => {
-        Event.find(req.query, (err, events) => {
+        Event.find({}, (err, events) => {
             if (err) {
                 res.status(500).send(err);
             } else {
