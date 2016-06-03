@@ -72,6 +72,10 @@ const PlaceSchema = new Schema({
     approved: {
         type: Boolean,
         default: false
+    },
+    campus: {
+        type: String,
+        enum: ['Provo', 'Dallas', 'Salt Lake City']
     }
 });
 
