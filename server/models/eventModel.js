@@ -51,9 +51,9 @@ const EventSchema = new Schema({
     timestamps: true
 });
 
-EventSchema.pre('find', (next) => {
-    this.populate('peopleGoing comments');
-    next();
-});
+// EventSchema.pre('find', (next) => {
+//     this.populate('peopleGoing comments');
+//     next();
+// });
 
 module.exports = mongoose.model('Event', EventSchema);
