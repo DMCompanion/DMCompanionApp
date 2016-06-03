@@ -1,16 +1,23 @@
 angular.module( 'companion' )
-	.controller( 'activitiesDetailsCtrl', function ( $scope ,activitiesSvc, $stateParams ) {
+.controller( 'activitiesDetailsCtrl', function ( $scope, activitiesSvc, $stateParams, $ionicGesture ) {
 
-		$scope.activities = activitiesSvc.getActivities();
+	$scope.activities = activitiesSvc.getActivities();
 
-		$scope.getActivity = () => {
-			for (var i = 0; i < $scope.activities.length; i++) {
-				if ($scope.activities[i].name === $stateParams.category) {
-					$scope.details = $scope.activities[i];
-				}
+	$scope.getActivity = () => {
+		for (let i = 0; i < $scope.activities.length; i++) {
+			if ($scope.activities[i].name === $stateParams.category) {
+				$scope.details = $scope.activities[i];
 			}
-		};
-		$scope.getActivity();
+		}
+	};
+
+	$scope.getActivity();
+
+	$scope.swipeRight = () => {
+	    window.history.back();
+	};
 
 
-	} );
+
+
+});
