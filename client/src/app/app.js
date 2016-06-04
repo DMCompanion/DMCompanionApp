@@ -23,7 +23,7 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
       }
     });
   })
-  .config(function($stateProvider, $urlRouterProvider) {
+  .config(($stateProvider, $urlRouterProvider) => {
     $stateProvider
       .state('index', {
         url: '/home',
@@ -38,6 +38,11 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
       .state('deals', {
         url: '/deals',
         templateUrl: './templates/deals.html'
+      })
+      .state('activitiesDetails', {
+          url: '/activitiesDetails/:category',
+          templateUrl: './templates/activitiesDetails.html',
+          controller: 'activitiesDetailsCtrl'
       })
       .state('calendar', {
         url: '/calendar',
