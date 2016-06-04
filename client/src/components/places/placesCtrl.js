@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('placesCtrl', ($scope, $http, $ionicModal) => {
+  .controller('placesCtrl', ($scope, $http, $ionicModal, placesSvc) => {
 
     $scope.places = [
       {
@@ -86,7 +86,7 @@ angular.module('companion')
       }
     }
 
-    $ionicModal.fromTemplateUrl('templates/modal.html', {
+    $ionicModal.fromTemplateUrl('templates/placesModal.html', {
         scope: $scope
       }).then(function(modal) {
         $scope.modal = modal;
@@ -99,7 +99,7 @@ angular.module('companion')
 
       // CRUD ACTIVITIES
         $scope.showPlaces = () => {
-          calendarSvc.getPlaces()
+          placesSvc.getPlaces()
           .then((response) => {
             console.log(response);
             // $scope.places = response;
@@ -107,7 +107,7 @@ angular.module('companion')
         }
 
         $scope.addPlace = (userPlace) => {
-          calendarSvc.createPlace(userPlace)
+          placesSvc.createPlace(userPlace)
           .then((response) => {
             console.log(response);
 
@@ -115,7 +115,7 @@ angular.module('companion')
         }
 
         $scope.updatePlace = (id, upPlace) => {
-          calendarSvc.editPlace(id, upPlace)
+          placesSvc.editPlace(id, upPlace)
           .then((response) => {
             console.log(response);
 
@@ -123,7 +123,15 @@ angular.module('companion')
         }
 
         $scope.destroyPlace = (id) => {
-          calendarSvc.deletePlace(id)
+          placesSvc.deletePlace(id)
+          .then((response) => {
+            console.log(response);
+
+          })
+        }
+
+        $scope.addReview = (id, review) => {
+          placesSvc.createReview(id, review)
           .then((response) => {
             console.log(response);
 

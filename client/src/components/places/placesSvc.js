@@ -14,7 +14,7 @@ angular.module('companion').service('placesSvc', function($http) {
     return $http({
       method: 'POST',
       url: '/api/v1/place',
-      data: activity
+      data: place
     })
   }
 
@@ -77,5 +77,7 @@ angular.module('companion').service('placesSvc', function($http) {
       url: '/api/v1/place/' + id + '/review/' + reviewId
     })
   }
+
+
 
 });

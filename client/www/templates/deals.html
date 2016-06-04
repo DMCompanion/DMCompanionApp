@@ -4,5 +4,23 @@
     <h1 class="title">Deals</h1>
   </div>
   <ion-content>
+
+
+    <img src="http://www.gravatar.com/avatar/{{ email | gravatar }}">
+    <input type="email" ng-model="email" placeholder="Email Address">
+    {{ message }}
+
+    <div class="card">
+      <div class="item item-divider">
+        UTA PASS
+      </div>
+      <div class="item item-text-wrap">
+        Normally $450. With your great DevMtn discount you get it for only 8 easy payments of $3.43 and 1 fucking hard payment of $666
+      </div>
+      <div class="item item-divider">
+        Take advantage now!
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>
