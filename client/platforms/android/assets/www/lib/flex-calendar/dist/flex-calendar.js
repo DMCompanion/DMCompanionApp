@@ -1,6 +1,6 @@
 (function(){
   "use strict";
-  
+
   var app = angular
     .module('flexcalendar', ['pascalprecht.translate'])
     .directive('flexCalendar', flexCalendar);
@@ -8,7 +8,7 @@
   var defaultTranslation = angular
     .module('flexcalendar.defaultTranslation', ['flexcalendar'])
     .config(defaultTranslationConfig);
-    
+
   defaultTranslationConfig.$inject = ['$translateProvider'];
   function defaultTranslationConfig($translateProvider){
     $translateProvider.translations('en', {
@@ -16,7 +16,7 @@
       FEBRUARY: 'February',
       MARCH: 'March',
       APRIL: 'April',
-      MAI: 'Mai',
+      MAI: 'May',
       JUNE: 'June',
       JULY: 'July',
       AUGUST: 'August',
@@ -161,7 +161,7 @@
       }
     });
 
-    $scope.$watch('events', function() {
+    $scope.$watchCollection('events', function() {
       createMappedEvents();
       calculateWeeks();
     });
@@ -197,7 +197,7 @@
       if (date.event.length && $scope.options.eventClick) {
         $scope.options.eventClick(date, domEvent);
       }
-      
+
       $scope.options.dateClick(date, domEvent);
     }
 
