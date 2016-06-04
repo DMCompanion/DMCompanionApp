@@ -1,15 +1,18 @@
 @import '_variables'
-.activities
+.activities, .activitiesDetails, .activitiesItem
   ion-content
-    background: $dmMidGray
+    background-color: $dmMidGray !important
     position: absolute
     top: $headerW
 
+
+
     // Accordion styles
     .item
-        background: $dmMidGray
-        color: $dmBleu !important
-    @keyframes accordion
+        background-color: $dmMidGray
+        color: $dmLightGray !important
+        height: 15vw
+    @keyframes expand
         0%
             opacity: 0
         100%
@@ -29,4 +32,27 @@
     // End Accordion styles
 
     .activity
-        color: $dmBleu !important
+        // color: $dmLightGray !important
+    .card
+        min-height: 18vw
+        background-color: $dmLightGray
+        margin-top: 10vw
+        img
+            width: 100% !important
+            max-height: 28vw !important
+            object-fit: cover !important
+            margin-top: -1px !important
+        .button
+            height: 10px !important
+            min-height: 20px !important
+            line-height: normal !important
+        .button.button-positive.button-clear
+                font-size: 4vw !important
+                font-weight: bold !important
+                color: $seperator !important
+        p
+            padding: 0 3vw 0 3vw
+
+    .divider
+        height: 5vw !important
+        background-color: $dmMidGray !important
