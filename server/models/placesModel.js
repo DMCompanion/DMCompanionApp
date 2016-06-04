@@ -5,38 +5,49 @@ const Schema = mongoose.Schema;
 const PlaceSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     address: {
-        type: String
+        type: String,
+        trim: true
     },
     phoneNumber: {
-        type: Number
+        type: Number,
+        trim: true
     },
     website: {
-        type: String
+        type: String,
+        trim: true
     },
     openHours: {
         monday: {
-            type: String
+            type: String,
+            trim: true
         },
         tuesday: {
-            type: String
+            type: String,
+            trim: true
         },
         wednesday: {
-            type: String
+            type: String,
+            trim: true
         },
         thursday: {
-            type: String
+            type: String,
+            trim: true
         },
         friday: {
-            type: String
+            type: String,
+            trim: true
         },
         saturday: {
-            type: String
+            type: String,
+            trim: true
         },
         sunday: {
-            type: String
+            type: String,
+            trim: true
         }
     },
     reviews: [{
@@ -44,16 +55,27 @@ const PlaceSchema = new Schema({
         ref: 'Review'
     }],
     photos: [{
-        type: String
+        type: String,
+        trim: true
     }],
     photoHeader: {
-        type: String
+        type: String,
+        trim: true
     },
     googleId: {
         type: String
     },
     placeType: {
         type: String,
+        trim: true
+    },
+    approved: {
+        type: Boolean,
+        default: false
+    },
+    campus: {
+        type: String,
+        enum: ['Provo', 'Dallas', 'Salt Lake City']
     }
 });
 

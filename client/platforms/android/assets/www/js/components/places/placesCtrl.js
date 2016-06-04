@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('companion').controller('placesCtrl', function ($scope, $http) {
+angular.module('companion').controller('placesCtrl', function ($scope, $http, $ionicModal) {
 
   $scope.places = [{
     name: "CtPaTown",
@@ -71,5 +71,42 @@ angular.module('companion').controller('placesCtrl', function ($scope, $http) {
       $scope.tags[index].selected = false;
       $scope.searchType = '';
     }
+  };
+
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+    scope: $scope
+  }).then(function (modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.createContact = function (u) {
+    $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
+    $scope.modal.hide();
+  };
+
+  // CRUD ACTIVITIES
+  $scope.showPlaces = function () {
+    calendarSvc.getPlaces().then(function (response) {
+      console.log(response);
+      // $scope.places = response;
+    });
+  };
+
+  $scope.addPlace = function (userPlace) {
+    calendarSvc.createPlace(userPlace).then(function (response) {
+      console.log(response);
+    });
+  };
+
+  $scope.updatePlace = function (id, upPlace) {
+    calendarSvc.editPlace(id, upPlace).then(function (response) {
+      console.log(response);
+    });
+  };
+
+  $scope.destroyPlace = function (id) {
+    calendarSvc.deletePlace(id).then(function (response) {
+      console.log(response);
+    });
   };
 });
