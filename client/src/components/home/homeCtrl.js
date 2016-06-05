@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('homeCtrl', ($scope, $http, md5) => {
+  .controller('homeCtrl', ($scope, $http) => {
 
     $scope.isAdmin = true;
 
