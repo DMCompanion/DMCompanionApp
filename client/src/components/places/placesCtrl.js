@@ -130,8 +130,9 @@ angular.module('companion')
           })
         }
 
-        $scope.addReview = (id, review) => {
-          placesSvc.createReview(id, review)
+        $scope.addReview = (review) => {
+          console.log(review);
+          placesSvc.createReview(review)
           .then((response) => {
             console.log(response);
 
