@@ -9799,9 +9799,27 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.bar-header {
+  height: 8vh; }
+
+.bar-header .title {
+  line-height: 8vh; }
+
+.has-header {
+  top: 8vh; }
+
 @font-face {
   font-family: 'ProximaNova';
   src: url("../fonts/proximanova-webfont.ttf") format("truetype"); }
+
+.bar-header {
+  height: 8vh; }
+
+.bar-header .title {
+  line-height: 8vh; }
+
+.has-header {
+  top: 8vh; }
 
 @font-face {
   font-family: 'ProximaNova';
@@ -9857,6 +9875,15 @@ a.button {
 .home .icon.ion-chevron-up {
   font-size: 1.5em !important; }
 
+.bar-header {
+  height: 8vh; }
+
+.bar-header .title {
+  line-height: 8vh; }
+
+.has-header {
+  top: 8vh; }
+
 @font-face {
   font-family: 'ProximaNova';
   src: url("../fonts/proximanova-webfont.ttf") format("truetype"); }
@@ -9864,7 +9891,7 @@ a.button {
 .places ion-content {
   background: #343434;
   position: absolute;
-  top: 45px; }
+  top: 6vh; }
 
 .places .poopoobrown {
   background: brown; }
@@ -9972,32 +9999,79 @@ a.button {
 .star {
   width: 100%; }
 
+.bar-header {
+  height: 8vh; }
+
+.bar-header .title {
+  line-height: 8vh; }
+
+.has-header {
+  top: 8vh; }
+
 @font-face {
   font-family: 'ProximaNova';
   src: url("../fonts/proximanova-webfont.ttf") format("truetype"); }
 
-.activities ion-content {
-  background: #343434;
+.activities ion-content, .activitiesDetails ion-content, .activitiesItem ion-content {
+  background-color: #343434 !important;
   position: absolute;
-  top: 45px; }
-  .activities ion-content .item {
-    background: #343434;
-    color: #2999E3 !important; }
+  top: 6vh; }
+  .activities ion-content .item, .activitiesDetails ion-content .item, .activitiesItem ion-content .item {
+    background-color: #343434;
+    height: 15vw; }
 
-@keyframes accordion {
+@keyframes expand {
   0% {
     opacity: 0; }
   100% {
     opacity: 1; } }
-  .activities ion-content .list .item.item-accordion {
+  .activities ion-content .list .item.item-accordion, .activitiesDetails ion-content .list .item.item-accordion, .activitiesItem ion-content .list .item.item-accordion {
     line-height: 38px;
     padding-top: 0;
     padding-bottom: 0;
     animation: accordion .40s ease-in-out; }
-  .activities ion-content .list .item.item-accordion.ng-hide-add, .activities ion-content .list .item.item-accordion.ng-hide-remove {
+  .activities ion-content .list .item.item-accordion.ng-hide-add, .activities ion-content .list .item.item-accordion.ng-hide-remove, .activitiesDetails ion-content .list .item.item-accordion.ng-hide-add, .activitiesDetails ion-content .list .item.item-accordion.ng-hide-remove, .activitiesItem ion-content .list .item.item-accordion.ng-hide-add, .activitiesItem ion-content .list .item.item-accordion.ng-hide-remove {
     display: block !important; }
-  .activities ion-content .activity {
-    color: #2999E3 !important; }
+  .activities ion-content .card, .activitiesDetails ion-content .card, .activitiesItem ion-content .card {
+    min-height: 18vw;
+    margin-top: 5vw; }
+    .activities ion-content .card img, .activitiesDetails ion-content .card img, .activitiesItem ion-content .card img {
+      width: 100% !important;
+      max-height: 28vw !important;
+      object-fit: cover !important;
+      margin-top: -1px !important; }
+    .activities ion-content .card .button, .activitiesDetails ion-content .card .button, .activitiesItem ion-content .card .button {
+      max-height: 10vh !important;
+      min-height: 20px !important;
+      line-height: normal !important; }
+    .activities ion-content .card .button.button-positive.button-clear, .activitiesDetails ion-content .card .button.button-positive.button-clear, .activitiesItem ion-content .card .button.button-positive.button-clear {
+      font-size: 4vw !important;
+      font-weight: bold !important;
+      color: #3F3F3F !important; }
+    .activities ion-content .card p, .activitiesDetails ion-content .card p, .activitiesItem ion-content .card p {
+      padding: 0 3vw 0 3vw; }
+  .activities ion-content .divider, .activitiesDetails ion-content .divider, .activitiesItem ion-content .divider {
+    height: 5vw !important;
+    background-color: #343434 !important; }
+  .activities ion-content .bar-red, .activitiesDetails ion-content .bar-red, .activitiesItem ion-content .bar-red {
+    height: 0.8vh;
+    width: 100%;
+    background: #ef473a;
+    margin-bottom: -0.2vh; }
+  .activities ion-content .bar-blue, .activitiesDetails ion-content .bar-blue, .activitiesItem ion-content .bar-blue {
+    height: 0.8vh;
+    width: 100%;
+    background: #2999E3;
+    margin-bottom: -0.2vh; }
+
+.bar-header {
+  height: 8vh; }
+
+.bar-header .title {
+  line-height: 8vh; }
+
+.has-header {
+  top: 8vh; }
 
 @font-face {
   font-family: 'ProximaNova';
@@ -10005,15 +10079,15 @@ a.button {
 
 .calendar ion-content {
   background: #343434;
-  position: absolute;
-  top: 45px; }
+  position: absolute; }
 
 .calendar .today {
   color: white;
   margin-left: 5vw; }
 
 .calendar .flex-calendar .week {
-  background-color: #ef473a; }
+  background-color: #D9D9D9;
+  color: #1F2123; }
 
 .calendar .flex-calendar .days .day.selected .number {
   background-color: #2999E3; }
@@ -10026,7 +10100,7 @@ a.button {
   font-size: 5em; }
 
 .calendar .item-divider {
-  background-color: #ef473a;
+  background-color: #2999E3;
   color: white; }
 
 .calendar .eventHeader {
@@ -10063,7 +10137,21 @@ a.button {
 
 .calendar .add {
   width: 100%;
-  text-align: right; }
+  text-align: right;
+  margin-top: 0.5vh; }
+
+.calendar .headerBarLogo {
+  height: 5vh;
+  margin: 1.5vw; }
+
+.bar-header {
+  height: 8vh; }
+
+.bar-header .title {
+  line-height: 8vh; }
+
+.has-header {
+  top: 8vh; }
 
 @font-face {
   font-family: 'ProximaNova';
@@ -10072,7 +10160,16 @@ a.button {
 .deals ion-content {
   background: #343434;
   position: absolute;
-  top: 45px; }
+  top: 6vh; }
+
+.bar-header {
+  height: 8vh; }
+
+.bar-header .title {
+  line-height: 8vh; }
+
+.has-header {
+  top: 8vh; }
 
 @font-face {
   font-family: 'ProximaNova';
@@ -10081,7 +10178,7 @@ a.button {
 .blog ion-content {
   background: #343434;
   position: absolute;
-  top: 45px; }
+  top: 6vh; }
 
 html {
   font-family: 'ProximaNova', sans-serif; }
@@ -10093,11 +10190,12 @@ html {
   background: #2999E3 !important; }
 
 .submitButtonContainer {
-  position: absolute;
-  bottom: 0;
   margin: 2vw;
   margin-right: 6vw; }
 
 .submitButton {
   margin: 2vw;
   width: 90vw; }
+
+ion-content {
+  background: #343434; }

@@ -1,0 +1,75 @@
+<ion-view class="home">
+   <ion-content>
+      <div class="header">
+        <img src="./img/devmtnlogo.png" class="headerlogo" />
+      </div>
+      <div class="home-icons">
+
+        <!-- <div class="hr-line"></div> -->
+
+        <div class="column">
+
+          <a ui-sref="activities"><button class="button home-icon">
+            <i class="icon ion-android-bicycle"></i>
+          </button></a>
+
+          <a ui-sref="deals"><button class="button home-icon">
+            <i class="icon ion-pricetag"></i>
+          </button></a>
+
+          <a href="http://q.devmounta.in/">
+          <button class="button home-icon">
+            <i class="icon ion-help-buoy"></i>
+          </button>
+          </a>
+
+        </div>
+
+        <div class="column">
+
+          <a ui-sref="calendar"><button class="button home-icon">
+            <i class="icon ion-calendar"></i>
+          </button></a>
+
+          <a ui-sref="blog"><button class="button home-icon">
+            <i class="icon ion-document-text"></i>
+          </button></a>
+
+          <button class="button home-icon">
+            <i class="icon ion-university"></i>
+          </button>
+        </div>
+
+        <div class="column">
+          <a ui-sref="places"><button class="button home-icon">
+            <i class="icon ion-map"></i>
+          </button></a>
+
+          <button class="button home-icon">
+            <i class="icon ion-home"></i>
+          </button>
+
+          <button class="button home-icon">
+            <i class="icon ion-social-nodejs"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <ion-pull-up-footer class="bar-assertive" default-height="5">
+        <ion-pull-up-handle width="120" height="15" icon-expand="ion-chevron-up" icon-collapse="ion-chevron-down" style="border-radius: 5px 5px 0 0">
+        </ion-pull-up-handle>
+      <ion-pull-up-content scroll="false">
+        <div class="list card" ng-show="isAdmin">
+          <div class="item item-divider">Recent Updates</div>
+          <div class="item item-body">
+            <div>
+              Moderate <b>EVENT_HERE</b>
+            </div>
+          </div>
+        </div>
+        </ion-pull-up-content>
+    </ion-pull-up-footer>
+
+   </ion-content>
+</ion-view>
