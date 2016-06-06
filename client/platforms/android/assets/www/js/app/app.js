@@ -19,7 +19,6 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
     }
     if (window.StatusBar) {
       StatusBar.styleDefault();
-      console.log("test");
     }
   });
 }).config(function ($stateProvider, $urlRouterProvider) {
@@ -31,7 +30,14 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
     url: '/activities',
     templateUrl: './templates/activities.html',
     controller: 'activitiesCtrl'
-  }).state('deals', { url: '/deals', templateUrl: './templates/deals.html' }).state('calendar', {
+  }).state('deals', {
+    url: '/deals',
+    templateUrl: './templates/deals.html'
+  }).state('activitiesDetails', {
+    url: '/activitiesDetails/:category',
+    templateUrl: './templates/activitiesDetails.html',
+    controller: 'activitiesDetailsCtrl'
+  }).state('calendar', {
     url: '/calendar',
     templateUrl: './templates/calendar.html',
     controller: 'calendarCtrl'
@@ -39,7 +45,10 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
     url: '/places',
     templateUrl: './templates/places.html',
     controller: 'placesCtrl'
-  }).state('blog', { url: '/blog', templateUrl: './templates/blog.html' });
+  }).state('blog', {
+    url: '/blog',
+    templateUrl: './templates/blog.html'
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');

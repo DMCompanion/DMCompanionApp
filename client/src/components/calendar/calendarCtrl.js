@@ -69,6 +69,9 @@ angular.module('companion')
       for (var i = 0; i < events.length; i++) {
         console.log(events[i].date);
         newTime = events[i].date.toLocaleString().split('T').shift() + 'T' + events[i].time;
+        events[i].time = events[i].time.split(':');
+        events[i].time.pop();
+        events[i].time = events[i].time.join(':');
         events[i].date = newTime.split('T').join(' ');
         events[i].newTime = moment(newTime).fromNow();
         console.log(events[i].newTime);
