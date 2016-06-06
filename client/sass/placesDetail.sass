@@ -1,0 +1,83 @@
+@import '_variables'
+
+.places
+
+  ion-content
+    background: $dmMidGray
+    position: absolute
+    top: $headerW
+  .item.search-bar
+    margin: 5vh 3vw
+  .item-input.search-bar
+    border-radius: 1vw
+  .list.card
+    margin-bottom: 2vh
+  .tags
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    margin: 1vw
+  .tag
+    margin: 1vh
+    width: 28vw
+    font-size: 1rem
+  .card
+    margin-bottom: 1vh
+  .card:first-child
+    margin-top: 1vh
+  .review-summary
+    display: flex
+    justify-content: space-around
+  .card.review
+    width: 80vw
+  .reviewButton
+    float: right
+    margin-right: 10vw
+  .activated
+    border: 0
+    background: $dmBlue2
+  .item img
+    border-radius: 1vw
+  .places--container
+  .miles
+    @include vertical-align()
+    height: 100%
+    float: right
+    margin: 5vw
+    margin-right: 1vw
+  .miles>h2
+    color: $dmLightGray
+  .places--content
+    margin-top: 2vh
+    float: left
+  .comments
+    height: 70vh
+  .comment
+    color: white
+  #star
+    padding-top: 10%
+  #addReview
+    margin: 2vh
+  .edits
+    display: flex
+    justify-content: space-around
+  .writeComment
+    height: 40vh
+
+.item-input.reviewText
+  height: 30vh
+.icon.ion-star
+  font-size: 8vw
+.button.button-positive.reviewButton
+  width: 30vw
+  margin-top: 2vh
+.stars
+  width: 40%
+  text-align: center
+  font-size: 10vw !important
+  display: flex
+  justify-content: flex-start
+  margin-bottom: 2vh
+  margin-top: 2vh
+.star
+  width: 100%
