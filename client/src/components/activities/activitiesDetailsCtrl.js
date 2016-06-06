@@ -1,7 +1,12 @@
 angular.module( 'companion' )
-.controller( 'activitiesDetailsCtrl', function ( $scope, activitiesSvc, $stateParams, $ionicGesture, $ionicModal ) {
+.controller( 'activitiesDetailsCtrl', function ( $scope, activitiesSvc, $stateParams, $ionicGesture, $ionicModal. $ionicHistory ) {
 
 	$scope.activities = activitiesSvc.getDummyActivities();
+
+	$scope.goBack = function() {
+		console.log("going back?");
+		$ionicHistory.goBack();
+	};
 
 	$scope.getActivity = () => {
 		for (let i = 0; i < $scope.activities.length; i++) {
