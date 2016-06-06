@@ -8,7 +8,9 @@
       "babel-preset-es2015"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "crypto": "0.0.3"
+  },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.8.0",
