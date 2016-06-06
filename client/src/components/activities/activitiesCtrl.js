@@ -1,9 +1,9 @@
 angular.module( 'companion' )
-	.controller( 'activitiesCtrl', function ( $scope, activitiesSvc, $ionicGesture, $ionicHistory ) {
+	.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal ) => {
 
 		$scope.activities = activitiesSvc.getDummyActivities();
 
-		$scope.goBack = function() {
+		$scope.goBack = () => {
     	$ionicHistory.goBack();
   	};
 
@@ -18,10 +18,26 @@ angular.module( 'companion' )
 			return $scope.shownGroup === activity;
 		};
 
-
+		// swipe right like iPhone functionality
 		$scope.swipeRight = () => {
 		    window.history.back();
 		};
+
+		$ionicModal.fromTemplateUrl('templates/activityAddModal.html', {
+		  scope: $scope
+		}).then(function(modal) {
+		  $scope.modal = modal;
+		});
+
+		// Need to put details on scope for the "add new activity"
+		// $scope.getActivity = () => {
+		// 	for (let i = 0; i < $scope.activities.length; i++) {
+		// 			$scope.details = $scope.activities[i];
+		// 	}
+		// };
+		// $scope.getActivity();
+
+
 
 
 
