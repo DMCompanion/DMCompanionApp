@@ -263,5 +263,34 @@ angular.module('companion')
     });
 };
 
+//CRUD COMMENTS
+    this.getComments = () => {
+      return $http({
+        method: 'GET',
+        url: '/api/v1/comments'
+      });
+    };
 
+    this.createComment = (comment) => {
+      return $http({
+      method: 'POST',
+      url: '/api/v1/comment',
+      data: comment
+    });
+    };
+
+    this.editComment = (id, upComment) => {
+      return $http({
+        method: 'PUT',
+        url: '/api/v1/comment/' + id,
+        data: upComment
+      });
+    };
+
+    this.deleteComment = (id) => {
+      return $http({
+        method: 'DELETE',
+        url: '/api/v1/comment/' + id
+      });
+    };
 } );
