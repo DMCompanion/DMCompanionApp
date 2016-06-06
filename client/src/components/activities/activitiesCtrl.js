@@ -1,7 +1,11 @@
 angular.module( 'companion' )
-	.controller( 'activitiesCtrl', function ( $scope, activitiesSvc, $ionicGesture ) {
+	.controller( 'activitiesCtrl', function ( $scope, activitiesSvc, $ionicGesture, $ionicHistory ) {
 
 		$scope.activities = activitiesSvc.getDummyActivities();
+
+		$scope.goBack = function() {
+    	$ionicHistory.goBack();
+  	};
 
 		$scope.toggleGroup = ( activity ) => {
 			if ( $scope.isGroupShown( activity ) ) {
