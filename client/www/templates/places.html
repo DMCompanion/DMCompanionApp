@@ -1,7 +1,9 @@
 <ion-view class="places">
-  <div class="bar bar-header bar-dark">
-    <a href="/#/home"><button class="button button-icon icon ion-navicon"></button></a>
-    <h1 class="title">Places Nearby</h1>
+    <div class="bar bar-header bar-dark">
+      <a href="/#/home">
+        <img src="./img/devmtnlogo_notext.png" class="headerBarLogo" />
+      </a>
+        <h1 class="title">Nearby</h1>
   </div>
   <ion-content class="has-header">
 
@@ -10,74 +12,40 @@
       <input type="search" placeholder="Search" ng-model="searchText">
     </label>
 
-      <div ng-repeat='goog in google'>
+      <!-- <div ng-repeat='goog in google'>
         {{goog.name}}
         <div><img class='foodimage' ng-click='details(goog.place_id)' src="{{goog.icon}}"></div>
         <div class='ingredients'>
           <button ng-click='newPlace(goog)'>Add</button>
         </div>
-      </div>
+      </div> -->
 
     <!-- <div class="tags">
     <div ng-repeat="tag in tags" ng-show="!searchText">
       <button class="button tag button-medium button-assertive" ng-click="setSearchType($index, tag.name)" ng-style="{background: tag.selected == true ? '#E62B25' : '#ef473a'}">
         {{tag.name}}
       </button>
-    </div>
     </div> -->
-
-    <div class="places--container" ng-repeat="place in places | orderBy: 'distance' | filter:searchText | filter:{placeType: searchType}">
-
-      <div class="list card">
-
-          <a class="item item-thumbnail-left" ng-click="commentShown = !commentShown">
-            <img src="{{place.photos[0]}}">
-            <div class="miles">
-              <h2>{{place.distance}}mi</h2>
-            </div>
-
-            <div class="places--content">
-              <h2>{{place.name}}</h2>
-              <p>{{place.placeType}}</p>
-              <div class="rating" ng-repeat="rate in place.rating">
-                <h6>{{rate}}</h6>
-              </div>
-            </div>
-          </a>
-
-          <div class="comments" ng-show="commentShown">
-            <div class="comment">
-
-              <div id="addReview">
-                <div class="stars">
-                  <div id="star">STARS</div>
-                </div>
-                <button id="review" class="button icon-left ion-compose button-positive" ng-click="modal.show()">Write a review</button>
-              </div>
-
-              <div class="review-summary">
-                <div class="list">
-
-                  <div class="list card">
-                    <div class="item item-avatar">
-                        <img src="avatar.jpg">
-                        <h2>{{place.name}}</h2>
+    <ion-content class="padding has-header" on-swipe-right="swipeRight()">
+        <ion-list>
+            <div class="card" ng-repeat="category in placesCategories">
+                <a ui-sref="placesDetails({category:category.name})">
+                    <img src="{{category.img}}" alt="" />
+                    <div class="button button-clear button-positive">
+                        {{category.name}}
                     </div>
+                </a>
+                <div class="bar-blue"></div>
 
-                    <div class="item item-image">
+                    <!-- <div class="item item-image">
                       <img src="{{}}">
-                    </div>
+                    </div> -->
 
                   </div>
 
                 </div>
               </div>
             </div>
-          </div>
-
-      </div>
-
-    </div>
-
-  </ion-content>
+        </ion-list>
+    </ion-content>
 </ion-view>
