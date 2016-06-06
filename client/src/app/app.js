@@ -19,7 +19,6 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
       }
       if (window.StatusBar) {
         StatusBar.styleDefault();
-        console.log("test");
       }
     });
   })

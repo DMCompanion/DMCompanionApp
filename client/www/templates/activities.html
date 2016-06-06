@@ -10,7 +10,7 @@
           </a>
         </div>
     </div>
-    <ion-content class="padding" on-swipe-right="swipeRight()">
+    <ion-content class="padding has-header" on-swipe-right="swipeRight()">
         <ion-list>
             <div class="card" ng-repeat="activity in activities">
                 <a ui-sref="activitiesDetails({category:activity.name})">
@@ -19,6 +19,7 @@
                         {{activity.name}}
                     </div>
                 </a>
+                <div class="bar-blue"></div>
             </div>
         </ion-list>
     </ion-content>

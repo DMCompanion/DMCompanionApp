@@ -1,9 +1,13 @@
 angular.module('companion')
-.service('activitiesSvc', function ($http) {
+.service('activitiesSvc', function ($http, $ionicHistory) {
 
     this.getDummyActivities = () => {
         return dummyActivities;
     };
+
+    this.goBack = function() {
+  		$ionicHistory.goBack();
+  	};
 
     const dummyActivities = [ {
         id: 0,

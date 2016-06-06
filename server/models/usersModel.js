@@ -31,6 +31,9 @@ const userSchema = new mongoose.Schema({
     campus: {
         type: String,
         enum: ['Provo', 'Dallas', 'Salt Lake City']
+    },
+    profilePic: {
+        type: String
     }
 });
 
