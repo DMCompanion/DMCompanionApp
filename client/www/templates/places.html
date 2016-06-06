@@ -4,7 +4,28 @@
         <img src="./img/devmtnlogo_notext.png" class="headerBarLogo" />
       </a>
         <h1 class="title">Nearby</h1>
-    </div>
+  </div>
+  <ion-content class="has-header">
+
+    <label class="item item-input search-bar">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" placeholder="Search" ng-model="searchText">
+    </label>
+
+      <!-- <div ng-repeat='goog in google'>
+        {{goog.name}}
+        <div><img class='foodimage' ng-click='details(goog.place_id)' src="{{goog.icon}}"></div>
+        <div class='ingredients'>
+          <button ng-click='newPlace(goog)'>Add</button>
+        </div>
+      </div> -->
+
+    <!-- <div class="tags">
+    <div ng-repeat="tag in tags" ng-show="!searchText">
+      <button class="button tag button-medium button-assertive" ng-click="setSearchType($index, tag.name)" ng-style="{background: tag.selected == true ? '#E62B25' : '#ef473a'}">
+        {{tag.name}}
+      </button>
+    </div> -->
     <ion-content class="padding has-header" on-swipe-right="swipeRight()">
         <ion-list>
             <div class="card" ng-repeat="category in placesCategories">
@@ -15,6 +36,15 @@
                     </div>
                 </a>
                 <div class="bar-blue"></div>
+
+                    <!-- <div class="item item-image">
+                      <img src="{{}}">
+                    </div> -->
+
+                  </div>
+
+                </div>
+              </div>
             </div>
         </ion-list>
     </ion-content>

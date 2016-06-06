@@ -59,4 +59,34 @@ angular.module( 'companion' )
 			};
 
 
+			//CRUD COMMENTS
+
+			$scope.showComments = () => {
+				activitiesSvc.getComments()
+				.then((response) => {
+					console.log(response);
+					//$scope.comments = response;
+				});
+			};
+
+			$scope.addComment = (comment) => {
+				activitiesSvc.getComments(comment)
+				.then((response) => {
+					console.log(response);
+				});
+			};
+
+			$scope.updateComment = (id, comment) => {
+				activitiesSvc.getComments(id, comment)
+				.then((response) => {
+					console.log(response);
+				});
+			};
+
+			$scope.destroyComment = (id) => {
+				activitiesSvc.getComments(id)
+				.then((response) => {
+					console.log(response);
+				});
+			};
 	} );

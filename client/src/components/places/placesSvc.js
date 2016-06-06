@@ -59,7 +59,7 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
     return $http({
       method: 'POST',
       url: '/api/v1/place',
-      data: activity
+      data: place
     });
   };
 
@@ -100,10 +100,11 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
     });
   };
 
-  this.createReview = (id, review) => {
+
+  this.createReview = (review) => {
     return $http({
       method: 'POST',
-      url: '/api/v1/place/' + id + '/review',
+      url: '/api/v1/review',
       data: review
     });
   };
