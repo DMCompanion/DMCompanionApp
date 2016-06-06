@@ -1,4 +1,5 @@
-angular.module("companion").controller("placesCtrl", function($scope, placesSvc, $ionicGesture, $ionicHistory ) {
+
+angular.module("companion").controller("placesCtrl", function($scope, placesSvc, $ionicGesture, $ionicHistory, $ionicModal ) {
 
   $scope.placesCategories = placesSvc.getDummyActivities();
 
@@ -16,9 +17,63 @@ angular.module("companion").controller("placesCtrl", function($scope, placesSvc,
   $scope.isGroupShown = ( category ) => {
     return $scope.shownGroup === category;
   };
-
   $scope.swipeRight = () => {
       window.history.back();
   };
 
-});
+    $ionicModal.fromTemplateUrl('templates/placesModal.html', {
+        scope: $scope
+      }).then(function(modal) {
+        $scope.modal = modal;
+      });
+
+      $scope.createContact = function(u) {
+        $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
+        $scope.modal.hide();
+      };
+
+      // CRUD ACTIVITIES
+        $scope.showPlaces = () => {
+          placesSvc.getPlaces()
+          .then((response) => {
+            console.log(response);
+            // $scope.places = response;
+          })
+        }
+
+        $scope.addPlace = (userPlace) => {
+          placesSvc.createPlace(userPlace)
+          .then((response) => {
+            console.log(response);
+
+          })
+        }
+
+        $scope.updatePlace = (id, upPlace) => {
+          placesSvc.editPlace(id, upPlace)
+          .then((response) => {
+            console.log(response);
+
+          })
+        }
+
+        $scope.destroyPlace = (id) => {
+          placesSvc.deletePlace(id)
+          .then((response) => {
+            console.log(response);
+
+          })
+        }
+
+        $scope.addReview = (review) => {
+          console.log(review);
+          placesSvc.createReview(review)
+          .then((response) => {
+            console.log(response);
+
+          })
+        }
+
+
+
+  });
