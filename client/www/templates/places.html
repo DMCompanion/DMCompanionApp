@@ -10,6 +10,14 @@
       <input type="search" placeholder="Search" ng-model="searchText">
     </label>
 
+      <div ng-repeat='goog in google'>
+        {{goog.name}}
+        <div><img class='foodimage' ng-click='details(goog.place_id)' src="{{goog.icon}}"></div>
+        <div class='ingredients'>
+          <button ng-click='newPlace(goog)'>Add</button>
+        </div>
+      </div>
+
     <!-- <div class="tags">
     <div ng-repeat="tag in tags" ng-show="!searchText">
       <button class="button tag button-medium button-assertive" ng-click="setSearchType($index, tag.name)" ng-style="{background: tag.selected == true ? '#E62B25' : '#ef473a'}">
@@ -57,7 +65,7 @@
                     </div>
 
                     <div class="item item-image">
-                      <img src="cover.jpg">
+                      <img src="{{}}">
                     </div>
 
                   </div>
