@@ -11,7 +11,7 @@ angular.module('companion')
 
     const dummyActivities = [ {
         id: 0,
-        name: 'Active Life',
+        category: 'Active Life',
         items: [
             {
                 name: 'Yoga',
@@ -31,7 +31,7 @@ angular.module('companion')
     }, {
         id: 1,
 
-        name: 'Arts & Entertainment',
+        category: 'Arts & Entertainment',
         items: [
             {
                 name: 'Movies',
@@ -50,7 +50,7 @@ angular.module('companion')
         img: 'img/movie1.png',
     }, {
         id: 2,
-        name: 'Beauty & Spa',
+        category: 'Beauty & Spa',
         items: [
             {
                 name: 'Nails by Karam',
@@ -69,7 +69,7 @@ angular.module('companion')
         img: `img/spa.png`,
     },  {
         id: 3,
-        name: `Night Life`,
+        category: `Night Life`,
         items: [
             {
                 name: `Nightclubs`,
@@ -88,7 +88,7 @@ angular.module('companion')
         img: 'img/night.png',
     }, {
         id: 4,
-        name: 'Outdoors',
+        category: 'Outdoors',
         items: [
             {
                 name: 'Climbing',
@@ -111,7 +111,7 @@ angular.module('companion')
         img: 'img/hiking.png',
     }, {
         id: 5,
-        name: 'Religion',
+        category: 'Religion',
         items: [
             {
                 name: `LDS (Mormons)`,
@@ -130,7 +130,7 @@ angular.module('companion')
         img: 'img/church.png',
     }, {
         id: 6,
-        name: 'Shopping',
+        category: 'Shopping',
         items: [
             {
                 name: `Mall`,
@@ -149,7 +149,7 @@ angular.module('companion')
         img: 'img/shopping.png',
     },{
         id: 7,
-        name: 'Summer',
+        category: 'Summer',
         items: [
             {
                 name: `Hang Gliding`,
@@ -168,7 +168,7 @@ angular.module('companion')
         img: 'img/summer.png',
     },{
         id: 8,
-        name: 'Winter',
+        category: 'Winter',
         items: [
             {
                 name: `Pair-coding with Karam`,
@@ -187,7 +187,7 @@ angular.module('companion')
         img: 'img/winter.png',
     },{
         id: 9,
-        name: 'Spring',
+        category: 'Spring',
         items: [
             {
                 name: `Picking Flowers`,
@@ -206,7 +206,7 @@ angular.module('companion')
         img: 'img/spring.png',
     },{
         id: 10,
-        name: 'Fall',
+        category: 'Fall',
         items: [
             {
                 name: `Down`,

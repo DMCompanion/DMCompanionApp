@@ -1,0 +1,36 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title">Submit Activity</h1>
+    </ion-header-bar>
+    <ion-content class="paddings">
+        <label class="item item-input item-select">
+          <span class="input-label">Category</span>
+          <select>
+              <option ng-repeat="activity in activities" ng-model="newActivity.name">{{activity.category}}</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="newActivity.name">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Description</span>
+            <textarea type="textarea" ng-model="newActivity.description"></textarea>
+        </label>
+        <!-- <label class="item item-input">
+          <span class="input-label">Rate and Review</span>
+          <textarea type="text" ng-model="newActivity.rating"></textarea>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Review</span>
+          <textarea type="textarea" ng-model="newActivity.review"></textarea>
+        </label> -->
+        <div class="submitButtonContainer">
+            <button class="button button-positive icon-left ion-compose submitButton" ng-click="modal.show()">Write a review</button>
+          <button class="button button-balanced submitButton" ng-click="addEvent(newEvent); modal.hide()">Submit</button>
+          <button class="button button-assertive submitButton" ng-click="modal.hide()">Cancel</button>
+        </div>
+     </ion-content>
+
+
+</ion-modal-view>

@@ -13,10 +13,10 @@
     <ion-content class="padding has-header" on-swipe-right="swipeRight()">
         <ion-list>
             <div class="card" ng-repeat="activity in activities">
-                <a ui-sref="activitiesDetails({category:activity.name})">
+                <a ui-sref="activitiesDetails({category:activity.category})">
                     <img src="{{activity.img}}" alt="" />
                     <div class="button button-clear button-positive">
-                        {{activity.name}}
+                        {{activity.category}}
                     </div>
                 </a>
                 <div class="bar-blue"></div>
