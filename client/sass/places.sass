@@ -1,29 +1,65 @@
 @import '_variables'
-
-.places
-
+.places, .placesDetails, .placesItem
   ion-content
-    background: $dmMidGray
+    background-color: $dmMidGray !important
     position: absolute
     top: $headerW
-  .poopoobrown
-    background: brown
-  .item.search-bar
-    margin: 1vh 3vw
-  .item-input.search-bar
-    border-radius: 1vw
-  .list.card
-    margin-bottom: 0
-  .tags
-    display: flex
-    flex-wrap: wrap
-    justify-content: space-between
-    margin: 1vw
-  .tag
-    margin: 1vh
-    width: 28vw
-    font-size: 1rem
+  .item
+      background-color: $dmMidGray
+      // color: $dmLightGray !important
+      height: 15vw
+  @keyframes expand
+      0%
+          opacity: 0
+      100%
+          opacity: 1
+  .list .item.item-accordion
+      line-height: 38px
+      padding-top: 0
+      padding-bottom: 0
+      animation: accordion .40s ease-in-out
+  .list .item.item-accordion.ng-hide
+      // line-height: 0
+  .list .item.item-accordion.ng-hide-add, .list .item.item-accordion.ng-hide-remove
+      display: block !important
+  // End Accordion styles
+  .activity
+      // color: $dmLightGray !important
   .card
+      min-height: 18vw
+      // background-color: $dmLightGray
+      margin-top: 5vw
+      img
+          width: 100% !important
+          max-height: 28vw !important
+          object-fit: cover !important
+          margin-top: -1px !important
+      .button
+          max-height: 10vh !important
+          min-height: 20px !important
+          line-height: normal !important
+      .button.button-positive.button-clear
+              font-size: 4vw !important
+              font-weight: bold !important
+              color: $seperator !important
+      p
+          padding: 0 3vw 0 3vw
+  .divider
+      height: 5vw !important
+      background-color: $dmMidGray !important
+  .bar-red
+    height: 0.8vh
+    width: 100%
+    background: $flatRed
+    margin-bottom: -0.2vh
+  .bar-blue
+    height: 0.8vh
+    width: 100%
+    background: $dmBleu
+    margin-bottom: -0.2vh
+  .headerBarLogo
+    height: 5vh
+    margin: 1.5vw
     margin-bottom: 1vh
   .card:first-child
     margin-top: 1vh
