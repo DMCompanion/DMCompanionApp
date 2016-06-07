@@ -96,6 +96,8 @@ app.get('/api/v1/places', placeCtrl.getPlaces);
 app.put('/api/v1/place/:id', placeCtrl.editPlace);
 app.delete('/api/v1/place/:id', placeCtrl.deletePlace);
 
+app.get('/api/v1/googlePlaces', placeCtrl.getGooglePlaces);
+
 // Activities Routes
 app.post('/api/v1/activity', activityCtrl.postActivity);
 app.get('/api/v1/activities', activityCtrl.getActivities);
