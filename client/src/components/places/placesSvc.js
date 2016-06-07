@@ -1,10 +1,10 @@
-angular.module('companion').service('placesSvc', function($http, $ionicHistory) {
+angular.module('companion').service('placesSvc', ($http, $ionicHistory) => {
 
   this.getDummyActivities = () => {
     return dummyActivities;
   };
 
-  this.goBack = function() {
+  this.goBack = () => {
     $ionicHistory.goBack();
   };
 

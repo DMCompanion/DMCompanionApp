@@ -38,7 +38,7 @@ app.use(require('express-session')({
     store: new MongoStore({
             mongooseConnection: mongoose.connection
         },
-        function(err) {
+        (err) => {
             console.log(err || 'connect-mongodb setup ok');
         }
     ),

@@ -1,3 +1,3 @@
-angular.module('companion').service('loginSvc', function($http) {
+angular.module('companion').service('loginSvc', ($http) => {
 
 });

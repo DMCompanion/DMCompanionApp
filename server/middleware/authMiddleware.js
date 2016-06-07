@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken'),
 
 
 module.exports = {
-    validateQueryToken: function (req, res, next) {
+    validateQueryToken: (req, res, next) => {
         if (req.body && req.body.jwtAuthToken) {
             try {
                 var verifiedToken = jwt.verify(req.body.jwtAuthToken, DevmtnAuthConfig.jwtSecret);
@@ -15,4 +15,4 @@ module.exports = {
         }
         next();
     }
-}
+};

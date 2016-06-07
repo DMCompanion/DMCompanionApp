@@ -1,8 +1,8 @@
 angular.module('companion')
-  .controller('loginCtrl', function($scope, $http) {
+  .controller('loginCtrl', ($scope, $http) => {
 
     $scope.loginAuth = () => {
-      
+
     };
 
   });

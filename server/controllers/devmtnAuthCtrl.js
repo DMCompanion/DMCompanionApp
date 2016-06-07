@@ -24,8 +24,10 @@ passport.use('devmtn', new DevmtnStrategy(devmtnAuthConfig, (jwtoken, user, done
 
 var finishLoginFunction = (jwtoken, user, done) => {
 
-    User.findOne({ email: user.email }, (findErr, foundUser) => {
-        console.log("Here is the user being passed from the User Collection in our db " + foundUser)
+    User.findOne({
+        email: user.email
+    }, (findErr, foundUser) => {
+        console.log("Here is the user being passed from the User Collection in our db " + foundUser);
         if (findErr) return done(findErr, false);
 
         // If we can't find a user in our db then create one
@@ -55,8 +57,11 @@ var finishLoginFunction = (jwtoken, user, done) => {
             if (user.roles && user.roles.length > 0) {
                 console.log('Overwriting roles');
                 foundUser.roles = user.roles;
-            }else if(user.cohortId){
-              foundUser.roles  = [{id:6, role:'student'}];
+            } else if (user.cohortId) {
+                foundUser.roles = [{
+                    id: 6,
+                    role: 'student'
+                }];
             }
             // //also update cohortId (* if the system has one)
             // Commenting out until it gets updated appropriately.
@@ -77,7 +82,7 @@ var finishLoginFunction = (jwtoken, user, done) => {
             });
         }
     });
-}
+};
 
 passport.serializeUser((user, done) => {
     done(null, user);
@@ -104,9 +109,9 @@ module.exports = {
         console.log("Login Success");
         console.log('The User: ', req.user);
 
-       //This is where we are sending users to the appropriate place in our app depending on their roles
+        //This is where we are sending users to the appropriate place in our app depending on their roles
         if (req.user.roles) {
-            if(req.user.roles.length === 0){
+            if (req.user.roles.length === 0) {
                 console.log("WARNING: This person has NO roles: ", req.user.roles.length);
                 res.redirect('/#/norole');
             }
@@ -115,12 +120,12 @@ module.exports = {
                 console.log("This person is an admin, redirecting to admin page.");
                 res.redirect('/#/admin');
             } else if (Devmtn.checkRoles(req.user, 'student') || hasCustomRole('student', req.user)) {
-                console.log("This person is a student, redirecting to student page.")
+                console.log("This person is a student, redirecting to student page.");
                 res.redirect('/#/student/' + req.user._id);
             } else if (Devmtn.checkRoles(req.user, 'mentor')) {
-                console.log("This person is a mentor, redirecting to student page.")
+                console.log("This person is a mentor, redirecting to student page.");
                 res.redirect('/#/student/' + req.user._id);
-            }  else {
+            } else {
                 // Do something here to let them know they have no user role
             }
         }

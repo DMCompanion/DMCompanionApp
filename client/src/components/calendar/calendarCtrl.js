@@ -1,7 +1,7 @@
 angular.module('companion')
   .controller('calendarCtrl', ($scope, $http, $state, $ionicHistory, $ionicModal, calendarSvc) => {
 
-    $scope.$on('$ionicView.beforeEnter', function() {
+    $scope.$on('$ionicView.beforeEnter', () => {
       // update campaigns everytime the view becomes active
       // (on first time added to DOM and after the view becomes active after cached
       $scope.showEvents();
@@ -9,7 +9,7 @@ angular.module('companion')
 
     $ionicModal.fromTemplateUrl('templates/calendarModal.html', {
       scope: $scope
-    }).then(function(modal) {
+    }).then((modal) => {
       $scope.modal = modal;
     });
 
@@ -40,10 +40,10 @@ angular.module('companion')
       disabledDates: [],
       dayNamesLength: 1, // 1 for "M", 2 for "Mo", 3 for "Mon"; 9 will show full day names. Default is 1.
       mondayIsFirstDay: false, // set monday as first day of week. Default is false
-      eventClick: function(date) { // called before dateClick and only if clicked day has events
+      eventClick: (date) => { // called before dateClick and only if clicked day has events
 
       },
-      dateClick: function(date) { // called every time a day is clicked
+      dateClick: (date) => { // called every time a day is clicked
         let todayClick = date.date.toLocaleString().split(',').shift();
         $scope.dateEvents = date.event;
         console.log($scope.dateEvents);
@@ -53,10 +53,10 @@ angular.module('companion')
           document.getElementById('eventHeader').innerHTML = '<h4 class="eventHeader">Events for ' + moment(date.date).format('dddd, MMMM Do') + '</h4>';
         }
       },
-      changeMonth: function(month, year) {
+      changeMonth: (month, year) => {
         // console.log(month, year);
       },
-      filteredEventsChange: function(filteredEvents) {
+      filteredEventsChange: (filteredEvents) => {
         console.log('events changed');
       }
     };

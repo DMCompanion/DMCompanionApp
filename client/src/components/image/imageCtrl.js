@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('imageCtrl', function($scope, $cordovaCamera, $cordovaFile) {
+  .controller('imageCtrl', ($scope, $cordovaCamera, $cordovaFile, imageSvc) => {
 
     const Camera = $cordovaCamera;
 
