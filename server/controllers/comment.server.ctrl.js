@@ -27,7 +27,7 @@ module.exports = {
     getComments: (req, res) => {
         Comment.find(req.query).populate({
             path: 'postedBy',
-            select: 'name'
+            select: 'name profilePic'
         }).exec((err, comments) => {
             if (err) {
                 res.status(500).send(err);
