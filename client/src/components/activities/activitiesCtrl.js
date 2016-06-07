@@ -29,13 +29,26 @@ angular.module( 'companion' )
 		  $scope.modal = modal;
 		});
 
+		$ionicModal.fromTemplateUrl('templates/activityAddReviewModal.html', {
+		  scope: $scope
+		}).then(function(modal) {
+		  $scope.reviewModal = modal;
+		});
+
+		$ionicModal.fromTemplateUrl('templates/activityAddPhotoModal.html', {
+		  scope: $scope
+		}).then(function(modal) {
+		  $scope.photoModal = modal;
+		});
+
+
 		// Need to put details on scope for the "add new activity"
-		// $scope.getActivity = () => {
-		// 	for (let i = 0; i < $scope.activities.length; i++) {
-		// 			$scope.details = $scope.activities[i];
-		// 	}
-		// };
-		// $scope.getActivity();
+		$scope.getActivity = () => {
+			for (let i = 0; i < $scope.activities.length; i++) {
+					$scope.details = $scope.activities[i];
+			}
+		};
+		$scope.getActivity();
 
 
 
