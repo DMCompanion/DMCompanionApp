@@ -1,8 +1,8 @@
 <ion-view class="places">
-  <div class="bar bar-header bar-dark">
-    <a href="/#/home"><button class="button button-icon icon ion-navicon"></button></a>
-    <h1 class="title">Places Nearby</h1>
-  </div>
+  <ion-nav-bar class="bar-header bar-dark">
+    <ion-nav-back-button></ion-nav-back-button>
+      <h1 class="title">Places Nearby</h1>
+  </ion-nav-bar>
   <ion-content class="has-header" on-swipe-right="swipeRight()">
 
     <label class="item item-input search-bar">
@@ -20,52 +20,13 @@
 
     <div class="places--container" ng-repeat="place in places | orderBy: 'distance' | filter:searchText | filter:{placeType: searchType}">
 
-      <div class="list card">
+      <div class="card item-avatar">
+        <img ng-src="{{place.photo}}" alt="" />
 
-          <a class="item item-thumbnail-left" ng-click="commentShown = !commentShown">
-            <img src="{{place.photos[0]}}">
-            <div class="miles">
-              <h2>{{place.distance}}mi</h2>
-            </div>
-
-            <div class="places--content">
-              <h2>{{place.name}}</h2>
-              <p>{{place.placeType}}</p>
-              <div class="rating" ng-repeat="rate in place.rating">
-                <h6>{{rate}}</h6>
-              </div>
-            </div>
-          </a>
-
-          <div class="comments" ng-show="commentShown">
-            <div class="comment">
-
-              <div id="addReview">
-                <div class="stars">
-                  <div id="star">STARS</div>
-                </div>
-                <button id="review" class="button icon-left ion-compose button-positive" ng-click="modal.show()">Write a review</button>
-              </div>
-
-              <div class="review-summary">
-                <div class="list">
-
-                  <div class="list card">
-                    <div class="item item-avatar">
-                        <img src="avatar.jpg">
-                        <h2>{{place.name}}</h2>
-                    </div>
-
-                    <div class="item item-image">
-                      <img src="cover.jpg">
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
+        {{place.name}} -- {{place.distance}}
+        <br />
+        <br />
+        {{place.duration}}
 
       </div>
 
