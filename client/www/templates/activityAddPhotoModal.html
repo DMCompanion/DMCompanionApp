@@ -1,0 +1,25 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title">Upload A Photo</h1>
+    </ion-header-bar>
+    <ion-content class="paddings">
+
+
+
+
+
+
+        <label class="item item-input">
+          <span class="input-label">Photo Header</span>
+          <input type="text" ng-model="photo.header">
+        </label>
+
+        <div class="submitButtonContainer">
+            <button class="button button-balanced submitButton" ng-click="addPhoto(photo); photoModal.hide()">Submit</button>
+            <button class="button button-assertive submitButton" ng-click="photoModal.hide()">Cancel</button>
+        </div>
+
+
+     </ion-content>
+
+</ion-modal-view>
