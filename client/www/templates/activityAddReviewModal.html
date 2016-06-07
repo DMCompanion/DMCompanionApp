@@ -1,12 +1,10 @@
 <ion-modal-view>
     <ion-header-bar class="bar bar-header bar-positive">
-      <h1 class="title">Add A Rating And Review</h1>
+      <h1 class="title">Rate And Review</h1>
     </ion-header-bar>
     <ion-content class="paddings">
         <div class="list">
-            <div class="rank">
-                <!-- <div id="star">Rating</div> -->
-            </div>
+
             <div class="stars">
                 <form id="ratingsForm">
                     <div class="stars">
@@ -19,16 +17,21 @@
                         </span>
                     </div>
                 </form>
-                </div>
+            </div>
+
             <div class="writeComment">
-                <label class="item item-input reviewText">
-                    <textarea id="reviewArea" type="textarea" ng-model="review.description" id="thought" placeholder="did you have thought? i thought not">
+                <label class="item item-input">
+                    <span class="input-label">Review</span>
+                    <textarea type="textarea" ng-model="review.description"></textarea>
                 </label>
             </div>
+
         </div>
+
         <div class="submitButtonContainer">
             <button class="button button-balanced submitButton" ng-click="addReview(review); reviewModal.hide()">Submit</button>
             <button class="button button-assertive submitButton" ng-click="reviewModal.hide()">Cancel</button>
         </div>
+
      </ion-content>
 </ion-modal-view>
