@@ -1,12 +1,36 @@
-<ion-modal-view>
+<ion-modal-view class="activityAddModal">
     <ion-header-bar class="bar bar-header bar-positive">
       <h1 class="title">Submit Activity</h1>
     </ion-header-bar>
-    <ion-content class="paddings">
+    <ion-content class="has-header">
+        <div class="adminApprove" ng-hide="isAdmin && hasUnapprovedActivity">
+            <div>
+                <h4 class="eventHeader">Unapproved Activities</h4>
+            </div>
+            <div class="card" ng-repeat="unapprovedActivity in unapprovedActivities track by $index">
+                <div class="item item-divider">
+                    <h3>{{unapprovedActivity.category}}</h3>
+                </div>
+                <div class="eventDescription item item-text-wrap">
+                    <p>Name: {{unapprovedActivity.items[0].name}}</p>
+                    <p>Rating: {{unapprovedActivity.items[0].rating}}-stars</p>
+                    <p>Description: {{unapprovedActivity.items[0].description}}</p>
+                </div>
+                <button class="disapprovalButton button button-assertive" ng-click="destroyActivity(unapprovedActivity._id)">
+                    <i class="icon ion-close"></i>
+                </button>
+                <button class="approvalButton button button-balanced" ng-click="approveActivity(unapprovedActivity._id, unapprovedActivity)">
+                    <i class="icon ion-checkmark"></i>
+                </button>
+
+
+
+            </div>
+        </div>
         <label class="item item-input item-select">
           <span class="input-label">Choose a Category</span>
           <select>
-              <option ng-repeat="activity in activities" ng-model="newActivity.name">{{activity.category}}</option>
+              <option ng-repeat="activity in activities" ng-model="newActivity.category">{{activity.category}}</option>
           </select>
         </label>
         <label class="item item-input">

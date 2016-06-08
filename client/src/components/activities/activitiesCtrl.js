@@ -1,8 +1,35 @@
 angular.module( 'companion' )
 	.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal ) => {
 
+		// Temp status to show unapproved activities
+		$scope.isAdmin = false;
+		$scope.hasUnapprovedActivity = false;
+		$scope.unapprovedActivities = [
+			{
+				category:  `Parks`,
+				items: [
+					{
+						name: `Lincoln Park`,
+						description: `This is a family park with nice playground equipment, picnic tables and BBQ stands.`,
+						rating: 4
+					}
+				]
+			},{
+				category:  `Parks`,
+				items: [
+					{
+						name: `Skate Park`,
+						description: `If you are a beginner or a hard core skateboarding fool you will find some cool shiz here brah!`,
+						rating: 5
+					}
+				]
+			}
+		];
+
+		// Temp data for dev work
 		$scope.activities = activitiesSvc.getDummyActivities();
 
+		// function of back arrow on header
 		$scope.goBack = () => {
     	$ionicHistory.goBack();
   	};
@@ -25,19 +52,19 @@ angular.module( 'companion' )
 
 		$ionicModal.fromTemplateUrl('templates/activityAddModal.html', {
 		  scope: $scope
-		}).then(function(modal) {
+	  }).then( (modal) => {
 		  $scope.modal = modal;
 		});
 
 		$ionicModal.fromTemplateUrl('templates/activityAddReviewModal.html', {
 		  scope: $scope
-		}).then(function(modal) {
+	  }).then( (modal) => {
 		  $scope.reviewModal = modal;
 		});
 
 		$ionicModal.fromTemplateUrl('templates/activityAddPhotoModal.html', {
 		  scope: $scope
-		}).then(function(modal) {
+	  }).then( (modal) => {
 		  $scope.photoModal = modal;
 		});
 
