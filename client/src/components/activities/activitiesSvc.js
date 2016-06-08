@@ -230,7 +230,7 @@ angular.module('companion')
     this.getActivities = () => {
       return $http({
         method: 'GET',
-        url: '/api/v1/activities'
+        url: 'http://192.168.0.214:8006/api/v1/activities'
       }).then((response) => {
         return response;
     });
@@ -239,7 +239,7 @@ angular.module('companion')
     this.createActivity = (activity) => {
       return $http({
         method: 'POST',
-        url: '/api/v1/activity',
+        url: 'http://192.168.0.214:8006/api/v1/activity',
         data: activity
     });
 };
@@ -247,7 +247,7 @@ angular.module('companion')
     this.editActivity = (id, upActivity) => {
       return $http({
         method: 'PUT',
-        url: '/api/v1/activity/' + id,
+        url: 'http://192.168.0.214:8006/api/v1/activity/' + id,
         data: upActivity
       }).then((response) => {
         return response;
@@ -257,7 +257,7 @@ angular.module('companion')
     this.deleteActivity = (id) => {
       return $http({
         method: 'DELETE',
-        url: '/api/v1/activity/' + id
+        url: 'http://192.168.0.214:8006/api/v1/activity/' + id
       }).then((response) => {
         return response;
     });
@@ -267,14 +267,14 @@ angular.module('companion')
     this.getComments = () => {
       return $http({
         method: 'GET',
-        url: '/api/v1/comments'
+        url: 'http://192.168.0.214:8006/api/v1/comments'
       });
     };
 
     this.createComment = (comment) => {
       return $http({
       method: 'POST',
-      url: '/api/v1/comment',
+      url: 'http://192.168.0.214:8006/api/v1/comment',
       data: comment
     });
     };
@@ -282,7 +282,7 @@ angular.module('companion')
     this.editComment = (id, upComment) => {
       return $http({
         method: 'PUT',
-        url: '/api/v1/comment/' + id,
+        url: 'http://192.168.0.214:8006/api/v1/comment/' + id,
         data: upComment
       });
     };
@@ -290,7 +290,7 @@ angular.module('companion')
     this.deleteComment = (id) => {
       return $http({
         method: 'DELETE',
-        url: '/api/v1/comment/' + id
+        url: 'http://192.168.0.214:8006/api/v1/comment/' + id
       });
     };
 } );
