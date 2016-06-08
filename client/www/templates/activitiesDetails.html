@@ -1,8 +1,4 @@
 <ion-view class="activitiesDetails">
-  <!-- <div class="bar bar-header bar-dark">
-        <a ng-click="goBack()"><button class="button button-icon icon ion-arrow-left-c"></button></a>
-        <h1 class="title">Activities Details</h1>
-    </div> -->
   <ion-nav-bar class="bar-header bar-dark">
     <ion-nav-back-button></ion-nav-back-button>
   </ion-nav-bar>
@@ -16,13 +12,14 @@
       <div class="bar-blue"></div>
     </div>
     <div class="card padding" ng-repeat="item in details.items" ng-click="modal.show(); modalItems(item)">
-      <h4 ng-class="{active: isGroupShown(activity)}">
+        <h4 ng-class="{active: isGroupShown(activity)}">
         {{item.name}}
-      </h4>
-
-      <div class="bar-red"></div>
+        </h4>
+        <a class="trashButton" ng-click="destroyActivity(event._id)">
+            <i class="icon ion-trash-a"></i>
+        </a>
+        <div class="bar-red"></div>
     </div>
-
   </ion-list>
 </ion-content>
 </ion-view>
