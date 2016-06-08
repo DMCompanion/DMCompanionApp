@@ -1,0 +1,37 @@
+<ion-modal-view class="activityAddReviewModal">
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title">Rate And Review</h1>
+    </ion-header-bar>
+    <ion-content class="paddings">
+        <div class="list">
+
+            <div class="stars">
+                <form id="ratingsForm">
+                    <div class="stars">
+                        <span class="star-rating">
+                            <input type="radio" name="review.rating" ng-model="review.rating" ng-value="1"><i></i>
+                            <input type="radio" name="review.rating" ng-model="review.rating" ng-value="2"><i></i>
+                            <input type="radio" name="review.rating" ng-model="review.rating" ng-value="3"><i></i>
+                            <input type="radio" name="review.rating" ng-model="review.rating" ng-value="4"><i></i>
+                            <input type="radio" name="review.rating" ng-model="review.rating" ng-value="5"><i></i>
+                        </span>
+                    </div>
+                </form>
+            </div>
+
+            <div class="list">
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Review</span>
+                    <textarea type="textarea" placeholder="Review" ng-model="review.review"></textarea>
+                </label>
+            </div>
+
+        </div>
+
+        <div class="submitButtonContainer">
+            <button class="button button-balanced submitButton" ng-click="addReview(review); reviewModal.hide()">Submit</button>
+            <button class="button button-assertive submitButton" ng-click="reviewModal.hide()">Cancel</button>
+        </div>
+
+     </ion-content>
+</ion-modal-view>
