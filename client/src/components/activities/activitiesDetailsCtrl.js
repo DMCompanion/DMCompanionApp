@@ -10,7 +10,7 @@ angular.module('companion')
 
     $scope.getActivity = () => {
       for (let i = 0; i < $scope.activities.length; i++) {
-        if ($scope.activities[i].name === $stateParams.category) {
+        if ($scope.activities[i].category === $stateParams.category) {
           $scope.details = $scope.activities[i];
         }
       }
@@ -26,16 +26,11 @@ angular.module('companion')
       $scope.itemDetails = singleActivity;
     };
 
-    // Load the modal from the template - up from bottom of view
-    // $scope.modal = $ionicModal.fromTemplate('<div class="modal"><header class="bar bar-header bar-dark"> <h1 class="title">{{itemDetails.name}}</h1><div class="button button-clear" ng-click="modal.hide()"></div><div class="card"> <p>{{itemDetails.rating}}</p> <p>{{itemDetails.description}}</p> <div class="divider"> </div> </div>', {
-    // 	scope: $scope,
-    // 	animation: 'slide-in-up'
-    // });
 
     $ionicModal.fromTemplateUrl('templates/activityItem.html', {
       scope: $scope,
       animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then((modal) => {
       $scope.modal = modal;
     });
 

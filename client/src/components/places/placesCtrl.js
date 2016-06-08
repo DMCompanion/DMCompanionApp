@@ -1,5 +1,6 @@
 angular.module("companion").controller("placesCtrl", ($scope, placesSvc, $ionicGesture, $ionicHistory, $ionicModal) => {
 
+
   $scope.placesCategories = placesSvc.getDummyActivities();
 
   $scope.goBack = () => {

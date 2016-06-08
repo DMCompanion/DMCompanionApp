@@ -8,26 +8,27 @@ angular.module('companion')
     this.goBack = () => {
       $ionicHistory.goBack();
     };
-
     const dummyActivities = [{
       id: 0,
-      name: 'Active Life',
+      category: 'Active Life',
       items: [{
         name: 'Yoga',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        rating: `5-stars`,
+        rating: 4,
       }, {
         name: 'Biking',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        rating: `5-stars`,
+        rating: 5,
       }, {
         name: 'Climbing',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        rating: `5-stars`,
+        rating: 3,
       }],
       img: 'img/active.png',
+
     }, {
       id: 1,
+
 
       name: 'Arts & Entertainment',
       items: [{
