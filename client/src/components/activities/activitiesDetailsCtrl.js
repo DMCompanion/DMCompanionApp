@@ -1,5 +1,5 @@
 angular.module( 'companion' )
-.controller( 'activitiesDetailsCtrl', ( $scope, activitiesSvc, $stateParams, $ionicGesture, $ionicModal, $ionicHistory ) => {
+.controller( 'activitiesDetailsCtrl', ( $scope, activitiesSvc, $stateParams, $ionicGesture, $ionicModal, $ionicHistory, adminSvc ) => {
 
 	$scope.activities = activitiesSvc.getDummyActivities();
 
