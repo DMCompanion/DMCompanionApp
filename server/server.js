@@ -17,6 +17,8 @@ import eventCtrl from './controllers/event.server.ctrl';
 import userCtrl from './controllers/user.server.ctrl';
 import reviewCtrl from './controllers/review.server.ctrl';
 import commentCtrl from './controllers/comment.server.ctrl';
+import blogCtrl from './controllers/blog.server.ctrl';
+import dealCtrl from './controllers/deal.server.ctrl';
 
 // require('./controllers/passport')(passport);
 
@@ -123,6 +125,18 @@ app.post('/api/v1/comment', commentCtrl.postComment);
 app.get('/api/v1/comments', commentCtrl.getComments);
 app.put('/api/v1/comment/:id', commentCtrl.editComment);
 app.delete('/api/v1/comment/:id', commentCtrl.deleteComment);
+
+// Blog Routes
+app.post('/api/v1/blog', blogCtrl.postBlog);
+app.get('/api/v1/blogs', blogCtrl.getBlogs);
+app.put('/api/v1/blog/:id', blogCtrl.editBlog);
+app.delete('/api/v1/blog/:id', blogCtrl.deleteBlog);
+
+// Deal Routes
+app.post('/api/v1/deal', dealCtrl.postDeal);
+app.get('/api/v1/deals', dealCtrl.getDeals);
+app.put('/api/v1/deal/:id', dealCtrl.editDeal);
+app.delete('/api/v1/deal/:id', dealCtrl.deleteDeal);
 
 // listen
 app.listen(port, () => {
