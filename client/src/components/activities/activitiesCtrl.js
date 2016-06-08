@@ -1,9 +1,36 @@
 angular.module( 'companion' )
-	.controller( 'activitiesCtrl', function ( $scope, activitiesSvc, $ionicGesture, $ionicHistory ) {
+	.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc) => {
 
+		// Temp status to show unapproved activities
+		$scope.isAdmin = false;
+		$scope.hasUnapprovedActivity = false;
+		$scope.unapprovedActivities = [
+			{
+				category:  `Parks`,
+				items: [
+					{
+						name: `Lincoln Park`,
+						description: `This is a family park with nice playground equipment, picnic tables and BBQ stands.`,
+						rating: 4
+					}
+				]
+			},{
+				category:  `Parks`,
+				items: [
+					{
+						name: `Skate Park`,
+						description: `If you are a beginner or a hard core skateboarding fool you will find some cool shiz here brah!`,
+						rating: 5
+					}
+				]
+			}
+		];
+
+		// Temp data for dev work
 		$scope.activities = activitiesSvc.getDummyActivities();
 
-		$scope.goBack = function() {
+		// function of back arrow on header
+		$scope.goBack = () => {
     	$ionicHistory.goBack();
   	};
 
@@ -18,10 +45,39 @@ angular.module( 'companion' )
 			return $scope.shownGroup === activity;
 		};
 
-
+		// swipe right like iPhone functionality
 		$scope.swipeRight = () => {
 		    window.history.back();
 		};
+
+		$ionicModal.fromTemplateUrl('templates/activityAddModal.html', {
+		  scope: $scope
+	  }).then( (modal) => {
+		  $scope.modal = modal;
+		});
+
+		$ionicModal.fromTemplateUrl('templates/activityAddReviewModal.html', {
+		  scope: $scope
+	  }).then( (modal) => {
+		  $scope.reviewModal = modal;
+		});
+
+		$ionicModal.fromTemplateUrl('templates/activityAddPhotoModal.html', {
+		  scope: $scope
+	  }).then( (modal) => {
+		  $scope.photoModal = modal;
+		});
+
+
+		// Need to put details on scope for the "add new activity"
+		$scope.getActivity = () => {
+			for (let i = 0; i < $scope.activities.length; i++) {
+					$scope.details = $scope.activities[i];
+			}
+		};
+		$scope.getActivity();
+
+
 
 
 
