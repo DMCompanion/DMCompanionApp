@@ -1,7 +1,37 @@
+<div class="adminApprove" ng-show="isAdmin && hasUnapprovedEvents">
+  <div>
+    <h4 class="eventHeader">Unapproved Deals</h4>
+  </div>
+  <div class="card" ng-repeat="unapprovedDeal in unapprovedDeals track by $index">
+    <div class="card">
+      <div class="item item-divider">
+        {{unapprovedDeal.title}}
+      </div>
+      <div class="item item-text-wrap">
+        {{unapprovedDeal.deal}}
+      </div>
+      <div class="item item-divider">
+        {{unapprovedDeal.date}}
+      </div>
+      <div class="item item-divider">
+        {{unapprovedDeal.tagline}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <ion-view class="deals">
   <div class="bar bar-header bar-dark">
-    <a href="/#/home"><button class="button button-icon icon ion-navicon"></button></a>
+    <a href="/#/home"><img src="./img/devmtnlogo_notext.png" class="headerBarLogo" /></a>
+
     <h1 class="title">Deals</h1>
+
+    <div class="add">
+      <a ng-click="modal.show()">
+        <button class="button button-icon icon ion-plus"></button>
+      </a>
+    </div>
   </div>
 
   <ion-content class="has-header">
@@ -15,6 +45,22 @@
       </div>
       <div class="item item-divider">
         Take advantage now!
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-divider">
+        {{deal.title}}
+      </div>
+      <div class="item item-text-wrap">
+        {{deal.deal}}
+      </div>
+      <div class="item item-divider">
+        {{deal.date.start}}
+        {{deal.date.end}}
+      </div>
+      <div class="item item-divider">
+        {{deal.tagline}}
       </div>
     </div>
 

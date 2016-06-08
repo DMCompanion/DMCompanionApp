@@ -1,0 +1,37 @@
+@import '_variables'
+.activityAddModal, .activityAddReviewModal, .activityAddPhotoModal
+
+    ion-content
+        background-color: $dmMidGray !important
+        position: absolute
+        top: calc($headerW + 10px)
+    .photoButtons
+        width: 100%
+        display: flex
+        justify-content: space-around
+    .photoArea
+        width: 100%
+        margin: 0 auto
+        height: 30vh
+        background-color: white
+    .list
+        background-color: white !important
+    .eventHeader
+        text-align: center
+        margin-top: 2vh
+        color: white
+    .disapprovalButton, .approvalButton
+        margin: 10px
+    .approvalButton
+        float: right
+    .trashButton
+        margin: 10px
+        float: right
+        color: $seperator
+        font-size: 1.2rem
+        @include vertical-align()
+    .eventDescription
+        // max-height: 10vh
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis

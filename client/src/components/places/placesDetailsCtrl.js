@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('placesDetailsCtrl', ($scope, $http, $ionicModal) => {
+  .controller('placesDetailsCtrl', ($scope, $http, $ionicModal, $ionicHistory) => {
 
     $scope.places = [
       {

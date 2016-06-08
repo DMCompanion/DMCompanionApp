@@ -11,32 +11,32 @@ angular.module('companion')
 
     const dummyActivities = [ {
         id: 0,
-        name: 'Active Life',
+        category: 'Active Life',
         items: [
             {
                 name: 'Yoga',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
                 name: 'Biking',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: 'Climbing',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 3,
             }
         ],
         img: 'img/active.png',
     }, {
         id: 1,
 
-        name: 'Arts & Entertainment',
+        category: 'Arts & Entertainment',
         items: [
             {
                 name: 'Movies',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: 'Concerts',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -44,182 +44,182 @@ angular.module('companion')
             }, {
                 name: 'Museum',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 2,
             }
         ],
         img: 'img/movie1.png',
     }, {
         id: 2,
-        name: 'Beauty & Spa',
+        category: 'Beauty & Spa',
         items: [
             {
                 name: 'Nails by Karam',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: 'Pedicures by Karam',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: 'Backrubs by Karam',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`
+                rating: 5
             }
         ],
         img: `img/spa.png`,
     },  {
         id: 3,
-        name: `Night Life`,
+        category: `Night Life`,
         items: [
             {
                 name: `Nightclubs`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
                 name: `Bars`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 2,
             }, {
                 name: `Karam's Apartment`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 1,
             }
         ],
         img: 'img/night.png',
     }, {
         id: 4,
-        name: 'Outdoors',
+        category: 'Outdoors',
         items: [
             {
                 name: 'Climbing',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
                 name: 'Biking',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
                 name: 'Hiking',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: 'Water Sports',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }
         ],
         img: 'img/hiking.png',
     }, {
         id: 5,
-        name: 'Religion',
+        category: 'Religion',
         items: [
             {
                 name: `LDS (Mormons)`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: `Muslims (Karams)`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
                 name: `Other (there aren't any)`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 3,
             }
         ],
         img: 'img/church.png',
     }, {
         id: 6,
-        name: 'Shopping',
+        category: 'Shopping',
         items: [
             {
                 name: `Mall`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
                 name: `Downtown`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: `Second Hand`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 3,
             }
         ],
         img: 'img/shopping.png',
     },{
         id: 7,
-        name: 'Summer',
+        category: 'Summer',
         items: [
             {
                 name: `Hang Gliding`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: `Water Skiing`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: `Frisbee Golf`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 2,
             }
         ],
         img: 'img/summer.png',
     },{
         id: 8,
-        name: 'Winter',
+        category: 'Winter',
         items: [
             {
                 name: `Pair-coding with Karam`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: `Snow Skiing`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
-                name: `Snow Skiing`,
+                name: `Snowboarding`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }
         ],
         img: 'img/winter.png',
     },{
         id: 9,
-        name: 'Spring',
+        category: 'Spring',
         items: [
             {
                 name: `Picking Flowers`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 2,
             }, {
                 name: `It snowed again!?`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 1,
             }, {
                 name: `Why can't Summmer just be here?`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 2,
             }
         ],
         img: 'img/spring.png',
     },{
         id: 10,
-        name: 'Fall',
+        category: 'Fall',
         items: [
             {
                 name: `Down`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 2,
             }, {
                 name: `All over yourself`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 3,
             }, {
                 name: `Apart`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 1,
             }
         ],
         img: 'img/fall.png',
@@ -230,7 +230,7 @@ angular.module('companion')
     this.getActivities = () => {
       return $http({
         method: 'GET',
-        url: '/api/v1/activities'
+        url: 'http://192.168.0.214:8006/api/v1/activities'
       }).then((response) => {
         return response;
     });
@@ -239,7 +239,7 @@ angular.module('companion')
     this.createActivity = (activity) => {
       return $http({
         method: 'POST',
-        url: '/api/v1/activity',
+        url: 'http://192.168.0.214:8006/api/v1/activity',
         data: activity
     });
 };
@@ -247,7 +247,7 @@ angular.module('companion')
     this.editActivity = (id, upActivity) => {
       return $http({
         method: 'PUT',
-        url: '/api/v1/activity/' + id,
+        url: 'http://192.168.0.214:8006/api/v1/activity/' + id,
         data: upActivity
       }).then((response) => {
         return response;
@@ -257,7 +257,7 @@ angular.module('companion')
     this.deleteActivity = (id) => {
       return $http({
         method: 'DELETE',
-        url: '/api/v1/activity/' + id
+        url: 'http://192.168.0.214:8006/api/v1/activity/' + id
       }).then((response) => {
         return response;
     });
@@ -267,14 +267,14 @@ angular.module('companion')
     this.getComments = () => {
       return $http({
         method: 'GET',
-        url: '/api/v1/comments'
+        url: 'http://192.168.0.214:8006/api/v1/comments'
       });
     };
 
     this.createComment = (comment) => {
       return $http({
       method: 'POST',
-      url: '/api/v1/comment',
+      url: 'http://192.168.0.214:8006/api/v1/comment',
       data: comment
     });
     };
@@ -282,7 +282,7 @@ angular.module('companion')
     this.editComment = (id, upComment) => {
       return $http({
         method: 'PUT',
-        url: '/api/v1/comment/' + id,
+        url: 'http://192.168.0.214:8006/api/v1/comment/' + id,
         data: upComment
       });
     };
@@ -290,7 +290,7 @@ angular.module('companion')
     this.deleteComment = (id) => {
       return $http({
         method: 'DELETE',
-        url: '/api/v1/comment/' + id
+        url: 'http://192.168.0.214:8006/api/v1/comment/' + id
       });
     };
 } );
