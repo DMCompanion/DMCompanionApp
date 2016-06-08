@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('imageSvc', ($http) => {
+  .service('imageSvc', function($http) {
 
 
 

@@ -29,7 +29,9 @@ angular.module("companion").controller("placesCtrl", function ($scope, placesSvc
   });
 
   $scope.createContact = function (u) {
-    $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
+    $scope.contacts.push({
+      name: u.firstName + ' ' + u.lastName
+    });
     $scope.modal.hide();
   };
 

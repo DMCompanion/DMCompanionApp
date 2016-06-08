@@ -1,5 +1,5 @@
 angular.module('companion')
-  .service('adminSvc', ($http) => {
+  .service('adminSvc', function($http) {
 
     // Event Endpoints
     this.postEvent = (event) => {

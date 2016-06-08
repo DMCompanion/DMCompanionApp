@@ -1,5 +1,5 @@
 angular.module('companion')
-  .service('activitiesSvc', ($http, $ionicHistory) => {
+  .service('activitiesSvc', function($http, $ionicHistory) {
 
     this.getDummyActivities = () => {
       return dummyActivities;
