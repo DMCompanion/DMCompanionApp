@@ -14,7 +14,13 @@ module.exports = {
         });
     },
     getEvents: (req, res) => {
-        Event.find({}, (err, events) => {
+        Event.find(req.query).populate({
+            path: 'postedBy',
+            select: 'name profilePic campus'
+        }).populate({
+            path: 'peopleGoing',
+            select: 'name profilePic campus'
+        }).populate('comments').exec((err, events) => {
             if (err) {
                 console.log("Did not got events: ", err);
                 res.status(500).send(err);

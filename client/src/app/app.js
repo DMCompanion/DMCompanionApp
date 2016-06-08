@@ -54,6 +54,11 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
         templateUrl: './templates/places.html',
         controller: 'placesCtrl'
       })
+      .state('placesDetails', {
+          url: '/placesDetails/:category',
+          templateUrl: './templates/placesDetails.html',
+          controller: 'placesDetailsCtrl'
+      })
       .state('blog', {
         url: '/blog',
         templateUrl: './templates/blog.html'
