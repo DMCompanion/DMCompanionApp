@@ -1,4 +1,4 @@
-<ion-view class="places">
+<ion-view class="placesDetails">
   <ion-nav-bar class="bar-header bar-dark">
     <ion-nav-back-button></ion-nav-back-button>
       <h1 class="title">Places Nearby</h1>
@@ -20,13 +20,21 @@
 
     <div class="places--container" ng-repeat="place in places | orderBy: 'distance' | filter:searchText | filter:{placeType: searchType}">
 
-      <div class="card item-avatar">
-        <img ng-src="{{place.photo}}" alt="" />
+      <div class="card item-thumbnail-left">
+        <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150"/>
 
-        {{place.name}} -- {{place.distance}}
-        <br />
-        <br />
-        {{place.duration}}
+        <div class="miles">
+          <!-- <div class="open_now" ng-style="{background: place.opening_hours.open_now == true ? '#42B60E' : '#ef473a'}">
+          </div> -->
+          <h5>{{place.distance}}</h5>
+          <h6>({{place.duration}})</h6>
+          <div class="open_now" ng-style="{background: place.opening_hours.open_now == true ? '#42B60E' : '#ef473a'}"></div>
+        </div>
+        <div class="placeName">
+        {{place.name}}
+        </div>
+
+
 
       </div>
 

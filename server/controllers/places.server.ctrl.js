@@ -54,6 +54,13 @@ module.exports = {
           res.send(body);
         }
       });
+    },
+    getGooglePhoto: (req, res) => {
+      request('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + req.params.photoRef + '&key=' + config.googleMapsKey, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          res.send(body);
+        }
+      });
     }
 
 };
