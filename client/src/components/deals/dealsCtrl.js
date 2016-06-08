@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('dealsCtrl', ($scope, $http, $ionicModal, dealsSvc) => {
+  .controller('dealsCtrl', ($scope, $http, $ionicModal, dealsSvc, adminSvc) => {
 
     $ionicModal.fromTemplateUrl('templates/dealsModal.html', {
       scope: $scope
@@ -8,12 +8,31 @@ angular.module('companion')
     });
 
 
+    $scope.filterDeals = (deals) => {
+      let approvedDeals = [];
+      let unapprovedDeals = [];
+      let unapprovedCounter = 0;
+      for (var i = 0; i < deals.length; i++) {
+        if (deals[i].approved) {
+          approvedDeals.push(deals[i]);
+        } else if (i === deals.length && unapprovedCounter === 0) {
+          $scope.hasUnapprovedDeals = false;
+        } else {
+          unapprovedDeals.push(deals[i]);
+          unapprovedCounter++;
+          $scope.hasUnapprovedDeals = true;
+        }
+      }
+      $scope.unapprovedDeals = unapprovedDeals;
+      return approvedDeals;
+    };
+
 		// CRUD DEALS
 			$scope.showDeals = () => {
 				dealsSvc.getDeals()
 				.then((response) => {
+          $scope.deals = adminSvc.filterFeatures(response.data);
 					console.log(response);
-					// $scope.deals = response;
 				});
 			};
 
