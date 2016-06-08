@@ -18,7 +18,7 @@
     </div>
     </div> -->
 
-    <div class="places--container" ng-repeat="place in places | orderBy: 'distance' | filter:searchText | filter:{placeType: searchType}">
+    <div class="places--container" ng-repeat="place in places | orderBy: 'distance' | filter:searchText | filter:{placeType: searchType}" ng-show="place.opening_hours.open_now">
 
       <div class="card item-thumbnail-left">
         <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150"/>
