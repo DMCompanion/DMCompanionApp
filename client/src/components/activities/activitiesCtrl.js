@@ -1,5 +1,5 @@
 angular.module( 'companion' )
-	.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal ) => {
+	.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc) => {
 
 		// Temp status to show unapproved activities
 		$scope.isAdmin = false;
