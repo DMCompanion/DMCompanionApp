@@ -1,4 +1,49 @@
-angular.module('companion').service('placesSvc', function($http) {
+angular.module('companion').service('placesSvc', function($http, $ionicHistory) {
+
+  this.getDummyActivities = () => {
+    return dummyActivities;
+  };
+
+  this.goBack = function() {
+    $ionicHistory.goBack();
+  };
+
+  const dummyActivities = [{
+    id: 0,
+    name: 'Restaurants',
+    items: [{
+      name: 'Yoga',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      rating: `5-stars`
+    }, {
+      name: 'Biking',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      rating: `5-stars`
+    }, {
+      name: 'Climbing',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      rating: `5-stars`
+    }],
+    img: 'http://provofb.com/wp-content/uploads/2015/11/20160302-590-ProvoFoodBar3-1-640x425.jpg'
+  }, {
+    id: 1,
+
+    name: 'Shopping',
+    items: [{
+      name: 'Movies',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      rating: `5-stars`
+    }, {
+      name: 'Concerts',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      rating: `5-stars`
+    }, {
+      name: 'Museum',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      rating: `5-stars`
+    }],
+    img: 'http://reachprovo.com/wp-content/uploads/2016/04/Downtown-Provo-Utah-Center-Street.jpg'
+  }];
 
   // CRUD PLACES
   this.getPlaces = () => {
@@ -37,7 +82,7 @@ angular.module('companion').service('placesSvc', function($http) {
     });
   };
 
-  //CRUD reviews
+  // CRUD reviews
 
   this.getReviews = () => {
     return $http({
@@ -48,10 +93,18 @@ angular.module('companion').service('placesSvc', function($http) {
     });
   };
 
+  this.getPlaceReviews = (id, reviewId) => {
+    return $http({
+      method: 'GET',
+      url: '/api/v1/place/' + id + '/review/' + reviewId
+    });
+  };
+
+
   this.createReview = (review) => {
     return $http({
       method: 'POST',
-      url: '/api/v1/review'
+      url: '/api/v1/review',
       data: review
     });
   };
@@ -67,10 +120,8 @@ angular.module('companion').service('placesSvc', function($http) {
   this.deleteReview = (id, reviewId) => {
     return $http({
       method: 'DELETE',
-      url: '/api/v1/review/' + reviewId
+      url: '/api/v1/place/' + id + '/review/' + reviewId
     });
   };
-
-
 
 });
