@@ -64,6 +64,15 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
     });
   };
 
+  this.getPlacePhoto = (photoRef) => {
+    return $http({
+      method: 'POST',
+      url: 'http://localhost:8006/api/v1/googlePhoto/' + photoRef
+    }).then((response) => {
+      return response.data;
+    });
+  };
+
   this.createPlace = (place) => {
     return $http({
       method: 'POST',

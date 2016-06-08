@@ -98,6 +98,7 @@ app.delete('/api/v1/place/:id', placeCtrl.deletePlace);
 
 app.post('/api/v1/googlePlaces/:userLat/:userLong/:query', placeCtrl.getGooglePlaces);
 app.post('/api/v1/googleDistance/:userLat/:userLong/:placeId', placeCtrl.getGoogleDistance);
+app.post('/api/v1/googlePhoto/:photoRef', placeCtrl.getGooglePhoto);
 
 // Activities Routes
 app.post('/api/v1/activity', activityCtrl.postActivity);

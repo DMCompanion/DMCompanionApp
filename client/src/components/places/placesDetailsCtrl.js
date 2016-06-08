@@ -90,17 +90,20 @@ angular.module('companion')
             console.log("Ctrl place response: ", response);
             $scope.placeResponse = response.data.results;
             for (var i = 0; i < $scope.placeResponse.length; i++) {
-              console.log(i);
               $scope.places.push({});
               let index = i;
-              // wut
               placesSvc.getPlaceDistance($scope.userLat, $scope.userLong, $scope.placeResponse[index].place_id).then((response) => {
-                console.log("response", response);
                 $scope.places[index] = $scope.placeResponse[index];
-                console.log("time?", index, response.rows[0].elements[0].duration.text);
                 $scope.places[index].distance = response.rows[0].elements[0].distance.text;
                 $scope.places[index].duration = response.rows[0].elements[0].duration.text;
-              })
+              });
+              // oooh shit
+              if ($scope.placeResponse[index].photos) {
+                placesSvc.getPlacePhoto($scope.placeResponse[index].photos[0].photo_reference).then((response) => {
+                  // console.log("response photo: ", index, response);
+                  $scope.places[index].photo = response;
+                })
+              }
             }
           });
         }
