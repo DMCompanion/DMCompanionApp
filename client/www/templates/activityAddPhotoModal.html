@@ -1,0 +1,31 @@
+<ion-modal-view class="activityAddPhotoModal">
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title">Upload A Photo</h1>
+    </ion-header-bar>
+    <ion-content class="paddings">
+
+        <div class="submitButtonContainer">
+            <div class="photoButtons">
+                <button class="button button-balanced" ng-click="XXXgitThePicXXX">Choose Photo</button>
+                <button class="button button-balanced" ng-click="XXXgitThePicXXX"> Take Photo </button>
+            </div>
+        </div>
+
+        <div class="photoArea">
+            photo goes here... <br />
+            this is just a placeholder guys! jeez!
+        </div>
+
+        <label class=" padding item item-input ">
+          <span class="input-label">Photo Header</span>
+          <input type="text" ng-model="photo.header">
+        </label>
+
+        <div class="submitButtonContainer">
+            <button class="button button-positive submitButton" ng-click="addPhoto(photo); photoModal.hide()">Submit</button>
+            <button class="button button-assertive submitButton" ng-click="photoModal.hide()">Cancel</button>
+        </div>
+
+     </ion-content>
+
+</ion-modal-view>
