@@ -1,4 +1,4 @@
-<ion-modal-view>
+<ion-modal-view class="activityAddReviewModal">
     <ion-header-bar class="bar bar-header bar-positive">
       <h1 class="title">Rate And Review</h1>
     </ion-header-bar>
@@ -19,10 +19,10 @@
                 </form>
             </div>
 
-            <div class="writeComment">
-                <label class="item item-input">
+            <div class="list">
+                <label class="item item-input item-floating-label">
                     <span class="input-label">Review</span>
-                    <textarea type="textarea" ng-model="review.description"></textarea>
+                    <textarea type="textarea" placeholder="Review" ng-model="review.review"></textarea>
                 </label>
             </div>
 

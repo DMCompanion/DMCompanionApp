@@ -1,9 +1,9 @@
 angular.module( 'companion' )
-.controller( 'activitiesDetailsCtrl', function ( $scope, activitiesSvc, $stateParams, $ionicGesture, $ionicModal, $ionicHistory ) {
+.controller( 'activitiesDetailsCtrl', ( $scope, activitiesSvc, $stateParams, $ionicGesture, $ionicModal, $ionicHistory ) => {
 
 	$scope.activities = activitiesSvc.getDummyActivities();
 
-	$scope.goBack = function() {
+	$scope.goBack = () => {
 		console.log("going back?");
 		$ionicHistory.goBack();
 	};
@@ -30,7 +30,7 @@ angular.module( 'companion' )
 	$ionicModal.fromTemplateUrl('templates/activityItem.html', {
 	      scope: $scope,
 	      animation: 'slide-in-up'
-	    }).then(function(modal) { $scope.modal = modal; });
+	  }).then( (modal) => { $scope.modal = modal; });
 
 
 });

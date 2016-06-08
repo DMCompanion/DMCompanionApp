@@ -16,15 +16,15 @@ angular.module('companion')
             {
                 name: 'Yoga',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
                 name: 'Biking',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: 'Climbing',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 3,
             }
         ],
         img: 'img/active.png',
@@ -36,7 +36,7 @@ angular.module('companion')
             {
                 name: 'Movies',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: 'Concerts',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -44,7 +44,7 @@ angular.module('companion')
             }, {
                 name: 'Museum',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 2,
             }
         ],
         img: 'img/movie1.png',
@@ -55,15 +55,15 @@ angular.module('companion')
             {
                 name: 'Nails by Karam',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: 'Pedicures by Karam',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: 'Backrubs by Karam',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`
+                rating: 5
             }
         ],
         img: `img/spa.png`,
@@ -74,15 +74,15 @@ angular.module('companion')
             {
                 name: `Nightclubs`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
                 name: `Bars`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 2,
             }, {
                 name: `Karam's Apartment`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 1,
             }
         ],
         img: 'img/night.png',
@@ -93,19 +93,19 @@ angular.module('companion')
             {
                 name: 'Climbing',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
                 name: 'Biking',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
                 name: 'Hiking',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: 'Water Sports',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }
         ],
         img: 'img/hiking.png',
@@ -116,15 +116,15 @@ angular.module('companion')
             {
                 name: `LDS (Mormons)`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: `Muslims (Karams)`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
                 name: `Other (there aren't any)`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 3,
             }
         ],
         img: 'img/church.png',
@@ -135,15 +135,15 @@ angular.module('companion')
             {
                 name: `Mall`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
                 name: `Downtown`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: `Second Hand`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 3,
             }
         ],
         img: 'img/shopping.png',
@@ -154,15 +154,15 @@ angular.module('companion')
             {
                 name: `Hang Gliding`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: `Water Skiing`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: `Frisbee Golf`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 2,
             }
         ],
         img: 'img/summer.png',
@@ -173,15 +173,15 @@ angular.module('companion')
             {
                 name: `Pair-coding with Karam`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }, {
                 name: `Snow Skiing`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 4,
             }, {
-                name: `Snow Skiing`,
+                name: `Snowboarding`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 5,
             }
         ],
         img: 'img/winter.png',
@@ -192,15 +192,15 @@ angular.module('companion')
             {
                 name: `Picking Flowers`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 2,
             }, {
                 name: `It snowed again!?`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 1,
             }, {
                 name: `Why can't Summmer just be here?`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 2,
             }
         ],
         img: 'img/spring.png',
@@ -211,15 +211,15 @@ angular.module('companion')
             {
                 name: `Down`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 2,
             }, {
                 name: `All over yourself`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 3,
             }, {
                 name: `Apart`,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                rating: `5-stars`,
+                rating: 1,
             }
         ],
         img: 'img/fall.png',
