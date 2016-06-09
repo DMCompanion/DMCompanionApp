@@ -60,8 +60,13 @@
         <div class="when">
           <strong>When: {{event.time}}</strong>
         </div>
+      </div>
+      <div class="adminContainer" >
+        <a class="editButton" ng-click="editModal.show(); edit(event);">
+          <i class="icon ion-ios-compose"></i>
+        </a>
 
-        <a class="trashButton" ng-click="destroyEvent(event._id)">
+        <a class="rashButton" ng-click="destroyEvent(event._id)">
           <i class="icon ion-trash-a"></i>
         </a>
       </div>
