@@ -52,20 +52,26 @@
             min-height: 20px !important
             line-height: normal !important
         .button.button-positive.button-clear
-                font-size: 5vw !important
-                font-weight: bold !important
-                color: $seperator !important
-                width: 100%
+            font-size: 5vw !important
+            font-weight: bold !important
+            color: $seperator !important
+            width: 100%
         p
             padding: 0 3vw 0 3vw
-        #updateActivity
-            display: inline-block
-            float: right
-            // font-size: 2vw
-        #deleteActivity
-            display: inline-block
-            float: right
-            // font-size: 2vw
+    .card.redBar
+        border-bottom: 0.8vh solid $flatRed
+    .cardName
+        width: 85%
+        float: left
+    .trashButton
+        margin: 20px 10px 0px 0px
+        text-align: right
+        color: $seperator
+        font-size: 1.2rem
+        float: right
+        @include vertical-align()
+    .clearFloat
+        clear: both
     .divider
         width: 100%
         height: 5vw !important
@@ -73,13 +79,26 @@
     .add
         width: 100%
         text-align: right
-    .bar-red
-        height: 0.8vh
-        width: 100%
-        background: $flatRed
-        margin-bottom: -0.2vh
+    // .bar-red
+    //     height: 0.8vh
+    //     width: 100%
+    //     background: $flatRed
+    //     margin-bottom: -0.2vh
     .bar-blue
         height: 0.8vh
         width: 100%
         background: $dmBleu
         margin-bottom: -0.2vh
+    .admin
+        width: 100%
+        float: right
+    #title-center
+        text-align: center !important
+    .disapprovalButton, .approvalButton
+        margin: 10px
+    .approvalButton
+        float: right
+    .eventHeader
+        text-align: center
+        margin-top: 2vh
+        color: white
