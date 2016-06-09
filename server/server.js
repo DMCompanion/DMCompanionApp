@@ -63,6 +63,7 @@ app.use(passport.session());
 
 // Define routes
 app.use(authMiddleware.validateQueryToken);
+// app.use(devmtnCtrl.requireLoggedIn);
 
 console.log("config", config);
 
@@ -70,8 +71,8 @@ console.log("config", config);
 app.get('/auth/devmtn', passport.authenticate('devmtn'));
 // app.get('/auth/devmtn/callback', passport.authenticate('devmtn', {failureRedirect: '/#/'}), devmtnCtrl.loginSuccessRouter);
 app.get('/auth/devmtn/callback', passport.authenticate('devmtn', {
-    failureRedirect: '/#/',
-    successRedirect: 'http://localhost:9001/#/'
+    failureRedirect: '/#/login',
+    successRedirect: 'http://localhost:9001/#/home'
 }), () => {
     console.log("hit callback");
 });
@@ -91,6 +92,8 @@ app.post('/api/v1/user', userCtrl.postUser);
 app.get('/api/v1/users', userCtrl.getUsers);
 app.put('/api/v1/user/:id', userCtrl.editUser);
 app.delete('/api/v1/user/:id', userCtrl.deleteUser);
+
+app.get('/api/v1/checkAuth', devmtnCtrl.checkAuth);
 
 // Places Routes
 app.post('/api/v1/place', placeCtrl.postPlace);

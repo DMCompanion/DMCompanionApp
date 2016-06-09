@@ -1,8 +1,3 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
 angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcalendar.defaultTranslation', 'ionic-pullup', 'angular-md5'])
 
 .run(($ionicPlatform) => {
@@ -24,11 +19,28 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
   })
   .config(($stateProvider, $urlRouterProvider) => {
     $stateProvider
+      .state('login', {
+        url: '/login',
+        templateUrl: './templates/login.html',
+        controller: 'loginCtrl'
+      })
       .state('index', {
         url: '/home',
         templateUrl: './templates/home.html',
-        controller: 'homeCtrl'
-      })
+        controller: 'homeCtrl',
+        resolve: {
+            checkAuth: (masterSvc, $state) => {
+              console.log("auth running?");
+                return masterSvc.checkAuth().then((response) => {
+                    console.log("response? ", response);
+                    return response;
+                }).catch(() => {
+                    console.log("response fail? ", response);
+                    return response;
+                    // $state.go('login');
+                });
+            }
+      }})
       .state('activities', {
         url: '/activities',
         templateUrl: './templates/activities.html',

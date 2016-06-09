@@ -16,9 +16,6 @@ passport.use('devmtn', new DevmtnStrategy(devmtnAuthConfig, (jwtoken, user, done
         console.log('this user does not have a cohort id');
     }
 
-    //Make sure we have that id in our database
-    console.log(jwtoken);
-
     finishLoginFunction(jwtoken, user, done);
 }));
 
@@ -68,10 +65,12 @@ var finishLoginFunction = (jwtoken, user, done) => {
             User.findByIdAndUpdate(foundUser._id, foundUser, (updErr, updRes) => {
                 if (updErr) {
                     console.error('Error updating the user roles: ', updErr);
+                    // res.send(foundUser);
                     return done(null, foundUser);
                 } else {
                     console.log('Successfully updated user roles: ', updRes);
                     //Make sure the id's still match up
+                    // res.send(foundUser);
                     return done(null, foundUser);
                 }
             });
@@ -143,6 +142,28 @@ module.exports = {
             next();
         } else {
             res.status(401).json('Resource available for admins only');
+        }
+    },
+
+    requireLoggedIn: (req, res, next) => {
+        console.log(req.user);
+        //only call next if the user has admin status
+        if (req.isAuthenticated()) {
+            next();
+        } else {
+            res.status(401).json('Resource available for students only');
+        }
+    },
+
+    checkAuth: (req, res, next) => {
+        console.log(req.user);
+        //only call next if the user has admin status
+        if (req.isAuthenticated()) {
+            console.log("Authorized.");
+            res.json(req.user);
+        } else {
+            console.log("Not authorized.");
+            res.json(req.user);
         }
     }
 };
