@@ -1,0 +1,29 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Submit Blog</h1>
+  </ion-header-bar>
+  <ion-content class="paddings">
+    <!-- <div class="list"> -->
+      <label class="item item-input">
+        <span class="input-label">Title</span>
+        <input type="text" placeholder="Title" ng-model="newBlog.title">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Tagline</span>
+        <input type="text" placeholder="Tagline" ng-model="newBlog.tagline">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Image</span>
+        <input type="image" placeholder="Image" ng-model="newBlog.image"></textarea>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Story</span>
+        <textarea type="text" placeholder="Story" ng-model="newBlog.story"></textarea>
+      </label>
+    <!-- </div> -->
+    <div class="submitButtonContainer">
+      <button class="button button-balanced submitButton" ng-click="addBlog(newBlog); modal.hide()">Submit</button>
+      <button class="button button-assertive submitButton" ng-click="modal.hide()">Cancel</button>
+    </div>
+   </ion-content>
+</ion-modal-view>

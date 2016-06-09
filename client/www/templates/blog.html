@@ -10,7 +10,24 @@
       </a>
     </div>
   </div>
+
   <ion-content class="padding has-header" on-swipe-right="swipeRight()">
+
+    <div class="card">
+      <div class="item item-divider">
+        {{blog.title}}
+      </div>
+      <div class="item item-divider">
+        {{blog.tagline}}
+      </div>
+      <div class="item item-divider">
+        {{blog.image}}
+      </div>
+      <div class="item item-divider">
+        {{blog.story}}
+      </div>
+    </div>
+
     <div class="card">
       <div class="item item-text-wrap">
         <h2><strong>Announcing iOS in Dallas</strong></h2>
@@ -43,6 +60,7 @@
         </div>
       </div>
     </div>
+
     <div class="card">
       <div class="item item-text-wrap">
         <h2><strong>DevMountain teams up with Capella Education Company</strong></h2>
@@ -97,5 +115,6 @@
         </div>
       </div>
     </div>
+
   </ion-content>
 </ion-view>
