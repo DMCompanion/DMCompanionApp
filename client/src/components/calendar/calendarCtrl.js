@@ -13,6 +13,17 @@ angular.module('companion')
       $scope.modal = modal;
     });
 
+    $ionicModal.fromTemplateUrl('templates/editCalendarModal.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.editModal = modal;
+    });
+
+    $scope.edit = (event) => {
+      console.log('event', event);
+      $scope.copyOfCalendar = event;
+    }
+
     // FLEXCALENDAR
 
     let today = new Date().toLocaleString().split(',').shift();
