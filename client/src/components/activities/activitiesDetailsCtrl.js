@@ -1,33 +1,66 @@
 angular.module( 'companion' )
 .controller( 'activitiesDetailsCtrl', ( $scope, activitiesSvc, $stateParams, $ionicGesture, $ionicModal, $ionicHistory, adminSvc ) => {
 
-	$scope.activities = activitiesSvc.getDummyActivities();
+	// Temp status to show unapproved activities
+	$scope.isAdmin = true;
+
+	$scope.allActivities = activitiesSvc.getDummyActivities();
+	$scope.activityTypes = activitiesSvc.getActivityTypes();
+	console.log($scope.allActivities);
+
+	$scope.category = $stateParams.category;
+	console.log(`category that was passed over -> ` + $scope.category);
+
+// find activities that match the category passsed in url
+	$scope.getActivities = () => {
+		let matches = [];
+		for (let i = 0; i < $scope.allActivities.length; i++) {
+			for (let j = 0; j < $scope.allActivities[i].category.length; j++) {
+				if ($scope.allActivities[i].category[j] === $stateParams.category) {
+					matches.push($scope.allActivities[i]);
+					$scope.activities = matches;
+				}
+			}
+		}
+	};
+	$scope.getActivities();
+	console.log(`matched activities`);
+	console.log($scope.activities);
+
+	$scope.getRatingAvg = (activity) => {
+		console.log(`the single activity = ` + activity);
+		// get all the ratings from all the reviews from each $scope.activities
+		let ratingsArray = [];
+		for (let i = 0; i < activity.reviews.length; i++) {
+			ratingsArray.push(activity.reviews[i].rating);
+		}
+		// find the average of all the ratings
+		let total = 0;
+		for (let j = 0; j < ratingsArray.length; j++) {
+			total += ratingsArray[j];
+		}
+		let rating = Math.round(total / ratingsArray.length);
+		$scope.rating = rating;
+		console.log(`rating = ` + $scope.rating);
+	};
+
+
 
 	$scope.goBack = () => {
 		console.log("going back?");
 		$ionicHistory.goBack();
 	};
 
-	$scope.getActivity = () => {
-		for (let i = 0; i < $scope.activities.length; i++) {
-			if ($scope.activities[i].category === $stateParams.category) {
-				$scope.details = $scope.activities[i];
-			}
-		}
-	};
-	$scope.getActivity();
-
 	// Swipe left-right to go back
 	$scope.swipeRight = () => {
 	    window.history.back();
 	};
 
-	$scope.modalItems = (singleActivity) => {
-		$scope.itemDetails = singleActivity;
+	$scope.modalItems = (activity) => {
+		$scope.singleActivity = activity;
 	};
 
-
-	$ionicModal.fromTemplateUrl('templates/activityItem.html', {
+	$ionicModal.fromTemplateUrl('templates/activityItemModal.html', {
 	      scope: $scope,
 	      animation: 'slide-in-up'
 	  }).then( (modal) => { $scope.modal = modal; });

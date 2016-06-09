@@ -6,16 +6,16 @@ angular.module( 'companion' )
 		$scope.hasUnapprovedActivity = false;
 		$scope.unapprovedActivities = [
 			{
-				category:  `Parks`,
+				category:  `Arts & Entertainment`,
 				items: [
 					{
-						name: `Lincoln Park`,
-						description: `This is a family park with nice playground equipment, picnic tables and BBQ stands.`,
-						rating: 4
+						name: `Cinemark 16`,
+						description: `Super awesome movie theater with great seats, ATM-style ticket purchasing, and great popcorn!`,
+						rating: 5
 					}
 				]
 			},{
-				category:  `Parks`,
+				category:  `Outdoors`,
 				items: [
 					{
 						name: `Skate Park`,
@@ -26,8 +26,25 @@ angular.module( 'companion' )
 			}
 		];
 
+
 		// Temp data for dev work
 		$scope.activities = activitiesSvc.getDummyActivities();
+
+
+		$scope.activityTypes = activitiesSvc.getActivityTypes();
+
+
+		// Need to put details on scope for the "add new activity"
+		$scope.getActivity = () => {
+			let matches = [];
+			for (let i = 0; i < $scope.activities.length; i++) {
+				matches.push($scope.activities[i]);
+				$scope.details = matches;
+			}
+		};
+		$scope.getActivity();
+		console.log($scope.details);
+
 
 		// function of back arrow on header
 		$scope.goBack = () => {
@@ -67,17 +84,6 @@ angular.module( 'companion' )
 	  }).then( (modal) => {
 		  $scope.photoModal = modal;
 		});
-
-
-		// Need to put details on scope for the "add new activity"
-		$scope.getActivity = () => {
-			for (let i = 0; i < $scope.activities.length; i++) {
-					$scope.details = $scope.activities[i];
-			}
-		};
-		$scope.getActivity();
-
-
 
 
 

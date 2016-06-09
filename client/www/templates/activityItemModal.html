@@ -1,0 +1,19 @@
+<ion-modal-view class="activitiesItem">
+    <ion-header-bar class="bar bar-header bar-dark">
+        <h1 class="title">{{activity.name}}</h1>
+        <button class="button button-clear" ng-click="modal.hide()">
+            <span class="icon ion-ios-close-empty"></span>
+        </button>
+    </ion-header-bar>
+    <ion-content on-swipe-right="swipeRight()" on-swipe-down="modal.hide()">
+        <div class="card">
+            <p class="padding">{{rating}}-stars</p>
+            <p>{{singleActivity.description}}</p>
+            <div class="admin" ng-show="isAdmin">
+                <a class="trashButton" ng-click="destroyItem(item._id)">
+                    <i class="icon ion-trash-a"></i>
+                </a>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>
