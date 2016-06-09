@@ -10,7 +10,24 @@
       </a>
     </div>
   </div>
+
   <ion-content class="padding has-header" on-swipe-right="swipeRight()">
+
+    <div class="card">
+      <div class="item item-divider">
+        {{blog.title}}
+      </div>
+      <div class="item item-divider">
+        {{blog.tagline}}
+      </div>
+      <div class="item item-divider">
+        {{blog.image}}
+      </div>
+      <div class="item item-divider">
+        {{blog.story}}
+      </div>
+    </div>
+
     <div class="card">
       <div class="item item-text-wrap">
         <h2><strong>Announcing iOS in Dallas</strong></h2>
@@ -43,6 +60,7 @@
         </div>
       </div>
     </div>
+
     <div class="card">
       <div class="item item-text-wrap">
         <h2><strong>DevMountain teams up with Capella Education Company</strong></h2>
@@ -89,13 +107,16 @@
           DevMountain has as bright a future as ever, and we're proud to be a part of it.
         </p>
         <h5 class="text-center">Share this post</h5>
+
         <div class="button-bar bar-positive">
           <a class="button"><i class="icon ion-social-facebook"></i></a>
           <a class="button"><i class="icon ion-social-googleplus"></i></a>
           <a class="button"><i class="icon ion-social-twitter"></i></a>
           <a class="button"><i class="icon ion-social-linkedin"></i></a>
         </div>
+
       </div>
     </div>
+
   </ion-content>
 </ion-view>
