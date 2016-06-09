@@ -62,6 +62,7 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
       .state('blog', {
         url: '/blog',
         templateUrl: './templates/blog.html'
+        controller: 'blogCtrl'
       });
 
     // if none of the above states are matched, use this as the fallback
