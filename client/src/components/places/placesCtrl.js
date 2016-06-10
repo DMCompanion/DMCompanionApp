@@ -1,4 +1,4 @@
-angular.module("companion").controller("placesCtrl", function($scope, placesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc ) {
+angular.module("companion").controller("placesCtrl", function($scope, placesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc, $ionicPopup, $timeout) {
 
   $scope.placesCategories = placesSvc.getDummyActivities();
 
