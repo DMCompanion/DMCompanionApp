@@ -31,12 +31,8 @@ angular.module( 'companion' )
 	$scope.activities = activitiesSvc.getDummyActivities();
 
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
-	
 	$scope.categories = activitiesSvc.getCategories();
 	console.log($scope.categories);
-
-
-
 
 	// Need to put details on scope for the "add new activity"
 	$scope.getActivity = () => {
@@ -50,10 +46,10 @@ angular.module( 'companion' )
 	console.log($scope.details);
 
 
-	// function of back arrow on header
-	$scope.goBack = () => {
-	$ionicHistory.goBack();
-	};
+	// function of 'back arrow icon' on header
+	$scope.goBack = () => { $ionicHistory.goBack(); };
+	// swipe right like iPhone functionality
+	$scope.swipeRight = () => { window.history.back(); };
 
 	$scope.toggleGroup = ( activity ) => {
 		if ( $scope.isGroupShown( activity ) ) {
@@ -66,36 +62,24 @@ angular.module( 'companion' )
 		return $scope.shownGroup === activity;
 	};
 
-	// swipe right like iPhone functionality
-	$scope.swipeRight = () => {
-	    window.history.back();
-	};
 
+// ---  MODALS  --- //
 	$ionicModal.fromTemplateUrl('templates/activityAddModal.html', {
 		scope: $scope
-	}).then( (modal) => {
-		$scope.modal = modal;
-	});
+	}).then( (modal) => { $scope.modal = modal; });
 
 	$ionicModal.fromTemplateUrl('templates/activityAddReviewModal.html', {
 		scope: $scope
-	}).then( (modal) => {
-		$scope.reviewModal = modal;
-	});
+	}).then( (modal) => { $scope.reviewModal = modal; });
 
 	$ionicModal.fromTemplateUrl('templates/activityAddPhotoModal.html', {
 		scope: $scope
-	}).then( (modal) => {
-		$scope.photoModal = modal;
-	});
-
+	}).then( (modal) => { $scope.photoModal = modal; });
 
 	$ionicModal.fromTemplateUrl('templates/activityCategoryModal.html', {
 		scope: $scope
-	}).then( (modal) => {
-		$scope.categoryModal = modal;
-	});
-
+	}).then( (modal) => { $scope.categoryModal = modal; });
+// ---  MODALS  --- //
 
 
 

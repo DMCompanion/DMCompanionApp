@@ -102,14 +102,10 @@ angular.module('companion')
         }
     ];
 
+    // Temp data for dev work
+    this.getDummyActivities = () => { return dummyActivities; };
 
-    this.getDummyActivities = () => {
-        return dummyActivities;
-    };
-
-    this.getActivityTypes = () => {
-        return activityTypes;
-    };
+    this.getActivityTypes = () => { return activityTypes; };
 
     this.getCategories = () => {
         let categories = [];
@@ -119,10 +115,8 @@ angular.module('companion')
         return categories;
     };
 
-
-    this.goBack = () => {
-  		$ionicHistory.goBack();
-  	};
+    // function of 'back arrow icon' on header
+    this.goBack = () => { $ionicHistory.goBack(); };
 
     // CRUD ACTIVITIES
     this.getActivities = () => {
