@@ -13,7 +13,7 @@
 
   <ion-content class="padding has-header">
 
-    <div class="adminApprove">
+    <div class="">
       <div class="card" ng-repeat="blog in blogs track by $index">
 
         <div class="item item-text-wrap">
@@ -72,6 +72,15 @@
           <a class="button"><i class="icon ion-social-twitter"></i></a>
           <a class="button"><i class="icon ion-social-linkedin"></i></a>
         </div>
+        <div class="adminContainer">
+          <a class="editButton" ng-click="editModal.show(); edit(blog);">
+            <i class="icon ion-ios-compose"></i>
+          </a>
+
+          <a class="rashButton" ng-click="destroyBlog(blog._id)">
+            <i class="icon ion-trash-a"></i>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -126,6 +135,15 @@
           <a class="button"><i class="icon ion-social-googleplus"></i></a>
           <a class="button"><i class="icon ion-social-twitter"></i></a>
           <a class="button"><i class="icon ion-social-linkedin"></i></a>
+        </div>
+        <div class="adminContainer">
+          <a class="editButton" ng-click="editModal.show(); edit(blog);">
+            <i class="icon ion-ios-compose"></i>
+          </a>
+
+          <a class="rashButton" ng-click="destroyBlog(blog._id)">
+            <i class="icon ion-trash-a"></i>
+          </a>
         </div>
       </div>
     </div>
