@@ -1,0 +1,29 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Edit Blog</h1>
+  </ion-header-bar>
+  <ion-content class="paddings">
+    <!-- <div class="list"> -->
+      <label class="item item-input">
+        <span class="input-label">Title</span>
+        <input type="text" placeholder="Title" ng-model="copyOfBlog.title" ng-change="cb.title = copyOfBlog.title">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Tagline</span>
+        <input type="text" placeholder="Tagline" ng-model="copyOfBlog.tagline" ng-change="cb.tagline = copyOfBlog.tagline">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Image</span>
+        <input type="image" placeholder="Image URL" ng-model="copyOfBlog.image" ng-change="cb.image = copyOfBlog.image">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Story</span>
+        <textarea type="text" placeholder="Description" ng-model="copyOfBlog.story" ng-change="cb.story = copyOfBlog.story"></textarea>
+      </label>
+    <!-- </div> -->
+    <div class="submitButtonContainer">
+      <button class="button button-balanced submitButton" ng-click="updateBlog(copyOfBlog._id, cb); editModal.hide()">Submit</button>
+      <button class="button button-assertive submitButton" ng-click="editModal.hide()">Cancel</button>
+    </div>
+   </ion-content>
+</ion-modal-view>
