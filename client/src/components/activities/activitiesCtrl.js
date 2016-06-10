@@ -1,154 +1,162 @@
 angular.module( 'companion' )
-	.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc) => {
+.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc) => {
 
-		// Temp status to show unapproved activities
-		$scope.isAdmin = false;
-		$scope.hasUnapprovedActivity = false;
-		$scope.unapprovedActivities = [
-			{
-				category:  `Arts & Entertainment`,
-				items: [
-					{
-						name: `Cinemark 16`,
-						description: `Super awesome movie theater with great seats, ATM-style ticket purchasing, and great popcorn!`,
-						rating: 5
-					}
-				]
-			},{
-				category:  `Outdoors`,
-				items: [
-					{
-						name: `Skate Park`,
-						description: `If you are a beginner or a hard core skateboarding fool you will find some cool shiz here brah!`,
-						rating: 5
-					}
-				]
-			}
-		];
-
-
-		// Temp data for dev work
-		$scope.activities = activitiesSvc.getDummyActivities();
+	// Temp status to show unapproved activities
+	$scope.isAdmin = false;
+	$scope.hasUnapprovedActivity = false;
+	$scope.unapprovedActivities = [
+		{
+			category:  `Arts & Entertainment`,
+			items: [
+				{
+					name: `Cinemark 16`,
+					description: `Super awesome movie theater with great seats, ATM-style ticket purchasing, and great popcorn!`,
+					rating: 5
+				}
+			]
+		},{
+			category:  `Outdoors`,
+			items: [
+				{
+					name: `Skate Park`,
+					description: `If you are a beginner or a hard core skateboarding fool you will find some cool shiz here brah!`,
+					rating: 5
+				}
+			]
+		}
+	];
 
 
-		$scope.activityTypes = activitiesSvc.getActivityTypes();
+	// Temp data for dev work
+	$scope.activities = activitiesSvc.getDummyActivities();
 
 
-		// Need to put details on scope for the "add new activity"
-		$scope.getActivity = () => {
-			let matches = [];
-			for (let i = 0; i < $scope.activities.length; i++) {
-				matches.push($scope.activities[i]);
-				$scope.details = matches;
-			}
-		};
-		$scope.getActivity();
-		console.log($scope.details);
+	$scope.activityTypes = activitiesSvc.getActivityTypes();
 
 
-		// function of back arrow on header
-		$scope.goBack = () => {
-    	$ionicHistory.goBack();
-  	};
+	// Need to put details on scope for the "add new activity"
+	$scope.getActivity = () => {
+		let matches = [];
+		for (let i = 0; i < $scope.activities.length; i++) {
+			matches.push($scope.activities[i]);
+			$scope.details = matches;
+		}
+	};
+	$scope.getActivity();
+	console.log($scope.details);
 
-		$scope.toggleGroup = ( activity ) => {
-			if ( $scope.isGroupShown( activity ) ) {
-				$scope.shownGroup = null;
-			} else {
-				$scope.shownGroup = activity;
-			}
-		};
-		$scope.isGroupShown = ( activity ) => {
-			return $scope.shownGroup === activity;
-		};
 
-		// swipe right like iPhone functionality
-		$scope.swipeRight = () => {
-		    window.history.back();
-		};
+	// function of back arrow on header
+	$scope.goBack = () => {
+	$ionicHistory.goBack();
+	};
 
-		$ionicModal.fromTemplateUrl('templates/activityAddModal.html', {
-		  scope: $scope
-	  }).then( (modal) => {
-		  $scope.modal = modal;
+	$scope.toggleGroup = ( activity ) => {
+		if ( $scope.isGroupShown( activity ) ) {
+			$scope.shownGroup = null;
+		} else {
+			$scope.shownGroup = activity;
+		}
+	};
+	$scope.isGroupShown = ( activity ) => {
+		return $scope.shownGroup === activity;
+	};
+
+	// swipe right like iPhone functionality
+	$scope.swipeRight = () => {
+	    window.history.back();
+	};
+
+	$ionicModal.fromTemplateUrl('templates/activityAddModal.html', {
+		scope: $scope
+	}).then( (modal) => {
+		$scope.modal = modal;
+	});
+
+	$ionicModal.fromTemplateUrl('templates/activityAddReviewModal.html', {
+		scope: $scope
+	}).then( (modal) => {
+		$scope.reviewModal = modal;
+	});
+
+	$ionicModal.fromTemplateUrl('templates/activityAddPhotoModal.html', {
+		scope: $scope
+	}).then( (modal) => {
+		$scope.photoModal = modal;
+	});
+
+
+	$ionicModal.fromTemplateUrl('templates/activityCategoryModal.html', {
+		scope: $scope
+	}).then( (modal) => {
+		$scope.categoryModal = modal;
+	});
+
+
+
+
+// CRUD ACTIVITIES
+	$scope.showActivities = () => {
+		activitiesSvc.getActivities()
+		.then((response) => {
+			console.log(response);
+			// $scope.activities = response;
 		});
+	};
 
-		$ionicModal.fromTemplateUrl('templates/activityAddReviewModal.html', {
-		  scope: $scope
-	  }).then( (modal) => {
-		  $scope.reviewModal = modal;
+	$scope.addActivity = (userActivity) => {
+		activitiesSvc.createActivity(userActivity)
+		.then((response) => {
+			console.log(response);
+
 		});
+	};
 
-		$ionicModal.fromTemplateUrl('templates/activityAddPhotoModal.html', {
-		  scope: $scope
-	  }).then( (modal) => {
-		  $scope.photoModal = modal;
+	$scope.updateActivity = (id, upActivity) => {
+		activitiesSvc.editActivity(id, upActivity)
+		.then((response) => {
+			console.log(response);
+
 		});
+	};
+
+	$scope.destroyActivity = (id) => {
+		activitiesSvc.deleteActivity(id)
+		.then((response) => {
+			console.log(response);
+
+		});
+	};
 
 
+	//CRUD COMMENTS
 
-		// CRUD ACTIVITIES
-			$scope.showActivities = () => {
-				activitiesSvc.getActivities()
-				.then((response) => {
-					console.log(response);
-					// $scope.activities = response;
-				});
-			};
+	$scope.showComments = () => {
+		activitiesSvc.getComments()
+		.then((response) => {
+			console.log(response);
+			//$scope.comments = response;
+		});
+	};
 
-			$scope.addActivity = (userActivity) => {
-				activitiesSvc.createActivity(userActivity)
-				.then((response) => {
-					console.log(response);
+	$scope.addComment = (comment) => {
+		activitiesSvc.getComments(comment)
+		.then((response) => {
+			console.log(response);
+		});
+	};
 
-				});
-			};
+	$scope.updateComment = (id, comment) => {
+		activitiesSvc.getComments(id, comment)
+		.then((response) => {
+			console.log(response);
+		});
+	};
 
-			$scope.updateActivity = (id, upActivity) => {
-				activitiesSvc.editActivity(id, upActivity)
-				.then((response) => {
-					console.log(response);
-
-				});
-			};
-
-			$scope.destroyActivity = (id) => {
-				activitiesSvc.deleteActivity(id)
-				.then((response) => {
-					console.log(response);
-
-				});
-			};
-
-
-			//CRUD COMMENTS
-
-			$scope.showComments = () => {
-				activitiesSvc.getComments()
-				.then((response) => {
-					console.log(response);
-					//$scope.comments = response;
-				});
-			};
-
-			$scope.addComment = (comment) => {
-				activitiesSvc.getComments(comment)
-				.then((response) => {
-					console.log(response);
-				});
-			};
-
-			$scope.updateComment = (id, comment) => {
-				activitiesSvc.getComments(id, comment)
-				.then((response) => {
-					console.log(response);
-				});
-			};
-
-			$scope.destroyComment = (id) => {
-				activitiesSvc.getComments(id)
-				.then((response) => {
-					console.log(response);
-				});
-			};
-	} );
+	$scope.destroyComment = (id) => {
+		activitiesSvc.getComments(id)
+		.then((response) => {
+			console.log(response);
+		});
+	};
+} );

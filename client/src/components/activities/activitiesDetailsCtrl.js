@@ -3,10 +3,15 @@ angular.module( 'companion' )
 
 	// Temp status to show unapproved activities
 	$scope.isAdmin = true;
+	$scope.isUser = true;
+	// $scope.isAdmin = false;
+	// $scope.isUser = false;
+
 
 	$scope.allActivities = activitiesSvc.getDummyActivities();
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
-	console.log($scope.allActivities);
+	$scope.categories = activitiesSvc.getCategories();
+	console.log($scope.categories);
 
 	$scope.category = $stateParams.category;
 	console.log(`category that was passed over -> ` + $scope.category);
@@ -35,10 +40,7 @@ angular.module( 'companion' )
 			ratingsArray.push(activity.reviews[i].rating);
 		}
 		// find the average of all the ratings
-		let total = 0;
-		for (let j = 0; j < ratingsArray.length; j++) {
-			total += ratingsArray[j];
-		}
+		let total = ratingsArray.reduce( (a, b) => {return a + b});
 		let rating = Math.round(total / ratingsArray.length);
 		$scope.rating = rating;
 		console.log(`rating = ` + $scope.rating);

@@ -61,15 +61,26 @@
     .card.redBar
         border-bottom: 0.8vh solid $flatRed
     .cardName
-        width: 85%
+        width: 100%
         float: left
+    .admin
+        width: 100%
+        border-top: 1px solid lightgray
     .trashButton
-        margin: 20px 10px 0px 0px
+        // margin: 20px 10px 0px 0px
         text-align: right
         color: $seperator
         font-size: 1.2rem
         float: right
-        @include vertical-align()
+        // @include vertical-align()
+    .editButton
+        // margin: 20px 0px 0px 10px
+        text-align: left
+        color: $seperator
+        font-size: 1.2rem
+        float: left
+        // @include vertical-align()
+
     .clearFloat
         clear: both
     .divider
@@ -89,9 +100,6 @@
         width: 100%
         background: $dmBleu
         margin-bottom: -0.2vh
-    .admin
-        width: 100%
-        float: right
     #title-center
         text-align: center !important
     .disapprovalButton, .approvalButton

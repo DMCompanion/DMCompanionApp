@@ -12,6 +12,14 @@ angular.module('companion')
         return activityTypes;
     };
 
+    this.getCategories = () => {
+        let categories = [];
+        for (let i = 0; i < activityTypes.length; i++) {
+            categories.push(activityTypes[i].category);
+        }
+        return categories;
+    };
+
 
     this.goBack = () => {
   		$ionicHistory.goBack();
