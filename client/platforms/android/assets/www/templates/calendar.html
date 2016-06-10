@@ -1,10 +1,11 @@
 <ion-view class="calendar">
   <div class="bar bar-header bar-dark">
     <a href="/#/home">
-      <!-- <button class="button button-icon icon ion-navicon-round"></button> -->
       <img src="./img/devmtnlogo_notext.png" class="headerBarLogo" />
     </a>
-    <!-- <h1 class="title">Events</h1> -->
+
+    <h1 class="title">Events</h1>
+
     <div class="add">
       <a ng-click="modal.show()">
         <button class="button button-icon icon ion-plus"></button>
@@ -13,7 +14,7 @@
   </div>
   <ion-content class="has-header">
 
-    <div class="adminApprove" ng-show="isAdmin && hasUnapprovedEvents">
+    <div class="adminApprove" ng-hide="isAdmin && hasUnapprovedEvents">
       <div>
         <h4 class="eventHeader">Unapproved Events</h4>
       </div>
@@ -60,9 +61,14 @@
         <div class="when">
           <strong>When: {{event.time}}</strong>
         </div>
-        <a class="trashButton" ng-click="destroyEvent(event._id)">
+      </div>
+      <div class="adminContainer" >
+        <a class="editButton" ng-click="editModal.show(); edit(event);">
+          <i class="icon ion-ios-compose"></i>
+        </a>
+
+        <a class="rashButton" ng-click="showConfirm(event._id)">
           <i class="icon ion-trash-a"></i>
-        </button>
         </a>
       </div>
 

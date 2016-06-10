@@ -1,0 +1,24 @@
+<ion-modal-view class="activityCategoryModal">
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title">Choose a category</h1>
+    </ion-header-bar>
+    <ion-content class="" on-swipe-down="categoryModal.hide()">
+
+        <ul class="list">
+
+          <li class="item item-checkbox" ng-repeat="category in categories">
+             <label class="checkbox">
+               <input type="checkbox" value='{{category}}' ng-model="newActivity.category[$index]">
+             </label>
+            {{category}}
+          </li>
+
+        </ul>
+
+        <div class="submitButtonContainer">
+            <button class="button button-balanced submitButton" ng-click="newActivity(category); categoryModal.hide()">Submit</button>
+            <button class="button button-assertive submitButton" ng-click="categoryModal.hide()">Cancel</button>
+        </div>
+
+     </ion-content>
+</ion-modal-view>
