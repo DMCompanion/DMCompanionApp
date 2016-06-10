@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('calendarCtrl', ($scope, $http, $state, $ionicHistory, $ionicModal, calendarSvc) => {
+  .controller('calendarCtrl', ($scope, $http, $state, $ionicHistory, $ionicModal, calendarSvc, $ionicPopup, $timeout) => {
 
     $scope.$on('$ionicView.beforeEnter', function() {
       // update campaigns everytime the view becomes active
@@ -12,6 +12,36 @@ angular.module('companion')
     }).then(function(modal) {
       $scope.modal = modal;
     });
+
+    $ionicModal.fromTemplateUrl('templates/editCalendarModal.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.editModal = modal;
+    });
+
+    $scope.edit = (event) => {
+      console.log('event', event);
+      $scope.copyOfCalendar = event;
+    }
+
+    $scope.showConfirm = (id) => {
+      let confirmPopup = $ionicPopup.confirm({
+        title: 'DELETE',
+        template: 'Are you sure you want to delete this?'
+      });
+
+      confirmPopup.then((res) => {
+        if(res) {
+          calendarSvc.deleteDeal(id)
+          .then((response) => {
+            console.log(response);
+          });
+          console.log('You are sure');
+        } else {
+          console.log('You are not sure');
+        }
+      });
+    };
 
     // FLEXCALENDAR
 
