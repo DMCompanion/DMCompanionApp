@@ -11,8 +11,9 @@ angular.module( 'companion' )
 	$scope.allActivities = activitiesSvc.getDummyActivities();
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
 	$scope.categories = activitiesSvc.getCategories();
-	$scope.reviews = activitiesSvc.getReviews();
-	console.log(`reviews = ` + $scope.reviews);
+	// $scope.reviews = activitiesSvc.getReviews();
+	console.log(`item reviews below`);
+	console.log( $scope.reviews);
 
 	$scope.thisCategory = $stateParams.category;
 	console.log(`category that was passed over -> ` + $scope.thisCategory);
@@ -30,18 +31,21 @@ angular.module( 'companion' )
 		}
 	};
 	$scope.getActivities();
+
+
 	console.log(`matched activities`);
 	console.log($scope.activities);
 
 	$scope.getRatingAvg = (activity) => {
-		console.log(`the single activity = ` + activity);
+		console.log(`the single activity`);
+		console.log(activity);
 		// get all the ratings from all the reviews from each $scope.activities
 		let ratingsArray = [];
 		for (let i = 0; i < activity.reviews.length; i++) {
 			ratingsArray.push(activity.reviews[i].rating);
 		}
 		// find the average of all the ratings
-		let total = ratingsArray.reduce( (a, b) => {return a + b});
+		let total = ratingsArray.reduce( (a, b) => {return a + b} );
 		let rating = Math.round(total / ratingsArray.length);
 		$scope.rating = rating;
 		console.log(`rating = ` + $scope.rating);
