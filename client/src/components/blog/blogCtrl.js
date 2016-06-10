@@ -19,12 +19,15 @@ angular.module('companion')
     }
 
     // CRUD BLOG
-    $scope.showBlog = () => {
+    $scope.showBlogs = () => {
       blogSvc.getBlogs()
         .then((response) => {
+          $scope.blogs = response.data;
           console.log(response);
         });
     };
+    // $scope.showBlogs();
+
     $scope.addBlog = (blog) => {
       blogSvc.createBlog(blog)
         .then((response) => {
