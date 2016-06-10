@@ -6,7 +6,7 @@
         </button>
     </ion-header-bar>
     <ion-content on-swipe-right="swipeRight()" on-swipe-down="modal.hide()">
-        <div class="card padding">
+        <!-- <div class="card padding">
             <p>{{rating}}-stars</p>
             <p>{{singleActivity.description}}</p>
             <div class="admin clearFloat" ng-show="isAdmin || isUser">
@@ -17,6 +17,22 @@
                     <i class="icon ion-trash-a"></i>
                 </a>
             </div>
+        </div> -->
+        <div class="card">
+          <div>
+            <p>{{rating}}-stars</p>
+            <p>{{singleActivity.description}}</p>
+          </div>
+            <div class="adminContainer" ng-show="isAdmin || isUser">
+              <a class="editButton" ng-click="editModal.show(); edit(deal);">
+                <i class="icon ion-ios-compose"></i>
+              </a>
+
+              <a class="rashButton" ng-click="showConfirm(deal._id)">
+                <i class="icon ion-trash-a"></i>
+              </a>
+            </div>
+
         </div>
     </ion-content>
 </ion-modal-view>
