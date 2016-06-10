@@ -1,25 +1,39 @@
 <ion-view class="activitiesDetails">
-  <ion-nav-bar class="bar-header bar-dark">
-    <ion-nav-back-button></ion-nav-back-button>
-  </ion-nav-bar>
-<ion-content class="padding" on-swipe-right="swipeRight()">
-  <ion-list>
-    <div class="card">
-      <img src="{{details.img}}" alt=""/>
-      <div class="button button-clear button-positive">
-        {{details.name}}
-      </div>
-      <div class="bar-blue"></div>
-    </div>
-    <div class="card padding" ng-repeat="item in details.items" ng-click="modal.show(); modalItems(item)">
-        <h4 ng-class="{active: isGroupShown(activity)}">
-        {{item.name}}
-        </h4>
-        <a class="trashButton" ng-click="showConfirm(item._id)">
-            <i class="icon ion-trash-a"></i>
-        </a>
-        <div class="bar-red"></div>
-    </div>
-  </ion-list>
-</ion-content>
+    <ion-nav-bar class="bar-header bar-dark">
+        <ion-nav-back-button></ion-nav-back-button>
+        <h1 class="title">{{category}}</h1>
+    </ion-nav-bar>
+    <ion-content class="padding" on-swipe-right="swipeRight()">
+        <ion-list>
+
+            <!-- Top card displays what category you are in -->
+            <!-- <div class="card">
+              <img src="{{details.img}}" alt=""/>
+              <div class="button button-clear button-positive">
+                {{details.name}}
+              </div>
+              <div class="bar-blue"></div>
+            </div> -->
+
+            <!-- activity cards       -->
+            <div class="card padding redBar" ng-repeat="activity in activities">
+                <div class="cardName" ng-click="modal.show(); modalItems(activity); getRatingAvg(activity)">
+                    <h4>{{activity.name}}</h4>
+                    <!-- <p>{{activity.rating}}-stars image here</p> -->
+                </div>
+
+                <!-- Admin options -->
+                <div class="admin clearFloat padding" ng-show="isAdmin">
+                    <a class="editButton" ng-click="updateItem(item._id)">
+                        <i class="icon ion-compose"></i>
+                    </a>
+                    <a class="trashButton" ng-click="destroyActivity(activity._id)">
+                        <i class="icon ion-trash-a"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- END activity cards       -->
+
+        </ion-list>
+    </ion-content>
 </ion-view>

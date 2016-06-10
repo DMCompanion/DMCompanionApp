@@ -11,8 +11,35 @@
         </div>
     </div>
     <ion-content class="padding has-header" on-swipe-right="swipeRight()">
+
+        <!-- Admin section for submited activities -->
+        <div class="adminApprove" ng-show="isAdmin && hasUnapprovedActivity">
+            <div>
+                <h4 class="eventHeader">Unapproved Activities</h4>
+            </div>
+            <!-- Show unapproved items -->
+            <div class="card" ng-repeat="unapprovedActivity in unapprovedActivities track by $index">
+                <div class="item item-divider">
+                    <h3>Category: {{unapprovedActivity.category}}</h3>
+                </div>
+                <div class="eventDescription item item-text-wrap">
+                    <p>Name: {{unapprovedActivity.items[0].name}}</p>
+                    <p>Rating: {{unapprovedActivity.items[0].rating}}-stars</p>
+                    <p>Description: {{unapprovedActivity.items[0].description}}</p>
+                </div>
+                <!-- approve or disapprove each item -->
+                <button class="disapprovalButton button button-assertive" ng-click="destroyActivity(unapprovedActivity._id)">
+                    <i class="icon ion-close"></i>
+                </button>
+                <button class="approvalButton button button-balanced" ng-click="approveActivity(unapprovedActivity._id, unapprovedActivity)">
+                    <i class="icon ion-checkmark"></i>
+                </button>
+            </div>
+        </div>
+        <!-- END Admin section for submited activities -->
+
         <ion-list>
-            <div class="card" ng-repeat="activity in activities">
+            <div class="card" ng-repeat="activity in activityTypes">
                 <a ui-sref="activitiesDetails({category:activity.category})">
                     <img src="{{activity.img}}" alt="" />
                 </a>
