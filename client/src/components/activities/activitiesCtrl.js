@@ -31,7 +31,7 @@ angular.module( 'companion' )
 	$scope.activities = activitiesSvc.getDummyActivities();
 
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
-	
+
 	$scope.categories = activitiesSvc.getCategories();
 	console.log($scope.categories);
 
@@ -96,6 +96,9 @@ angular.module( 'companion' )
 		$scope.categoryModal = modal;
 	});
 
+	$scope.getNumber = (num) => {
+    return new Array(num);
+	}
 
 
 
