@@ -98,4 +98,8 @@ angular.module( 'companion' )
 			});
 		};
 
+		$scope.getNumber = (num) => {
+			return new Array(num);
+		}
+
 });
