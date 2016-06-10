@@ -1,5 +1,5 @@
 angular.module( 'companion' )
-.controller( 'activitiesDetailsCtrl', ( $scope, activitiesSvc, $stateParams, $ionicGesture, $ionicModal, $ionicHistory, adminSvc ) => {
+.controller( 'activitiesDetailsCtrl', ( $scope, activitiesSvc, $stateParams, $ionicGesture, $ionicModal, $ionicHistory, adminSvc, $ionicPopup, $timeout) => {
 
 	// Temp status to show unapproved activities
 	$scope.isAdmin = true;
@@ -67,5 +67,34 @@ angular.module( 'companion' )
 	      animation: 'slide-in-up'
 	  }).then( (modal) => { $scope.modal = modal; });
 
+		$ionicModal.fromTemplateUrl('templates/editActivityModal.html', {
+			scope: $scope
+		}).then(function(modal) {
+			$scope.editModal = modal;
+		});
+
+		$scope.edit = (item) => {
+			console.log('item', item);
+			$scope.copyOfItem = item;
+		}
+
+		$scope.showConfirm = (id) => {
+			let confirmPopup = $ionicPopup.confirm({
+				title: 'DELETE',
+				template: 'Are you sure you want to delete this?'
+			});
+
+			confirmPopup.then((res) => {
+				if(res) {
+					activitiesSvc.deleteDeal(id)
+					.then((response) => {
+						console.log(response);
+					});
+					console.log('You are sure');
+				} else {
+					console.log('You are not sure');
+				}
+			});
+		};
 
 });
