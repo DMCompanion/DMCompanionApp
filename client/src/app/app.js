@@ -29,18 +29,26 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
         templateUrl: './templates/home.html',
         controller: 'homeCtrl',
         resolve: {
-            checkAuth: (masterSvc, $state) => {
-              console.log("auth running?");
-                return masterSvc.checkAuth().then((response) => {
-                    console.log("response? ", response);
-                    return response;
-                }).catch(() => {
-                    console.log("response fail? ", response);
-                    return response;
-                    // $state.go('login');
-                });
-            }
-      }})
+          checkLogin: function($q, $http) {
+            console.log("resolving...");
+            // var defer = $q.defer();
+            // masterSvc.checkAuth();
+              //   .then(response => {
+              //   // console.log("response object: ", response);
+              //   console.log("resolved.");
+              //   defer.resolve();
+              // })
+            // return defer.promise;
+
+            return $http.get('http://localhost:8006/api/v1/currentUser').then(function(response) {
+                console.log("resolved.");
+                return response;
+            });
+
+
+          }
+        }
+      })
       .state('activities', {
         url: '/activities',
         templateUrl: './templates/activities.html',
@@ -52,9 +60,9 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
         controller: 'dealsCtrl'
       })
       .state('activitiesDetails', {
-          url: '/activitiesDetails/:category',
-          templateUrl: './templates/activitiesDetails.html',
-          controller: 'activitiesDetailsCtrl'
+        url: '/activitiesDetails/:category',
+        templateUrl: './templates/activitiesDetails.html',
+        controller: 'activitiesDetailsCtrl'
       })
       .state('calendar', {
         url: '/calendar',
@@ -67,9 +75,9 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
         controller: 'placesCtrl'
       })
       .state('placesDetails', {
-          url: '/placesDetails/:category',
-          templateUrl: './templates/placesDetails.html',
-          controller: 'placesDetailsCtrl'
+        url: '/placesDetails/:category',
+        templateUrl: './templates/placesDetails.html',
+        controller: 'placesDetailsCtrl'
       })
       .state('blog', {
         url: '/blog',

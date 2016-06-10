@@ -9,15 +9,30 @@ import User from '../models/usersModel';
 const DevmtnStrategy = Devmtn.Strategy;
 
 // Passport Strategy
-passport.use('devmtn', new DevmtnStrategy(devmtnAuthConfig, (jwtoken, user, done) => {
+passport.use('devmtn', new DevmtnStrategy(devmtnAuthConfig, (obj, jwtoken, user, done) => {
     console.log("DEV USER: ", user);
+    console.log("done?: ", done);
     if (!user.cohortId || user.cohortId === 0) {
         // Reject user
         console.log('this user does not have a cohort id');
+        // done(null, user);
     }
 
     finishLoginFunction(jwtoken, user, done);
 }));
+
+// serialize / deserialize for passport
+passport.serializeUser(function (user, done) {
+    console.log("user serialize: ", user);
+    done(null, user);
+});
+
+passport.deserializeUser(function (obj, done) {
+    console.log("user deserialize: ", obj);
+    done(null, obj);
+});
+
+passport.superAwesomeValue = "hi there";
 
 var finishLoginFunction = (jwtoken, user, done) => {
 
@@ -71,19 +86,14 @@ var finishLoginFunction = (jwtoken, user, done) => {
                     console.log('Successfully updated user roles: ', updRes);
                     //Make sure the id's still match up
                     // res.send(foundUser);
+
+                    console.log("Found user", foundUser);
                     return done(null, foundUser);
                 }
             });
         }
     });
 }
-
-passport.serializeUser((user, done) => {
-    done(null, user);
-});
-passport.deserializeUser((obj, done) => {
-    done(null, obj);
-});
 
 var hasCustomRole = (role, user) => {
     for (var i = 0; i < user.roles.length; i++) {
@@ -128,11 +138,11 @@ module.exports = {
     currentUser: (req, res) => {
         console.log('CURRENT USER: ', req.user);
         //Return the currently logged in user
-        if (req.isAuthenticated()) {
+        // if (req.isAuthenticated()) {
             res.json(req.user);
-        } else {
-            res.status(401).send(null);
-        }
+        // } else {
+        //     res.status(401).send(null);
+        // }
     },
 
     requireAdminRole: (req, res, next) => {
