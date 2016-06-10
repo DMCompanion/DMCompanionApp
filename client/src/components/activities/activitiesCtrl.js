@@ -1,5 +1,5 @@
 angular.module( 'companion' )
-	.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc) => {
+	.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc, $ionicPopup, $timeout) => {
 
 		// Temp status to show unapproved activities
 		$scope.isAdmin = false;
@@ -68,6 +68,24 @@ angular.module( 'companion' )
 		  $scope.photoModal = modal;
 		});
 
+		$scope.showConfirm = (id) => {
+			let confirmPopup = $ionicPopup.confirm({
+				title: 'DELETE',
+				template: 'Are you sure you want to delete this?'
+			});
+
+			confirmPopup.then((res) => {
+				if(res) {
+					activitiesSvc.deleteDeal(id)
+					.then((response) => {
+						console.log(response);
+					});
+					console.log('You are sure');
+				} else {
+					console.log('You are not sure');
+				}
+			});
+		};
 
 		// Need to put details on scope for the "add new activity"
 		$scope.getActivity = () => {
