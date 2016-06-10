@@ -40,9 +40,9 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
         controller: 'dealsCtrl'
       })
       .state('activitiesDetails', {
-          url: '/activitiesDetails/:category',
-          templateUrl: './templates/activitiesDetails.html',
-          controller: 'activitiesDetailsCtrl'
+        url: '/activitiesDetails/:category',
+        templateUrl: './templates/activitiesDetails.html',
+        controller: 'activitiesDetailsCtrl'
       })
       .state('calendar', {
         url: '/calendar',
@@ -55,9 +55,9 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
         controller: 'placesCtrl'
       })
       .state('placesDetails', {
-          url: '/placesDetails/:category',
-          templateUrl: './templates/placesDetails.html',
-          controller: 'placesDetailsCtrl'
+        url: '/placesDetails/:category',
+        templateUrl: './templates/placesDetails.html',
+        controller: 'placesDetailsCtrl'
       })
       .state('blog', {
         url: '/blog',

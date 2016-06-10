@@ -19,10 +19,16 @@ angular.module('companion')
       $scope.editModal = modal;
     });
 
+    $ionicModal.fromTemplateUrl('templates/eventModal.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.eventModal = modal;
+    });
+
     $scope.edit = (event) => {
       console.log('event', event);
       $scope.copyOfCalendar = event;
-    }
+    };
 
     $scope.showConfirm = (id) => {
       let confirmPopup = $ionicPopup.confirm({
@@ -31,11 +37,11 @@ angular.module('companion')
       });
 
       confirmPopup.then((res) => {
-        if(res) {
+        if (res) {
           calendarSvc.deleteDeal(id)
-          .then((response) => {
-            console.log(response);
-          });
+            .then((response) => {
+              console.log(response);
+            });
           console.log('You are sure');
         } else {
           console.log('You are not sure');
