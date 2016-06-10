@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('placesDetailsCtrl', ($scope, $http, $ionicModal, $ionicHistory) => {
+  .controller('placesDetailsCtrl', ($scope, $http, $ionicModal, $ionicHistory, $stateParams) => {
 
     $scope.places = [
       {
@@ -109,6 +109,7 @@ angular.module('companion')
         $scope.addPlace = (userPlace) => {
           calendarSvc.createPlace(userPlace)
           .then((response) => {
+            $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
 
           })
@@ -117,6 +118,7 @@ angular.module('companion')
         $scope.updatePlace = (id, upPlace) => {
           calendarSvc.editPlace(id, upPlace)
           .then((response) => {
+            $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
 
           })

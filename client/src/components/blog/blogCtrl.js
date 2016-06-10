@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('blogCtrl', ($scope, $http, $ionicModal, blogSvc, adminSvc, $ionicPopup, $timeout) => {
+  .controller('blogCtrl', ($scope, $http, $ionicModal, blogSvc, adminSvc, $ionicPopup, $timeout, $stateParams) => {
 
     $ionicModal.fromTemplateUrl('templates/blogModal.html', {
       scope: $scope
@@ -28,6 +28,7 @@ angular.module('companion')
         if(res) {
           blogSvc.deleteDeal(id)
           .then((response) => {
+            $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
           });
           console.log('You are sure');
@@ -47,12 +48,14 @@ angular.module('companion')
     $scope.addBlog = (blog) => {
       blogSvc.createBlog(blog)
         .then((response) => {
+          $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
           console.log(response);
         });
     };
     $scope.updateBlog = (id, upBlog) => {
       blogSvc.editBlog(id, upBlog)
         .then((response) => {
+          $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
           console.log(response);
         });
     };
