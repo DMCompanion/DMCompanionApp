@@ -46,12 +46,30 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
   }];
 
   // CRUD PLACES
-  this.getPlaces = () => {
+  this.getPlaces = (userLat, userLong, query) => {
     return $http({
-      method: 'GET',
-      url: 'http://192.168.0.214:8006/api/v1/places'
+      method: 'POST',
+      url: 'http://localhost:8006/api/v1/googlePlaces/' + userLat + '/' + userLong + '/' + query
     }).then((response) => {
       return response;
+    });
+  };
+
+  this.getPlaceDistance = (userLat, userLong, placeId) => {
+    return $http({
+      method: 'POST',
+      url: 'http://localhost:8006/api/v1/googleDistance/' + userLat + '/' + userLong + '/' + placeId
+    }).then((response) => {
+      return response.data;
+    });
+  };
+
+  this.getPlacePhoto = (photoRef) => {
+    return $http({
+      method: 'POST',
+      url: 'http://localhost:8006/api/v1/googlePhoto/' + photoRef
+    }).then((response) => {
+      return response.data;
     });
   };
 
