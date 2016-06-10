@@ -20,6 +20,14 @@ angular.module('companion')
         return categories;
     };
 
+    this.getReviews = () => {
+        let reviews = [];
+        for (let i = 0; i < activityTypes.length; i++) {
+            reviews.push(activityTypes[i].review);
+        }
+        return reviews;
+    };
+
 
     this.goBack = () => {
   		$ionicHistory.goBack();
