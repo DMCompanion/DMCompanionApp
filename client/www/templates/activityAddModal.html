@@ -7,10 +7,13 @@
 
 <!-- Student new Activity submittal inputs -->
         <label class="item item-input">
-            <button class="input-label button icon-left ion-android-checkbox-outline" ng-click="categoryModal.show()"> Choose Categories</button>
-                <!-- <ion-checkbox ng-repeat="category in activityTypes" ng-model="newActivity.category">
-                    {{category.category}}
-                </ion-checkbox> -->
+            <button
+                class="input-label button icon-left ion-android-checkbox-outline"
+                ng-model="newActivity.category[$index]"
+                ng-click="categoryModal.show()"
+                >
+                Choose Categories
+            </button>
         </label>
         <label class="item item-input">
           <span class="input-label">Name</span>

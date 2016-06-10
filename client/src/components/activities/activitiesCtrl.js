@@ -28,22 +28,22 @@ angular.module( 'companion' )
 
 
 	// Temp data for dev work
-	$scope.activities = activitiesSvc.getDummyActivities();
+	// $scope.activities = activitiesSvc.getActivities();
 
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
 	$scope.categories = activitiesSvc.getCategories();
 	console.log($scope.categories);
 
 	// Need to put details on scope for the "add new activity"
-	$scope.getActivity = () => {
-		let matches = [];
-		for (let i = 0; i < $scope.activities.length; i++) {
-			matches.push($scope.activities[i]);
-			$scope.details = matches;
-		}
-	};
-	$scope.getActivity();
-	console.log($scope.details);
+	// $scope.getActivity = () => {
+	// 	let matches = [];
+	// 	for (let i = 0; i < $scope.activities.length; i++) {
+	// 		matches.push($scope.activities[i]);
+	// 		$scope.details = matches;
+	// 	}
+	// };
+	// $scope.getActivity();
+	// console.log($scope.details);
 
 
 	// function of 'back arrow icon' on header
