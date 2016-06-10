@@ -11,7 +11,6 @@ const DevmtnStrategy = Devmtn.Strategy;
 // Passport Strategy
 passport.use('devmtn', new DevmtnStrategy(devmtnAuthConfig, (obj, jwtoken, user, done) => {
     console.log("DEV USER: ", user);
-    console.log("done?: ", done);
     if (!user.cohortId || user.cohortId === 0) {
         // Reject user
         console.log('this user does not have a cohort id');
@@ -88,7 +87,7 @@ var finishLoginFunction = (jwtoken, user, done) => {
                     // res.send(foundUser);
 
                     console.log("Found user", foundUser);
-                    return done(null, foundUser);
+                    done(null, jwtoken);
                 }
             });
         }

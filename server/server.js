@@ -75,6 +75,8 @@ app.use(function(req, res, next) {
     console.log('-- signed cookies --');
     console.dir(req.signedCookies);
     console.log('-------------');
+    console.log('-- req user --');
+    console.dir(req.user);
     next()
   });
 
@@ -101,10 +103,9 @@ function ensureAuthenticated(req, res, next) {
 //DevMtn Auth
 app.get('/auth/devmtn', passport.authenticate('devmtn'));
 // app.get('/auth/devmtn/callback', passport.authenticate('devmtn', {failureRedirect: '/#/'}), devmtnCtrl.loginSuccessRouter);
-app.get('/auth/devmtn/callback', passport.authenticate('devmtn', {
-    failureRedirect: '/#/login',
-    successRedirect: 'http://localhost:9001/#/home'
-}));
+app.get('/auth/devmtn/callback', passport.authenticate('devmtn'), function(req, res){
+  res.redirect('http://localhost:9001/#/home?token=' + req.user)
+});
 
   // ???? where do you go
   // req.logIn(foundUser, function (foundUser, err) { // <-- Log user in

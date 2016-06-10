@@ -25,7 +25,7 @@ module.exports = {
                 console.log("Did not got events: ", err);
                 res.status(500).send(err);
             } else {
-                console.log("Got events: ", events);
+                // console.log("Got events: ", events);
                 res.status(200).send(events);
             }
         });
