@@ -15,7 +15,7 @@
         <h4 ng-class="{active: isGroupShown(activity)}">
         {{item.name}}
         </h4>
-        <a class="trashButton" ng-click="destroyActivity(event._id)">
+        <a class="trashButton" ng-click="showConfirm(item._id)">
             <i class="icon ion-trash-a"></i>
         </a>
         <div class="bar-red"></div>

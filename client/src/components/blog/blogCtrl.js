@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('blogCtrl', ($scope, $http, $ionicModal, blogSvc, adminSvc) => {
+  .controller('blogCtrl', ($scope, $http, $ionicModal, blogSvc, adminSvc, $ionicPopup, $timeout) => {
 
     $ionicModal.fromTemplateUrl('templates/blogModal.html', {
       scope: $scope
@@ -17,6 +17,25 @@ angular.module('companion')
       console.log('blog', blog);
       $scope.copyOfBlog = blog;
     }
+
+    $scope.showConfirm = (id) => {
+      let confirmPopup = $ionicPopup.confirm({
+        title: 'DELETE',
+        template: 'Are you sure you want to delete this?'
+      });
+
+      confirmPopup.then((res) => {
+        if(res) {
+          blogSvc.deleteDeal(id)
+          .then((response) => {
+            console.log(response);
+          });
+          console.log('You are sure');
+        } else {
+          console.log('You are not sure');
+        }
+      });
+    };
 
     // CRUD BLOG
     $scope.showBlog = () => {

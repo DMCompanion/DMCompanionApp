@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('dealsCtrl', ($scope, $http, $ionicModal, dealsSvc, adminSvc) => {
+  .controller('dealsCtrl', ($scope, $http, $ionicModal, dealsSvc, adminSvc, $ionicPopup, $timeout) => {
 
     $ionicModal.fromTemplateUrl('templates/dealsModal.html', {
       scope: $scope
@@ -17,6 +17,25 @@ angular.module('companion')
       console.log('deal', deal);
       $scope.copyOfDeal = deal;
     }
+
+    $scope.showConfirm = (id) => {
+      let confirmPopup = $ionicPopup.confirm({
+        title: 'DELETE',
+        template: 'Are you sure you want to delete this?'
+      });
+
+      confirmPopup.then((res) => {
+        if(res) {
+          dealsSvc.deleteDeal(id)
+          .then((response) => {
+            console.log(response);
+          });
+          console.log('You are sure');
+        } else {
+          console.log('You are not sure');
+        }
+      });
+    };
 
     //
     // $scope.filterDeals = (deals) => {
