@@ -2,8 +2,6 @@ angular.module('companion')
 .service('activitiesSvc', function ($http, $ionicHistory) {
     //   ^^ dont use fat arrow on a Service, it changes .this
 
-
-
     this.getDummyActivities = () => {
         return dummyActivities;
     };
