@@ -11,12 +11,11 @@ angular.module( 'companion' )
 	$scope.allActivities = activitiesSvc.getDummyActivities();
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
 	$scope.categories = activitiesSvc.getCategories();
-	// $scope.reviews = activitiesSvc.getReviews();
 	console.log(`item reviews below`);
 	console.log( $scope.reviews);
 
 	$scope.thisCategory = $stateParams.category;
-	console.log(`category that was passed over -> ` + $scope.thisCategory);
+	console.log(`category that was passed over -> ${$scope.thisCategory}`);
 
 // find activities that match the category passsed in url
 	$scope.getActivities = () => {
@@ -45,10 +44,10 @@ angular.module( 'companion' )
 			ratingsArray.push(activity.reviews[i].rating);
 		}
 		// find the average of all the ratings
-		let total = ratingsArray.reduce( (a, b) => {return a + b} );
+		let total = ratingsArray.reduce( (a, b) => {return a + b;} );
 		let rating = Math.round(total / ratingsArray.length);
 		$scope.rating = rating;
-		console.log(`rating = ` + $scope.rating);
+		console.log(`rating = ${$scope.rating}`);
 	};
 
 
@@ -59,47 +58,45 @@ angular.module( 'companion' )
 	};
 
 	// Swipe left-right to go back
-	$scope.swipeRight = () => {
-	    window.history.back();
-	};
+	$scope.swipeRight = () => { window.history.back(); };
 
-	$scope.modalItems = (activity) => {
-		$scope.singleActivity = activity;
-	};
 
+
+// ---  MODALS  --- //
+	$scope.modalItems = (activity) => { $scope.singleActivity = activity; };
+	
 	$ionicModal.fromTemplateUrl('templates/activityItemModal.html', {
 	      scope: $scope,
 	      animation: 'slide-in-up'
 	  }).then( (modal) => { $scope.modal = modal; });
 
-		$ionicModal.fromTemplateUrl('templates/editActivityModal.html', {
-			scope: $scope
-		}).then(function(modal) {
-			$scope.editModal = modal;
+	$ionicModal.fromTemplateUrl('templates/editActivityModal.html', {
+		scope: $scope
+	}).then( (modal) => { $scope.editModal = modal; });
+// ---  MODALS  --- //
+
+
+
+	$scope.edit = (item) => {
+		console.log('item', item);
+		$scope.copyOfItem = item;
+	};
+
+	$scope.showConfirm = (id) => {
+		let confirmPopup = $ionicPopup.confirm({
+			title: 'DELETE',
+			template: 'Are you sure you want to delete this?'
 		});
 
-		$scope.edit = (item) => {
-			console.log('item', item);
-			$scope.copyOfItem = item;
-		}
-
-		$scope.showConfirm = (id) => {
-			let confirmPopup = $ionicPopup.confirm({
-				title: 'DELETE',
-				template: 'Are you sure you want to delete this?'
-			});
-
-			confirmPopup.then((res) => {
-				if(res) {
-					activitiesSvc.deleteDeal(id)
-					.then((response) => {
-						console.log(response);
-					});
-					console.log('You are sure');
-				} else {
-					console.log('You are not sure');
-				}
-			});
-		};
+		confirmPopup.then((res) => {
+			if(res) {
+				activitiesSvc.deleteDeal(id)
+				.then((response) => { console.log(response); });
+				console.log('You are sure');
+			} else {
+				console.log('You are not sure');
+			}
+		});
+	};
 
 });
