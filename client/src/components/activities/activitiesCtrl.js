@@ -116,6 +116,24 @@ angular.module( 'companion' )
 		activitiesSvc.editActivity(id, upActivity)
 		.then((response) => {
 			console.log(response);
+		$scope.showConfirm = (id) => {
+			let confirmPopup = $ionicPopup.confirm({
+				title: 'DELETE',
+				template: 'Are you sure you want to delete this?'
+			});
+
+			confirmPopup.then((res) => {
+				if(res) {
+					activitiesSvc.deleteDeal(id)
+					.then((response) => {
+						console.log(response);
+					});
+					console.log('You are sure');
+				} else {
+					console.log('You are not sure');
+				}
+			});
+		};
 
 		});
 	};
