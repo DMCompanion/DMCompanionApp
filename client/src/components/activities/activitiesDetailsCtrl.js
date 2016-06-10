@@ -7,15 +7,15 @@ angular.module( 'companion' )
 	// $scope.isAdmin = false;
 	// $scope.isUser = false;
 
+	$scope.thisCategory = $stateParams.category;
+	console.log(`category that was passed over -> ${$scope.thisCategory}`);
 
-	$scope.allActivities = activitiesSvc.getDummyActivities();
+	$scope.allActivities = activitiesSvc.getActivities($scope.thisCategory);
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
 	$scope.categories = activitiesSvc.getCategories();
 	console.log(`item reviews below`);
 	console.log( $scope.reviews);
 
-	$scope.thisCategory = $stateParams.category;
-	console.log(`category that was passed over -> ${$scope.thisCategory}`);
 
 // find activities that match the category passsed in url
 	$scope.getActivities = () => {
@@ -64,7 +64,7 @@ angular.module( 'companion' )
 
 // ---  MODALS  --- //
 	$scope.modalItems = (activity) => { $scope.singleActivity = activity; };
-	
+
 	$ionicModal.fromTemplateUrl('templates/activityItemModal.html', {
 	      scope: $scope,
 	      animation: 'slide-in-up'

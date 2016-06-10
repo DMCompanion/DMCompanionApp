@@ -119,10 +119,10 @@ angular.module('companion')
     this.goBack = () => { $ionicHistory.goBack(); };
 
     // CRUD ACTIVITIES
-    this.getActivities = () => {
+    this.getActivities = (category) => {
       return $http({
         method: 'GET',
-        url: 'http://192.168.0.214:8006/api/v1/activities'
+        url: 'http://192.168.0.214:8006/api/v1/activities?category=' + category
       }).then((response) => {
         return response;
     });
