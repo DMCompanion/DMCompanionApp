@@ -11,10 +11,11 @@ angular.module( 'companion' )
 	$scope.allActivities = activitiesSvc.getDummyActivities();
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
 	$scope.categories = activitiesSvc.getCategories();
-	console.log($scope.categories);
+	$scope.reviews = activitiesSvc.getReviews();
+	console.log(`reviews = ` + $scope.reviews);
 
-	$scope.category = $stateParams.category;
-	console.log(`category that was passed over -> ` + $scope.category);
+	$scope.thisCategory = $stateParams.category;
+	console.log(`category that was passed over -> ` + $scope.thisCategory);
 
 // find activities that match the category passsed in url
 	$scope.getActivities = () => {

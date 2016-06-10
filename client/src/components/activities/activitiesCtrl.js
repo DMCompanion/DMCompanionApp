@@ -30,8 +30,12 @@ angular.module( 'companion' )
 	// Temp data for dev work
 	$scope.activities = activitiesSvc.getDummyActivities();
 
-
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
+	
+	$scope.categories = activitiesSvc.getCategories();
+	console.log($scope.categories);
+
+
 
 
 	// Need to put details on scope for the "add new activity"

@@ -18,5 +18,17 @@
                 </a>
             </div>
         </div>
+        <div class="card padding" ng-repeat="review in reviews track by $index">
+            <p>{{review.rating}}-stars</p>
+            <p>{{review.review}}</p>
+            <div class="admin clearFloat" ng-show="isAdmin || isUser">
+                <a class="editButton padding" ng-click="updateItem(item._id)">
+                    <i class="icon ion-compose"></i>
+                </a>
+                <a class="trashButton padding" ng-click="destroyItem(item._id)">
+                    <i class="icon ion-trash-a"></i>
+                </a>
+            </div>
+        </div>
     </ion-content>
 </ion-modal-view>
