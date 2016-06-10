@@ -22,10 +22,10 @@ const ActivitySchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Review'
     }],
-    category: {
+    category: [{
         type: String,
         enum: ['Outdoor', 'Arts & Entertainment', 'Winter', 'Summer', 'Spring', 'Fall', 'Night Life', 'Active Life', 'Beauty & Spa']
-    },
+    }],
     photoHeader: {
         type: String
     },
