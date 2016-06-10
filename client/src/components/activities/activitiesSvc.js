@@ -1,5 +1,5 @@
 angular.module('companion')
-.service('activitiesSvc', function ($http, $ionicHistory) {
+.service('activitiesSvc', function ($http, $ionicHistory, $stateParams) {
     //   ^^ dont use fat arrow on a Service, it changes .this
 
     const activityTypes = [
@@ -119,15 +119,6 @@ angular.module('companion')
         return categories;
     };
 
-    // this.getReviews = () => {
-    //     let reviews = [];
-    //     for (let i = 0; i < dummyActivities.length; i++) {
-    //         for (let j = 0; j < dummyActivities[i].reviews.length; j++) {
-    //             reviews.push(dummyActivities[j].reviews);
-    //         }
-    //     }
-    //     return reviews;
-    // };
 
     this.goBack = () => {
   		$ionicHistory.goBack();
