@@ -32,7 +32,7 @@ angular.module('companion')
 
       confirmPopup.then((res) => {
         if(res) {
-          calendarSvc.deleteDeal(id)
+          calendarSvc.deleteEvent(id)
           .then((response) => {
             $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
