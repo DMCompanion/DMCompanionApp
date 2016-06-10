@@ -1,25 +1,51 @@
 <ion-view class="activities">
     <div class="bar bar-header bar-dark">
         <a href="/#/home">
-            <!-- <button class="button button-icon icon ion-navicon"></button> -->
             <img src="./img/devmtnlogo_notext.png" class="headerBarLogo" />
         </a>
         <h1 class="title">Activities</h1>
         <div class="add">
           <a ng-click="modal.show()">
-            <button class="button button-icon icon ion-android-add"></button>
+            <button class="button button-icon icon ion-plus"></button>
           </a>
         </div>
     </div>
     <ion-content class="padding has-header" on-swipe-right="swipeRight()">
+
+        <!-- Admin section for submited activities -->
+        <div class="adminApprove" ng-show="isAdmin && hasUnapprovedActivity">
+            <div>
+                <h4 class="eventHeader">Unapproved Activities</h4>
+            </div>
+            <!-- Show unapproved items -->
+            <div class="card" ng-repeat="unapprovedActivity in unapprovedActivities track by $index">
+                <div class="item item-divider">
+                    <h3>Category: {{unapprovedActivity.category}}</h3>
+                </div>
+                <div class="eventDescription item item-text-wrap">
+                    <p>Name: {{unapprovedActivity.items[0].name}}</p>
+                    <p>Rating: {{unapprovedActivity.items[0].rating}}-stars</p>
+                    <p>Description: {{unapprovedActivity.items[0].description}}</p>
+                </div>
+                <!-- approve or disapprove each item -->
+                <button class="disapprovalButton button button-assertive" ng-click="destroyActivity(unapprovedActivity._id)">
+                    <i class="icon ion-close"></i>
+                </button>
+                <button class="approvalButton button button-balanced" ng-click="approveActivity(unapprovedActivity._id, unapprovedActivity)">
+                    <i class="icon ion-checkmark"></i>
+                </button>
+            </div>
+        </div>
+        <!-- END Admin section for submited activities -->
+
         <ion-list>
-            <div class="card" ng-repeat="activity in activities">
+            <div class="card" ng-repeat="activity in activityTypes">
                 <a ui-sref="activitiesDetails({category:activity.category})">
                     <img src="{{activity.img}}" alt="" />
+                </a>
                     <div class="button button-clear button-positive">
                         {{activity.category}}
                     </div>
-                </a>
                 <div class="bar-blue"></div>
             </div>
         </ion-list>

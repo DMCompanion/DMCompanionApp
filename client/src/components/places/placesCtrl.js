@@ -1,8 +1,8 @@
-angular.module("companion").controller("placesCtrl", function($scope, placesSvc, $ionicGesture, $ionicHistory, $ionicModal ) {
+angular.module("companion").controller("placesCtrl", function($scope, placesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc, $ionicPopup, $timeout) {
 
   $scope.placesCategories = placesSvc.getDummyActivities();
 
-  $scope.goBack = function() {
+  $scope.goBack = () => {
     $ionicHistory.goBack();
   };
 
@@ -35,6 +35,7 @@ angular.module("companion").controller("placesCtrl", function($scope, placesSvc,
         $scope.showPlaces = () => {
           placesSvc.getPlaces()
           .then((response) => {
+            $scope.places = adminSvc.filterFeatures(response.data)
             console.log(response);
             // $scope.places = response;
           })
