@@ -35,7 +35,7 @@
             </div>
 
         </div>
-        <div class="card" ng-repeat="review in reviews track by $index">
+        <div class="item-review card" ng-repeat="review in reviews track by $index">
             <div class="ratingContainer"><div class="displayStars" ng-repeat="i in getNumber(userRating) track by $index"></div></div>
             <p>{{review.review}}</p>
 

@@ -1,5 +1,5 @@
 angular.module( 'companion' )
-.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc) => {
+.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc, $stateParams) => {
 
 	// Temp status to show unapproved activities
 	$scope.isAdmin = false;
@@ -114,6 +114,7 @@ angular.module( 'companion' )
 	$scope.addActivity = (userActivity) => {
 		activitiesSvc.createActivity(userActivity)
 		.then((response) => {
+			$state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 			console.log(response);
 
 		});
@@ -133,6 +134,7 @@ angular.module( 'companion' )
 				if(res) {
 					activitiesSvc.deleteDeal(id)
 					.then((response) => {
+						$state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 						console.log(response);
 					});
 					console.log('You are sure');
@@ -167,6 +169,7 @@ angular.module( 'companion' )
 	$scope.addComment = (comment) => {
 		activitiesSvc.getComments(comment)
 		.then((response) => {
+			$state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 			console.log(response);
 		});
 	};
@@ -174,6 +177,7 @@ angular.module( 'companion' )
 	$scope.updateComment = (id, comment) => {
 		activitiesSvc.getComments(id, comment)
 		.then((response) => {
+			$state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 			console.log(response);
 		});
 	};
