@@ -5,6 +5,25 @@
     <ion-content class="has-header" on-swipe-down="modal.hide()">
 
 <!-- Student new Activity submittal inputs -->
+
+        <div ng-hide="!category">
+            <div class="submitButtonContainer">
+                <button class="button button-balanced submitButton" ng-click="categoryToggle()">Done</button>
+            </div>
+            <ul class="list">
+                <li class="item item-checkbox" ng-repeat="category in categories track by $index">
+                    <label class="checkbox">
+                        <input
+                        type="checkbox"
+                        ng-model="categoryList[$index]"
+                        >
+                    </label>
+                    {{category}}
+                </li>
+            </ul>
+        </div>
+
+
         <label class="item item-input">
 
             <button
@@ -16,24 +35,6 @@
                 Choose Categories
             </button>
 
-            <div ng-hide="!category">
-                <div class="submitButtonContainer">
-                    <button class="button button-balanced submitButton" ng-click="categoryToggle()">Done</button>
-                </div>
-                <ul class="list">
-                    <li class="item item-checkbox" ng-repeat="category in categories track by $index">
-                        <label class="checkbox">
-                            <input
-                            type="checkbox"
-                            value='{{category}}'
-                            ng-model="selectedCategory"
-                            ng-change="console.log('newActivity')"
-                            >
-                        </label>
-                        {{category}}
-                    </li>
-                </ul>
-            </div>
 
         </label>
         <div ng-show="!category">

@@ -1,9 +1,10 @@
 angular.module( 'companion' )
 .controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc) => {
 
+	$scope.newActivity = {};
 	// Temp status to show unapproved activities
-	$scope.isAdmin = false;
-	$scope.hasUnapprovedActivity = false;
+	$scope.isAdmin = true;
+	$scope.hasUnapprovedActivity = true;
 	$scope.unapprovedActivities = [
 		{
 			category:  `Arts & Entertainment`,
@@ -63,8 +64,27 @@ angular.module( 'companion' )
 	};
 
 	$scope.categoryToggle = () => {
+		if ($scope.category) {
+			$scope.checkCategories();
+		}
 		$scope.category = !$scope.category;
 	};
+
+	$scope.categoryList = [];
+	for (var i = 0; i < $scope.categories.length; i++) {
+		$scope.categoryList.push(false);
+	}
+	$scope.checkCategories = () => {
+		$scope.newActivity.category = [];
+		for (var i = 0; i < $scope.categoryList.length; i++) {
+			if ($scope.categoryList[i]) {
+				$scope.newActivity.category.push($scope.categories[i]);
+			}
+		}
+		// $scope.newActivity.category = [];
+		console.log($scope.newActivity.category);
+	};
+
 
 
 // ---  MODALS  --- //
