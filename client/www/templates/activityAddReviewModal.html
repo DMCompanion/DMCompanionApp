@@ -22,15 +22,14 @@
             <div class="list">
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Review</span>
-                    <textarea type="textarea" placeholder="Review" ng-model="review.review"></textarea>
+                    <textarea type="textarea" placeholder="Review" ng-model="newActivity.review"></textarea>
                 </label>
             </div>
 
         </div>
 
         <div class="submitButtonContainer">
-            <button class="button button-balanced submitButton" ng-click="addReview(review); reviewModal.hide()">Submit</button>
-            <button class="button button-assertive submitButton" ng-click="reviewModal.hide()">Cancel</button>
+            <button class="button button-balanced submitButton" ng-click="reviewModal.hide()">Done</button>
         </div>
 
      </ion-content>
