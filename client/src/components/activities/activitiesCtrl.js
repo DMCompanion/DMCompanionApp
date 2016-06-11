@@ -62,6 +62,10 @@ angular.module( 'companion' )
 		return $scope.shownGroup === activity;
 	};
 
+	$scope.categoryToggle = () => {
+		$scope.category = !$scope.category;
+	};
+
 
 // ---  MODALS  --- //
 	$ionicModal.fromTemplateUrl('templates/activityAddModal.html', {
@@ -82,7 +86,6 @@ angular.module( 'companion' )
 // ---  MODALS  --- //
 
 
-
 // CRUD ACTIVITIES
 	$scope.showActivities = () => {
 		activitiesSvc.getActivities()
@@ -93,6 +96,7 @@ angular.module( 'companion' )
 	};
 
 	$scope.addActivity = (userActivity) => {
+		console.log(userActivity);
 		activitiesSvc.createActivity(userActivity)
 		.then((response) => {
 			console.log(response);
