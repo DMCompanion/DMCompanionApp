@@ -1,15 +1,14 @@
 @import '_variables'
 
-.places
-
+.placesDetails
   ion-content
     background: $dmMidGray
     position: absolute
     top: $headerW
-  .item.search-bar
-    margin: 5vh 3vw
-  .item-input.search-bar
-    border-radius: 1vw
+  // .item.search-bar
+  //   margin: 5vh 3vw
+  // .item-input.search-bar
+  //   border-radius: 1vw
   .list.card
     margin-bottom: 2vh
   .tags
@@ -22,7 +21,7 @@
     width: 28vw
     font-size: 1rem
   .card
-    margin-bottom: 1vh
+    margin-bottom: 1.5vh
   .card:first-child
     margin-top: 1vh
   .review-summary
@@ -38,15 +37,15 @@
     background: $dmBlue2
   .item img
     border-radius: 1vw
-  .places--container
   .miles
     @include vertical-align()
     height: 100%
     float: right
-    margin: 5vw
-    margin-right: 1vw
-  .miles>h2
-    color: $dmLightGray
+    margin-top: 7vw
+    margin-right: 2vw
+    display: inline
+  .miles>h6
+    color: $scroll-refresh-icon-color !important
   .places--content
     margin-top: 2vh
     float: left
@@ -63,6 +62,15 @@
     justify-content: space-around
   .writeComment
     height: 40vh
+  // .open_now
+  //   width: 2vh
+  //   height: 2vh
+  //   border-radius: 100%
+  .open_now
+    height: 1.5vh
+    width: 100%
+  .placeName
+    display: inline
 
 .item-input.reviewText
   height: 30vh

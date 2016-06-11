@@ -1,49 +1,35 @@
 angular.module('companion')
-  .controller('placesDetailsCtrl', ($scope, $http, $ionicModal, $ionicHistory, $stateParams) => {
+  .controller('placesDetailsCtrl', ($scope, $http, $ionicModal, placesSvc, $ionicHistory, $state) => {
+
+    $scope.searchQuery = "pizza";
+
+    (() => {
+        let startPos;
+        const geoOptions = {
+            maximumAge: 5 * 60 * 1000,
+            timeout: 10 * 1000
+        }
+        const geoSuccess = (position) => {
+            startPos = position;
+            $scope.userLong = startPos.coords.longitude;
+            $scope.userLat = startPos.coords.latitude;
+            $scope.showPlaces($scope.userLat, $scope.userLong, $scope.searchQuery);
+            console.log("Geo success: ", $scope.userLat);
+        };
+        const geoError = (position) => {
+            console.log('Error occurred. Error code: ' + error.code);
+        };
+        navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+    })();
 
     $scope.places = [
-      {
-        name: "CtPaTown",
-        placeType: "Chinese",
-        photos: ["https://res.cloudinary.com/teepublic/image/private/s--94mCrBS6--/t_Preview/b_rgb:42332c,c_limit,f_jpg,h_630,q_90,w_630/v1463160891/production/designs/511208_1.jpg"],
-        distance: 1.1,
-        rating: 2
-      },
-      {
-        name: "Sodosopa",
-        placeType: "American",
-        photos: ["https://res.cloudinary.com/teepublic/image/private/s--D51Ur500--/t_Preview/b_rgb:ffffff,c_limit,f_jpg,h_630,q_90,w_630/v1446245008/production/designs/299463_1.jpg"],
-        distance: 1.8,
-        rating: 5
-      },
-      {
-        name: "City Wok",
-        placeType: "Chinese",
-        photos: ["http://www.citywok.com/images/logo.png"],
-        distance: 0.7,
-        rating: 3
-      },
-      {
-        name: "Wendell's Burgers",
-        placeType: "American",
-        photos: ["https://pbs.twimg.com/profile_images/649034487288987650/nufPHGv5.jpg"],
-        distance: 1.4,
-        rating: 4
-      },
-      {
-        name: "Wild Ginger",
-        placeType: "Japanese",
-        photos: ["https://res.cloudinary.com/teepublic/image/private/s--D51Ur500--/t_Preview/b_rgb:ffffff,c_limit,f_jpg,h_630,q_90,w_630/v1446245008/production/designs/299463_1.jpg"],
-        distance: 1.3,
-        rating: 2
-      },
-      {
-        name: "Seven Eleven",
-        placeType: "Indian",
-        photos: ["http://www.citywok.com/images/logo.png"],
-        distance: 2.4,
-        rating: 2
-      }
+      // {
+      //   name: "CtPaTown",
+      //   placeType: "Chinese",
+      //   photos: ["https://res.cloudinary.com/teepublic/image/private/s--94mCrBS6--/t_Preview/b_rgb:42332c,c_limit,f_jpg,h_630,q_90,w_630/v1463160891/production/designs/511208_1.jpg"],
+      //   distance: 1.1,
+      //   rating: 2
+      // }
     ];
 
     $scope.tags = [{
@@ -69,7 +55,7 @@ angular.module('companion')
       {
         name: 'Hawaiian',
         selected: false
-      },
+      }
     ];
 
     $scope.setSearchType = (index, type) => {
@@ -86,7 +72,7 @@ angular.module('companion')
       }
     }
 
-    $ionicModal.fromTemplateUrl('templates/modal.html', {
+    $ionicModal.fromTemplateUrl('templates/placesModal.html', {
         scope: $scope
       }).then(function(modal) {
         $scope.modal = modal;
@@ -98,37 +84,50 @@ angular.module('companion')
       };
 
       // CRUD ACTIVITIES
-        $scope.showPlaces = () => {
-          calendarSvc.getPlaces()
+        $scope.showPlaces = (userLat, userLong, query) => {
+          placesSvc.getPlaces(userLat, userLong, query)
           .then((response) => {
-            console.log(response);
-            // $scope.places = response;
-          })
+            console.log("Ctrl place response: ", response);
+            $scope.placeResponse = response.data.results;
+            for (var i = 0; i < $scope.placeResponse.length; i++) {
+              $scope.places.push({});
+              let index = i;
+              placesSvc.getPlaceDistance($scope.userLat, $scope.userLong, $scope.placeResponse[index].place_id).then((response) => {
+                $scope.places[index] = $scope.placeResponse[index];
+                $scope.places[index].distance = response.rows[0].elements[0].distance.text;
+                $scope.places[index].duration = response.rows[0].elements[0].duration.text;
+              });
+              // oooh shit
+              if ($scope.placeResponse[index].photos) {
+                placesSvc.getPlacePhoto($scope.placeResponse[index].photos[0].photo_reference).then((response) => {
+                  // console.log("response photo: ", index, response);
+                  $scope.places[index].photo = response;
+                })
+              }
+            }
+          });
         }
 
         $scope.addPlace = (userPlace) => {
-          calendarSvc.createPlace(userPlace)
+          placesSvc.createPlace(userPlace)
           .then((response) => {
             $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
-
           })
         }
 
         $scope.updatePlace = (id, upPlace) => {
-          calendarSvc.editPlace(id, upPlace)
+          placesSvc.editPlace(id, upPlace)
           .then((response) => {
             $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
-
           })
         }
 
         $scope.destroyPlace = (id) => {
-          calendarSvc.deletePlace(id)
+          placesSvc.deletePlace(id)
           .then((response) => {
             console.log(response);
-
           })
         }
   });
