@@ -22,7 +22,7 @@ angular.module('companion')
     $scope.edit = (event) => {
       console.log('event', event);
       $scope.copyOfCalendar = event;
-    }
+    };
 
     $scope.showConfirm = (id) => {
       let confirmPopup = $ionicPopup.confirm({
@@ -31,12 +31,16 @@ angular.module('companion')
       });
 
       confirmPopup.then((res) => {
-        if(res) {
+        if (res) {
           calendarSvc.deleteEvent(id)
-          .then((response) => {
-            $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
-            console.log(response);
-          });
+            .then((response) => {
+              $state.transitionTo($state.current, $state.$current.params, {
+                reload: true,
+                inherit: true,
+                notify: true
+              });
+              console.log(response);
+            });
           console.log('You are sure');
         } else {
           console.log('You are not sure');
@@ -151,7 +155,11 @@ angular.module('companion')
       console.log('New Event: ', newEvent);
       calendarSvc.createEvent(newEvent)
         .then((response) => {
-          $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
+          $state.transitionTo($state.current, $state.$current.params, {
+            reload: true,
+            inherit: true,
+            notify: true
+          });
           console.log(response);
           $scope.showEvents();
         });
@@ -161,7 +169,11 @@ angular.module('companion')
       console.log('up');
       calendarSvc.editEvent(id, upEvent)
         .then((response) => {
-          $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
+          $state.transitionTo($state.current, $state.$current.params, {
+            reload: true,
+            inherit: true,
+            notify: true
+          });
           console.log(response);
         });
     };
@@ -172,7 +184,11 @@ angular.module('companion')
         .then((response) => {
           console.log(response);
           $scope.showEvents();
-          $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
+          $state.transitionTo($state.current, $state.$current.params, {
+            reload: true,
+            inherit: true,
+            notify: true
+          });
         });
     };
 
