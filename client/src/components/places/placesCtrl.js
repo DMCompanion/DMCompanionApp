@@ -1,4 +1,4 @@
-angular.module("companion").controller("placesCtrl", function($scope, placesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc, $ionicPopup, $timeout) {
+angular.module("companion").controller("placesCtrl", function($scope, placesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc, $ionicPopup, $timeout, $stateParams) {
 
   $scope.placesCategories = placesSvc.getDummyActivities();
 
@@ -44,6 +44,7 @@ angular.module("companion").controller("placesCtrl", function($scope, placesSvc,
         $scope.addPlace = (userPlace) => {
           placesSvc.createPlace(userPlace)
           .then((response) => {
+            $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
 
           })
@@ -52,6 +53,7 @@ angular.module("companion").controller("placesCtrl", function($scope, placesSvc,
         $scope.updatePlace = (id, upPlace) => {
           placesSvc.editPlace(id, upPlace)
           .then((response) => {
+            $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
 
           })
@@ -69,6 +71,7 @@ angular.module("companion").controller("placesCtrl", function($scope, placesSvc,
           console.log(review);
           placesSvc.createReview(review)
           .then((response) => {
+            $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
 
           })

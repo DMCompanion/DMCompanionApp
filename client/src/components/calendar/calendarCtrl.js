@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('calendarCtrl', ($scope, $http, $state, $ionicHistory, $ionicModal, calendarSvc, $ionicPopup, $timeout) => {
+  .controller('calendarCtrl', ($scope, $http, $state, $ionicHistory, $ionicModal, calendarSvc, $ionicPopup, $timeout, $stateParams) => {
 
     $scope.$on('$ionicView.beforeEnter', function() {
       // update campaigns everytime the view becomes active
@@ -32,8 +32,9 @@ angular.module('companion')
 
       confirmPopup.then((res) => {
         if(res) {
-          calendarSvc.deleteDeal(id)
+          calendarSvc.deleteEvent(id)
           .then((response) => {
+            $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
           });
           console.log('You are sure');
@@ -150,14 +151,17 @@ angular.module('companion')
       console.log('New Event: ', newEvent);
       calendarSvc.createEvent(newEvent)
         .then((response) => {
+          $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
           console.log(response);
           $scope.showEvents();
         });
     };
 
     $scope.updateEvent = (id, upEvent) => {
+      console.log('up');
       calendarSvc.editEvent(id, upEvent)
         .then((response) => {
+          $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
           console.log(response);
         });
     };
@@ -168,6 +172,7 @@ angular.module('companion')
         .then((response) => {
           console.log(response);
           $scope.showEvents();
+          $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
         });
     };
 

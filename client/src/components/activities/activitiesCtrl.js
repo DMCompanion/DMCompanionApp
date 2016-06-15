@@ -1,5 +1,5 @@
 angular.module( 'companion' )
-.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc) => {
+.controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc, $stateParams, $state) => {
 
 	$scope.newActivity = {};
 	// Temp status to show unapproved activities
@@ -32,6 +32,7 @@ angular.module( 'companion' )
 	// $scope.activities = activitiesSvc.getActivities();
 
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
+
 	$scope.categories = activitiesSvc.getCategories();
 	console.log($scope.categories);
 
@@ -102,8 +103,19 @@ angular.module( 'companion' )
 
 	$ionicModal.fromTemplateUrl('templates/activityCategoryModal.html', {
 		scope: $scope
+<<<<<<< HEAD
+	}).then( (modal) => {
+		$scope.categoryModal = modal;
+	});
+
+	$scope.getNumber = (num) => {
+    return new Array(num);
+	}
+
+=======
 	}).then( (modal) => { $scope.categoryModal = modal; });
 // ---  MODALS  --- //
+>>>>>>> master
 
 
 // CRUD ACTIVITIES
@@ -119,6 +131,7 @@ angular.module( 'companion' )
 		console.log(userActivity);
 		activitiesSvc.createActivity(userActivity)
 		.then((response) => {
+			$state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 			console.log(response);
 			$scope.newActivity = {};
 		});
@@ -138,6 +151,7 @@ angular.module( 'companion' )
 				if(res) {
 					activitiesSvc.deleteDeal(id)
 					.then((response) => {
+						$state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 						console.log(response);
 					});
 					console.log('You are sure');
@@ -172,6 +186,7 @@ angular.module( 'companion' )
 	$scope.addComment = (comment) => {
 		activitiesSvc.getComments(comment)
 		.then((response) => {
+			$state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 			console.log(response);
 		});
 	};
@@ -179,6 +194,7 @@ angular.module( 'companion' )
 	$scope.updateComment = (id, comment) => {
 		activitiesSvc.getComments(id, comment)
 		.then((response) => {
+			$state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 			console.log(response);
 		});
 	};

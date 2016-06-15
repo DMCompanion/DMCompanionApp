@@ -1,5 +1,5 @@
 angular.module( 'companion' )
-.controller( 'activitiesDetailsCtrl', ( $scope, activitiesSvc, $stateParams, $ionicGesture, $ionicModal, $ionicHistory, adminSvc, $ionicPopup, $timeout) => {
+.controller( 'activitiesDetailsCtrl', ( $scope, activitiesSvc, $stateParams, $ionicGesture, $ionicModal, $ionicHistory, adminSvc, $ionicPopup, $timeout, $state) => {
 
 	// Temp status to show unapproved activities
 	$scope.isAdmin = true;
@@ -50,8 +50,6 @@ angular.module( 'companion' )
 		console.log(`rating = ${$scope.rating}`);
 	};
 
-
-
 	$scope.goBack = () => {
 		console.log("going back?");
 		$ionicHistory.goBack();
@@ -98,5 +96,9 @@ angular.module( 'companion' )
 			}
 		});
 	};
+
+		$scope.getNumber = (num) => {
+			return new Array(num);
+		}
 
 });

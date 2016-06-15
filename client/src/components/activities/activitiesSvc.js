@@ -2,6 +2,35 @@ angular.module('companion')
 .service('activitiesSvc', function ($http, $ionicHistory, $stateParams) {
     //   ^^ dont use fat arrow on a Service, it changes .this
 
+    this.getDummyActivities = () => {
+        return dummyActivities;
+    };
+
+    this.getActivityTypes = () => {
+        return activityTypes;
+    };
+
+    this.getCategories = () => {
+        let categories = [];
+        for (let i = 0; i < activityTypes.length; i++) {
+            categories.push(activityTypes[i].category);
+        }
+        return categories;
+    };
+
+    this.getReviews = () => {
+        let reviews = [];
+        for (let i = 0; i < activityTypes.length; i++) {
+            reviews.push(activityTypes[i].review);
+        }
+        return reviews;
+    };
+
+
+    this.goBack = () => {
+  		$ionicHistory.goBack();
+  	};
+
     const activityTypes = [
         {
             category: `Active Life`,
@@ -471,3 +500,76 @@ angular.module('companion')
     //     ],
     //     img: 'img/fall.png',
     // }, ];
+<<<<<<< HEAD
+
+
+    // CRUD ACTIVITIES
+    this.getActivities = () => {
+      return $http({
+        method: 'GET',
+        url: 'http://192.168.0.88:8006/api/v1/activities'
+      }).then((response) => {
+        return response;
+    });
+};
+
+    this.createActivity = (activity) => {
+      return $http({
+        method: 'POST',
+        url: 'http://192.168.0.88:8006/api/v1/activity',
+        data: activity
+    });
+};
+
+    this.editActivity = (id, upActivity) => {
+      return $http({
+        method: 'PUT',
+        url: 'http://192.168.0.88:8006/api/v1/activity/' + id,
+        data: upActivity
+      }).then((response) => {
+        return response;
+    });
+};
+
+    this.deleteActivity = (id) => {
+      return $http({
+        method: 'DELETE',
+        url: 'http://192.168.0.88:8006/api/v1/activity/' + id
+      }).then((response) => {
+        return response;
+    });
+};
+
+//CRUD COMMENTS
+    this.getComments = () => {
+      return $http({
+        method: 'GET',
+        url: 'http://192.168.0.88:8006/api/v1/comments'
+      });
+    };
+
+    this.createComment = (comment) => {
+      return $http({
+      method: 'POST',
+      url: 'http://192.168.0.88:8006/api/v1/comment',
+      data: comment
+    });
+    };
+
+    this.editComment = (id, upComment) => {
+      return $http({
+        method: 'PUT',
+        url: 'http://192.168.0.88:8006/api/v1/comment/' + id,
+        data: upComment
+      });
+    };
+
+    this.deleteComment = (id) => {
+      return $http({
+        method: 'DELETE',
+        url: 'http://192.168.0.88:8006/api/v1/comment/' + id
+      });
+    };
+} );
+=======
+>>>>>>> master
