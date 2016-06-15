@@ -151,12 +151,14 @@ angular.module('companion')
       console.log('New Event: ', newEvent);
       calendarSvc.createEvent(newEvent)
         .then((response) => {
+          $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
           console.log(response);
           $scope.showEvents();
         });
     };
 
     $scope.updateEvent = (id, upEvent) => {
+      console.log('up');
       calendarSvc.editEvent(id, upEvent)
         .then((response) => {
           $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
