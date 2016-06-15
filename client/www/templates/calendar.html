@@ -62,7 +62,7 @@
           <strong>When: {{event.time}}</strong>
         </div>
       </div>
-      <div class="adminContainer" >
+      <div class="adminContainer" ng-hide="!isAdmin && !hasUnapprovedEvents">
         <a class="editButton" ng-click="editModal.show(); edit(event);">
           <i class="icon ion-ios-compose"></i>
         </a>
