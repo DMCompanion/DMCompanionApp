@@ -32,10 +32,7 @@ angular.module('companion')
 
     };
 
-    $scope.goingToEvent = () => {
-
-    };
-    $scope.closeEventModal = function() {
+    $scope.closeEventModal = () => {
       $scope.eventModal.hide();
     };
 
@@ -205,6 +202,29 @@ angular.module('companion')
           // $ionicHistory.clearCache();
           // $state.go($state.current, {}, {reload: true});
         });
+    };
+
+    $scope.goToEvent = (eventId) => {
+      console.log(eventId);
+      let userId = '5757247c1029c50428f4b680';
+      calendarSvc.goToEvent(userId, eventId).then((response) => {
+        calendarSvc.getEvent(eventId);
+      });
+    };
+
+    $scope.newComment = {};
+    $scope.postComment = (comment, eventId) => {
+      comment.postedBy = '5757247c1029c50428f4b680';
+      comment.ref = eventId;
+      // console.log(comment);
+      calendarSvc.postComment(comment).then((response) => {
+        console.log(response);
+        calendarSvc.getEvent(eventId).then((response) => {
+          console.log(response);
+          $scope.event = response;
+        });
+      });
+      $scope.newComment.comment = '';
     };
 
     $scope.showEvents();

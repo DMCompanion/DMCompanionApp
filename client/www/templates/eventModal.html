@@ -29,7 +29,7 @@
             <h3 ng-if="event.cost">Cost: {{event.cost}}</h3>
           </div>
           <div class="event-info-row">
-            <button class="button button-positive" ng-click="goingToEvent()">Join</button>
+            <button class="button button-positive" ng-click="goToEvent(event._id)">Join</button>
           </div>
         </div>
       </div>
@@ -38,17 +38,20 @@
         <!-- <button class="button button-positive">Photos</button> -->
         <button class="button button-positive">People Going</button>
       </div>
+      <div class="comments-container" ng-if="event.comments.length >= 1">
+        <div class="comment" ng-repeat="comment in event.comments">
+          <div class='comment-container'>
+            <h3>{{comment.comment}}</h3>
+            <i class="icon ion-trash-a"></i>
+          </div>
+        </div>
+      </div>
       <div class="post-comment-container">
         <label class="item item-input commentText">
-          <input type="text" ng-model="comment.comment" class="comment-input" placeholder="Post a comment for this event!">
+          <input id="comment-input" type="text" ng-model="newComment.comment" class="comment-input" placeholder="Post a comment for this event!">
         </label>
-        <button class="button button-positive reviewButton" ng-click="closeEventModal()">Cancel</button>
-        <button class="button button-positive reviewButton" ng-click="postComment(comment, event._id)">Post</button>
-      </div>
-      <div class="comments-container">
-        <div class="comment" ng-repeat="comment in comments">
 
-        </div>
+        <button class="button button-positive reviewButton" ng-click="postComment(newComment, event._id)">Post Comment</button>
       </div>
     </div>
    </ion-content>
