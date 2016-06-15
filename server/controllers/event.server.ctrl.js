@@ -5,10 +5,10 @@ module.exports = {
     postEvent: (req, res) => {
         Event.create(req.body, (err, event) => {
             if (err) {
-                console.log("Did not post event: ", err);
+                // console.log("Did not post event: ", err);
                 res.status(500).send(err);
             } else {
-                console.log("Posted event: ", event);
+                // console.log("Posted event: ", event);
                 res.status(200).send(event);
             }
         });
@@ -22,10 +22,10 @@ module.exports = {
             select: 'name profilePic campus'
         }).populate('comments').exec((err, events) => {
             if (err) {
-                console.log("Did not got events: ", err);
+                // console.log("Did not got events: ", err);
                 res.status(500).send(err);
             } else {
-                console.log("Got events: ", events);
+                // console.log("Got events: ", events);
                 res.status(200).send(events);
             }
         });
@@ -47,6 +47,33 @@ module.exports = {
                 res.status(200).send(event);
             }
         });
-    }
+    },
+    goToEvent: (req, res) => {
+        console.log(req.body);
+        Event.findByIdAndUpdate(req.params.id, {
+            $addToSet: {
+                'peopleGoing': req.body.user
+            }
+        }, (err, event) => {
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                res.status(200).send(event);
+            }
+        });
+    },
+    notGoingToEvent: (req, res) => {
+        Event.findByIdAndUpdate(req.params.id, {
+            $pull: {
+                'peopleGoing': req.body.user
+            }
+        }, (err, event) => {
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                res.status(200).send(event);
+            }
+        });
+    },
 
 };
