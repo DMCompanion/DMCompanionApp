@@ -2,35 +2,6 @@ angular.module('companion')
 .service('activitiesSvc', function ($http, $ionicHistory, $stateParams) {
     //   ^^ dont use fat arrow on a Service, it changes .this
 
-    this.getDummyActivities = () => {
-        return dummyActivities;
-    };
-
-    this.getActivityTypes = () => {
-        return activityTypes;
-    };
-
-    this.getCategories = () => {
-        let categories = [];
-        for (let i = 0; i < activityTypes.length; i++) {
-            categories.push(activityTypes[i].category);
-        }
-        return categories;
-    };
-
-    this.getReviews = () => {
-        let reviews = [];
-        for (let i = 0; i < activityTypes.length; i++) {
-            reviews.push(activityTypes[i].review);
-        }
-        return reviews;
-    };
-
-
-    this.goBack = () => {
-  		$ionicHistory.goBack();
-  	};
-
     const activityTypes = [
         {
             category: `Active Life`,
@@ -131,6 +102,7 @@ angular.module('companion')
         }
     ];
 
+
     // Temp data for dev work
     this.getDummyActivities = () => { return dummyActivities; };
 
@@ -144,94 +116,45 @@ angular.module('companion')
         return categories;
     };
 
+    this.getReviews = () => {
+        let reviews = [];
+        for (let i = 0; i < activityTypes.length; i++) {
+            reviews.push(activityTypes[i].review);
+        }
+        return reviews;
+    };
+
+
+    this.goBack = () => {
+        $ionicHistory.goBack();
+    };
+
     // function of 'back arrow icon' on header
     this.goBack = () => { $ionicHistory.goBack(); };
 
     // CRUD ACTIVITIES
-    this.getActivities = (category) => {
-      return $http({
-        method: 'GET',
-        url: 'http://192.168.0.214:8006/api/v1/activities?category=' + category
-      }).then((response) => {
-        return response;
-    });
-};
+//     this.getActivities = (category) => {
+//       return $http({
+//         method: 'GET',
+//         url: 'http://192.168.0.51:8006/api/v1/activities?category=' + category
+//       }).then((response) => {
+//         return response;
+//     });
+// };
 
-    this.createActivity = (activity) => {
-      return $http({
-        method: 'POST',
-        url: 'http://192.168.0.214:8006/api/v1/activity',
-        data: activity
-    });
-};
-
-    this.editActivity = (id, upActivity) => {
-      return $http({
-        method: 'PUT',
-        url: 'http://192.168.0.214:8006/api/v1/activity/' + id,
-        data: upActivity
-      }).then((response) => {
-        return response;
-    });
-};
-
-    this.deleteActivity = (id) => {
-      return $http({
-        method: 'DELETE',
-        url: 'http://192.168.0.214:8006/api/v1/activity/' + id
-      }).then((response) => {
-        return response;
-    });
-};
-
-
-
-//CRUD COMMENTS
-    this.getComments = () => {
-      return $http({
-        method: 'GET',
-        url: 'http://192.168.0.214:8006/api/v1/comments'
-      });
-    };
-
-    this.createComment = (comment) => {
-      return $http({
-      method: 'POST',
-      url: 'http://192.168.0.214:8006/api/v1/comment',
-      data: comment
-    });
-    };
-
-    this.editComment = (id, upComment) => {
-      return $http({
-        method: 'PUT',
-        url: 'http://192.168.0.214:8006/api/v1/comment/' + id,
-        data: upComment
-      });
-    };
-
-    this.deleteComment = (id) => {
-      return $http({
-        method: 'DELETE',
-        url: 'http://192.168.0.214:8006/api/v1/comment/' + id
-      });
-    };
-} );
-
-    // CRUD ACTIVITIES
     this.getActivities = () => {
       return $http({
         method: 'GET',
-        url: 'http://192.168.0.88:8006/api/v1/activities'
+        url: 'http://192.168.0.51:8006/api/v1/activities'
       }).then((response) => {
         return response;
     });
 };
-
+// -----------------------------------
     this.createActivity = (activity) => {
       return $http({
         method: 'POST',
-        url: 'http://192.168.0.88:8006/api/v1/activity',
+        url: 'http://192.168.0.51:8006/api/v1/activity',
         data: activity
     });
 };
@@ -239,7 +162,7 @@ angular.module('companion')
     this.editActivity = (id, upActivity) => {
       return $http({
         method: 'PUT',
-        url: 'http://192.168.0.88:8006/api/v1/activity/' + id,
+        url: 'http://192.168.0.51:8006/api/v1/activity/' + id,
         data: upActivity
       }).then((response) => {
         return response;
@@ -249,24 +172,26 @@ angular.module('companion')
     this.deleteActivity = (id) => {
       return $http({
         method: 'DELETE',
-        url: 'http://192.168.0.88:8006/api/v1/activity/' + id
+        url: 'http://192.168.0.51:8006/api/v1/activity/' + id
       }).then((response) => {
         return response;
     });
 };
 
+
+
 //CRUD COMMENTS
     this.getComments = () => {
       return $http({
         method: 'GET',
-        url: 'http://192.168.0.88:8006/api/v1/comments'
+        url: 'http://192.168.0.51:8006/api/v1/comments'
       });
     };
 
     this.createComment = (comment) => {
       return $http({
       method: 'POST',
-      url: 'http://192.168.0.88:8006/api/v1/comment',
+      url: 'http://192.168.0.51:8006/api/v1/comment',
       data: comment
     });
     };
@@ -274,7 +199,7 @@ angular.module('companion')
     this.editComment = (id, upComment) => {
       return $http({
         method: 'PUT',
-        url: 'http://192.168.0.88:8006/api/v1/comment/' + id,
+        url: 'http://192.168.0.51:8006/api/v1/comment/' + id,
         data: upComment
       });
     };
@@ -282,7 +207,7 @@ angular.module('companion')
     this.deleteComment = (id) => {
       return $http({
         method: 'DELETE',
-        url: 'http://192.168.0.88:8006/api/v1/comment/' + id
+        url: 'http://192.168.0.51:8006/api/v1/comment/' + id
       });
     };
 } );
