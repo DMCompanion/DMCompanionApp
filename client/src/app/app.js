@@ -23,6 +23,7 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
     });
   })
   .config(($stateProvider, $urlRouterProvider) => {
+
     $stateProvider
       .state('index', {
         url: '/home',
@@ -31,36 +32,43 @@ angular.module('companion', ['ionic', 'angularMoment', 'flexcalendar', 'flexcale
       })
       .state('activities', {
         url: '/activities',
+        cache: false,
         templateUrl: './templates/activities.html',
         controller: 'activitiesCtrl'
       })
       .state('deals', {
         url: '/deals',
+        cache: false,
         templateUrl: './templates/deals.html',
         controller: 'dealsCtrl'
       })
       .state('activitiesDetails', {
           url: '/activitiesDetails/:category',
+          cache: false,
           templateUrl: './templates/activitiesDetails.html',
           controller: 'activitiesDetailsCtrl'
       })
       .state('calendar', {
         url: '/calendar',
+        cache: false,
         templateUrl: './templates/calendar.html',
         controller: 'calendarCtrl'
       })
       .state('places', {
         url: '/places',
+        cache: false,
         templateUrl: './templates/places.html',
         controller: 'placesCtrl'
       })
       .state('placesDetails', {
           url: '/placesDetails/:category',
+          cache: false,
           templateUrl: './templates/placesDetails.html',
           controller: 'placesDetailsCtrl'
       })
       .state('blog', {
         url: '/blog',
+        cache: false,
         templateUrl: './templates/blog.html',
         controller: 'blogCtrl'
       });
