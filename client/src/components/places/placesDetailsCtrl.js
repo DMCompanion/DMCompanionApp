@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('placesDetailsCtrl', ($scope, $http, $ionicModal, placesSvc) => {
+  .controller('placesDetailsCtrl', ($scope, $http, $ionicModal, placesSvc, $ionicHistory, $state) => {
 
     $scope.searchQuery = "pizza";
 
@@ -111,6 +111,7 @@ angular.module('companion')
         $scope.addPlace = (userPlace) => {
           placesSvc.createPlace(userPlace)
           .then((response) => {
+            $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
           })
         }
@@ -118,6 +119,7 @@ angular.module('companion')
         $scope.updatePlace = (id, upPlace) => {
           placesSvc.editPlace(id, upPlace)
           .then((response) => {
+            $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
           })
         }
