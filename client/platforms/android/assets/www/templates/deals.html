@@ -1,8 +1,68 @@
 <ion-view class="deals">
   <div class="bar bar-header bar-dark">
-    <a href="/#/home"><button class="button button-icon icon ion-navicon"></button></a>
+    <a href="/#/home"><img src="./img/devmtnlogo_notext.png" class="headerBarLogo" /></a>
+
     <h1 class="title">Deals</h1>
+
+    <div class="add">
+      <a ng-click="modal.show()">
+        <button class="button button-icon icon ion-plus"></button>
+      </a>
+    </div>
   </div>
-  <ion-content class="has-header">
+
+  <ion-content class="padding has-header">
+
+    <div class="card">
+      <div class="item item-divider">
+        UTA PASS
+      </div>
+      <div class="item item-text-wrap">
+        Normally $450. With your great DevMtn discount you get it for only 8 easy payments of $3.43 and 1 fucking hard payment of $666
+      </div>
+      <div class="item item-divider">
+        Take advantage now!
+      </div>
+      <div class="adminContainer" >
+        <a class="editButton" ng-click="editModal.show()">
+          <i class="icon ion-ios-compose"></i>
+        </a>
+
+        <a class="rashButton" ng-click="showConfirm()">
+          <i class="icon ion-trash-a"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="adminApprove">
+      <div class="card" ng-repeat="deal in deals track by $index">
+
+          <div class="item item-divider">
+            {{deal.title}}
+          </div>
+          <div class="item item-text-wrap">
+            {{deal.deal}}
+          </div>
+          <div class="item item-divider">
+            {{deal.date.start}}
+            {{deal.date.end}}
+          </div>
+          <div class="item item-divider">
+            {{deal.tagline}}
+          </div>
+
+          <div class="adminContainer" >
+            <a class="editButton" ng-click="editModal.show(); edit(deal);">
+              <i class="icon ion-ios-compose"></i>
+            </a>
+
+            <a class="rashButton" ng-click="showConfirm(deal._id)">
+              <i class="icon ion-trash-a"></i>
+            </a>
+          </div>
+
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>

@@ -1,8 +1,132 @@
 <ion-view class="blog">
   <div class="bar bar-header bar-dark">
-    <a href="/#/home"><button class="button button-icon icon ion-navicon"></button></a>
+    <a href="/#/home"><img src="./img/devmtnlogo_notext.png" class="headerBarLogo" /></a>
+
     <h1 class="title">Blog</h1>
+
+    <div class="add">
+      <!-- add ng-show="isAdmin" to above div-->
+      <a ng-click="modal.show()">
+        <button class="button button-icon icon ion-plus"></button>
+      </a>
+    </div>
   </div>
-  <ion-content class="has-header">
+
+  <ion-content class="padding has-header" on-swipe-right="swipeRight()">
+
+    <div class="card">
+      <div class="item item-text-wrap">
+        {{blog.title}}
+      </div>
+      <div class="item item-text-wrap">
+        {{blog.tagline}}
+      </div>
+      <div class="item item-text-wrap">
+        {{blog.image}}
+      </div>
+      <div class="item item-text-wrap">
+        {{blog.story}}
+      </div>
+
+      <div class="adminContainer" >
+        <a class="editButton" ng-click="editModal.show(); edit(blog);">
+          <i class="icon ion-ios-compose"></i>
+        </a>
+
+        <a class="rashButton" ng-click="showConfirm(blog._id)">
+          <i class="icon ion-trash-a"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <div class="item item-text-wrap">
+        <h2><strong>Announcing iOS in Dallas</strong></h2>
+        <h5>posted by DevMtn Team on May 31st, 2016</h5>
+        <img class="full-image" src="https://s3.amazonaws.com/devmountain/www/img/iphone-3.jpeg" alt="">
+        <p>
+          Six months and two cohorts ago, we opened our campus in Dallas. We are thrilled with how well the campus has progressed and with how many students are finding employment at great local companies. The community feedback has been outstanding. As we talk
+          to local employers, many have inquired about iOS developers. We keep telling them to be patient.
+        </p>
+        <p>
+          The curriculum and the daily schedule will be the same that we use in Utah and will cover Swift, Objective C, Xcode, Design and many other topics. If you are interested in more detailed information on our iOS immersive course, you can find it here.
+        </p>
+        <p>
+          Our full-time courses are the best immersive coding experience you can find. It's an extremely challenging experience, with long days where you eat, sleep and breathe code for 13 weeks. As with our other immersive courses, we will provide free housing
+          for our students close enough to walk to campus.
+        </p>
+        <p>
+          If you are in the Dallas area and are serious about learning to code, and want to make it your career, our iOS program is the place to do it. If you have any questions about tuition, want to learn more about our payment options or have any questions about
+          our Dallas location, please reach out to us.
+        </p>
+        <p>
+          And if you're in Utah and are wanting something extra Apple-ish to do, be sure to stop by our WWDC viewing party at our Salt Lake City location.
+        </p>
+        <h5 class="text-center">Share this post</h5>
+        <div class="button-bar bar-positive">
+          <a class="button"><i class="icon ion-social-facebook"></i></a>
+          <a class="button"><i class="icon ion-social-googleplus"></i></a>
+          <a class="button"><i class="icon ion-social-twitter"></i></a>
+          <a class="button"><i class="icon ion-social-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-text-wrap">
+        <h2><strong>DevMountain teams up with Capella Education Company</strong></h2>
+        <h5>posted by Cahlan Sharp on May 4th, 2016</h5>
+        <img class="full-image" src="https://s3.amazonaws.com/devmountain/www/img/students-capella.jpg" alt="">
+        <p>
+          Today, we announce that we've joined forces with Capella Education Company.
+        </p>
+        <p>
+          "I want to disrupt education so badly it hurts," Cahlan Sharp, our CEO, wrote to a colleague almost exactly three years ago. He had just ended his run with a talented startup in San Francisco.
+        </p>
+        <p>
+          Cahlan was looking for the next step, following some ritualistic introspection and asking himself the "what does it all mean?" questions. It was then that an idea struck him: "Why not build something that even if it's not profitable or scalable, would
+          begin and end with changing someone's life? Why not build something that matters, even if it's just to one person?"
+        </p>
+        <p>
+          A few months later, Cahlan turned to a new chapter in his life as he stood in front of a class of around 20 students, all smart, talented individuals who were hungry to learn how to code. Those first students and their successes were what drove the founders
+          to keep going and growing.
+        </p>
+        <p>
+          We quickly became the largest coding school in the Intermountain West as well as one of the most well reviewed in the nation.
+        </p>
+        <p>
+          Now, three years later, we begin another chapter of DevMountain. Early on, we realized how powerful and impactful this flavor of education can be, and our obstacle became: how do we reach more people?
+        </p>
+        <p>
+          We've found a partner that shares our vision. Cahlan said, "From nearly the first moment I spoke with Capella, I knew we had crucial common ground of putting learners first and seeking to provide educational access to more people."
+        </p>
+        <p>
+          Colt Henrie and Tyler Richards, DevMountain co-founders, both agree wholeheartedly. Henrie says, "Capella is a perfect fit to DevMountain's values and vision. With Capella's long history of innovating in education, we will see DevMountain becoming better
+          with Capella's expertise and reach."
+        </p>
+        <p>
+          Tyler Richards sees partnering with Capella as the next step in DevMountain's growth story. "DevMountain improves people's lives by teaching skills in demand by employers. In a world where over 1 million programming jobs are expected to be unfilled by
+          2020, we are very excited to work with Capella to deliver the highest quality coding education to more and more people."
+        </p>
+        <p>
+          We're so proud of what DevMountain has become: a place for people to transform their lives, change their career trajectories, and make memories that last a lifetime. Learn, live, build, give.
+        </p>
+        <p>
+          DevMountain will continue pushing to bring its offering to all learners. We'll be an independent subsidiary of Capella Education Company, where we'll continue with our current staff and courses while we look to improve and grow.
+        </p>
+        <p>
+          DevMountain has as bright a future as ever, and we're proud to be a part of it.
+        </p>
+        <h5 class="text-center">Share this post</h5>
+        <div class="button-bar bar-positive">
+          <a class="button"><i class="icon ion-social-facebook"></i></a>
+          <a class="button"><i class="icon ion-social-googleplus"></i></a>
+          <a class="button"><i class="icon ion-social-twitter"></i></a>
+          <a class="button"><i class="icon ion-social-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>

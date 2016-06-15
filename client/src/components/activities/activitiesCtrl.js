@@ -1,9 +1,10 @@
 angular.module( 'companion' )
 .controller( 'activitiesCtrl', ( $scope, activitiesSvc, $ionicGesture, $ionicHistory, $ionicModal, adminSvc, $stateParams, $state) => {
 
+	$scope.newActivity = {};
 	// Temp status to show unapproved activities
-	$scope.isAdmin = false;
-	$scope.hasUnapprovedActivity = false;
+	$scope.isAdmin = true;
+	$scope.hasUnapprovedActivity = true;
 	$scope.unapprovedActivities = [
 		{
 			category:  `Arts & Entertainment`,
@@ -28,32 +29,29 @@ angular.module( 'companion' )
 
 
 	// Temp data for dev work
-	$scope.activities = activitiesSvc.getDummyActivities();
+	// $scope.activities = activitiesSvc.getActivities();
 
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
 
 	$scope.categories = activitiesSvc.getCategories();
 	console.log($scope.categories);
 
-
-
-
 	// Need to put details on scope for the "add new activity"
-	$scope.getActivity = () => {
-		let matches = [];
-		for (let i = 0; i < $scope.activities.length; i++) {
-			matches.push($scope.activities[i]);
-			$scope.details = matches;
-		}
-	};
-	$scope.getActivity();
-	console.log($scope.details);
+	// $scope.getActivity = () => {
+	// 	let matches = [];
+	// 	for (let i = 0; i < $scope.activities.length; i++) {
+	// 		matches.push($scope.activities[i]);
+	// 		$scope.details = matches;
+	// 	}
+	// };
+	// $scope.getActivity();
+	// console.log($scope.details);
 
 
-	// function of back arrow on header
-	$scope.goBack = () => {
-	$ionicHistory.goBack();
-	};
+	// function of 'back arrow icon' on header
+	$scope.goBack = () => { $ionicHistory.goBack(); };
+	// swipe right like iPhone functionality
+	$scope.swipeRight = () => { window.history.back(); };
 
 	$scope.toggleGroup = ( activity ) => {
 		if ( $scope.isGroupShown( activity ) ) {
@@ -66,32 +64,46 @@ angular.module( 'companion' )
 		return $scope.shownGroup === activity;
 	};
 
-	// swipe right like iPhone functionality
-	$scope.swipeRight = () => {
-	    window.history.back();
+	$scope.categoryToggle = () => {
+		if ($scope.category) {
+			$scope.checkCategories();
+		}
+		$scope.category = !$scope.category;
 	};
 
+	$scope.categoryList = [];
+	for (let i = 0; i < $scope.categories.length; i++) {
+		$scope.categoryList.push(false);
+	}
+	$scope.checkCategories = () => {
+		$scope.newActivity.category = [];
+		for (let i = 0; i < $scope.categoryList.length; i++) {
+			if ($scope.categoryList[i]) {
+				$scope.newActivity.category.push($scope.categories[i]);
+			}
+		}
+		// $scope.newActivity.category = [];
+		console.log($scope.newActivity.category);
+	};
+
+
+
+// ---  MODALS  --- //
 	$ionicModal.fromTemplateUrl('templates/activityAddModal.html', {
 		scope: $scope
-	}).then( (modal) => {
-		$scope.modal = modal;
-	});
+	}).then( (modal) => { $scope.modal = modal; });
 
 	$ionicModal.fromTemplateUrl('templates/activityAddReviewModal.html', {
 		scope: $scope
-	}).then( (modal) => {
-		$scope.reviewModal = modal;
-	});
+	}).then( (modal) => { $scope.reviewModal = modal; });
 
 	$ionicModal.fromTemplateUrl('templates/activityAddPhotoModal.html', {
 		scope: $scope
-	}).then( (modal) => {
-		$scope.photoModal = modal;
-	});
-
+	}).then( (modal) => { $scope.photoModal = modal; });
 
 	$ionicModal.fromTemplateUrl('templates/activityCategoryModal.html', {
 		scope: $scope
+<<<<<<< HEAD
 	}).then( (modal) => {
 		$scope.categoryModal = modal;
 	});
@@ -100,6 +112,10 @@ angular.module( 'companion' )
     return new Array(num);
 	}
 
+=======
+	}).then( (modal) => { $scope.categoryModal = modal; });
+// ---  MODALS  --- //
+>>>>>>> master
 
 
 // CRUD ACTIVITIES
@@ -112,11 +128,12 @@ angular.module( 'companion' )
 	};
 
 	$scope.addActivity = (userActivity) => {
+		console.log(userActivity);
 		activitiesSvc.createActivity(userActivity)
 		.then((response) => {
 			$state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 			console.log(response);
-
+			$scope.newActivity = {};
 		});
 	};
 
