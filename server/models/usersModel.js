@@ -33,7 +33,8 @@ const userSchema = new mongoose.Schema({
         enum: ['Provo', 'Dallas', 'Salt Lake City']
     },
     profilePic: {
-        type: String
+        type: String,
+        default: 'https://www.drupal.org/files/profile_default.jpg'
     }
 });
 

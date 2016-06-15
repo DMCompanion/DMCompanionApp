@@ -1,12 +1,13 @@
 angular.module('companion').service('calendarSvc', function($http) {
 
+
   // CRUD EVENTS
   this.getEvents = () => {
     return $http({
       method: 'GET',
       url: 'http://192.168.0.204:8006/api/v1/events'
     }).then((response) => {
-      return response.data;
+      return response;
     });
   };
 
@@ -82,7 +83,5 @@ angular.module('companion').service('calendarSvc', function($http) {
 
 
   };
-
-
 
 });
