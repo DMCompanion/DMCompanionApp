@@ -25,10 +25,30 @@ angular.module('companion')
       $scope.eventModal = modal;
     });
 
+    $scope.showEventModal = (event) => {
+      console.log(event);
+      $scope.eventModal.show();
+      $scope.event = event;
+
+    };
+
+    $scope.goingToEvent = () => {
+
+    };
+    $scope.closeEventModal = function() {
+      $scope.eventModal.hide();
+    };
+
+
+    $scope.swipeRight = () => {
+      window.history.back();
+    };
+
     $scope.edit = (event) => {
       console.log('event', event);
       $scope.copyOfCalendar = event;
     };
+
 
     $scope.showConfirm = (id) => {
       let confirmPopup = $ionicPopup.confirm({
@@ -130,7 +150,7 @@ angular.module('companion')
       calendarSvc.getEvents()
         .then((response) => {
           console.log(response);
-          $scope.events = $scope.filterEvents(response.data);
+          $scope.events = $scope.filterEvents(response);
           console.log($scope.unapprovedEvents);
           // $ionicHistory.clearCache();
           // $state.go($state.current, {}, {reload: true});
