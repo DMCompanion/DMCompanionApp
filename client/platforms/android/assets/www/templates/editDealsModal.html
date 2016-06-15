@@ -1,0 +1,33 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Submit Deal</h1>
+  </ion-header-bar>
+  <ion-content class="paddings">
+    <!-- <div class="list"> -->
+      <label class="item item-input">
+        <span class="input-label">Title</span>
+        <input type="text" placeholder="Title" ng-model="copyOfDeal.title" ng-change="cd.title = copyOfDeal.title">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Deal</span>
+        <textarea type="text" placeholder="Description" ng-model="copyOfDeal.deal" ng-change="cd.deal = copyOfDeal.deal"></textarea>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Starting Date</span>
+        <input type="date" placeholder="Starting" ng-model="copyOfDeal.start" ng-change="cd.start = copyOfDeal.start">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Ending Date</span>
+        <input type="date" placeholder="Ending" ng-model="copyOfDeal.end" ng-change="cd.end = copyOfDeal.end">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Tagline</span>
+        <input type="text" placeholder="Tagline" ng-model="copyOfDeal.tagline" ng-change="cd.tagline = copyOfDeal.tagline">
+      </label>
+    <!-- </div> -->
+    <div class="submitButtonContainer">
+      <button class="button button-balanced submitButton" ng-click="updateDeal(copyOfDeal._id, cd); editModal.hide()">Submit</button>
+      <button class="button button-assertive submitButton" ng-click="editModal.hide()">Cancel</button>
+    </div>
+   </ion-content>
+</ion-modal-view>

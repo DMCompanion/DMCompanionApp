@@ -20,8 +20,7 @@
         </div> -->
         <div class="card">
           <div>
-            <div class="ratingContainer"><div class="displayStars" ng-repeat="i in getNumber(rating) track by $index"></div><p id="numberOfReviews">10 Reviews</p></div>
-            <!-- <p>{{rating}}-stars</p> -->
+            <p>{{rating}}-stars</p>
             <p>{{singleActivity.description}}</p>
           </div>
             <div class="adminContainer" ng-show="isAdmin || isUser">
@@ -35,20 +34,16 @@
             </div>
 
         </div>
-
-        <div class="item-review card" ng-repeat="review in singleActivity.reviews track by $index">
-            <div class="ratingContainer"><div class="displayStars" ng-repeat="i in getNumber(userRating) track by $index"></div></div>
-
+        <div class="card padding" ng-repeat="review in singleActivity.reviews track by $index">
+            <p>{{review.rating}}-stars</p>
             <p>{{review.review}}</p>
-
-            <div class="adminContainer" >
-              <a class="editButton" ng-click="editModal.show()">
-                <i class="icon ion-ios-compose"></i>
-              </a>
-
-              <a class="rashButton" ng-click="showConfirm()">
-                <i class="icon ion-trash-a"></i>
-              </a>
+            <div class="admin clearFloat" ng-show="isAdmin || isUser">
+                <a class="editButton padding" ng-click="updateItem(item._id)">
+                    <i class="icon ion-compose"></i>
+                </a>
+                <a class="trashButton padding" ng-click="destroyItem(item._id)">
+                    <i class="icon ion-trash-a"></i>
+                </a>
             </div>
         </div>
     </ion-content>
