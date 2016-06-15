@@ -1,5 +1,5 @@
 angular.module('companion')
-  .controller('dealsCtrl', ($scope, $http, $ionicModal, dealsSvc, adminSvc, $ionicPopup, $timeout) => {
+  .controller('dealsCtrl', ($scope, $http, $ionicModal, dealsSvc, adminSvc, $ionicPopup, $timeout, $state, $stateParams) => {
 
     $ionicModal.fromTemplateUrl('templates/dealsModal.html', {
       scope: $scope
@@ -28,6 +28,7 @@ angular.module('companion')
         if(res) {
           dealsSvc.deleteDeal(id)
           .then((response) => {
+            $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
             console.log(response);
           });
           console.log('You are sure');
@@ -70,6 +71,7 @@ angular.module('companion')
 			$scope.addDeal = (deal) => {
 				dealsSvc.createDeal(deal)
 				.then((response) => {
+          $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 					console.log(response);
 
 				});
@@ -78,6 +80,7 @@ angular.module('companion')
 			$scope.updateDeal = (id, upDeal) => {
 				dealsSvc.editDeal(id, upDeal)
 				.then((response) => {
+          $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 					console.log(response);
 
 				});

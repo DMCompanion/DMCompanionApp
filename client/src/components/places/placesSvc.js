@@ -76,7 +76,7 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
   this.createPlace = (place) => {
     return $http({
       method: 'POST',
-      url: 'http://192.168.0.214:8006/api/v1/place',
+      url: 'http://192.168.0.88:8006/api/v1/place',
       data: place
     });
   };
@@ -84,7 +84,7 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
   this.editPlace = (id, upPlace) => {
     return $http({
       method: 'PUT',
-      url: 'http://192.168.0.214:8006/api/v1/activity/' + id,
+      url: 'http://192.168.0.88:8006/api/v1/activity/' + id,
       data: upPlace
     }).then((response) => {
       return response;
@@ -94,7 +94,7 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
   this.deletePlace = (id) => {
     return $http({
       method: 'DELETE',
-      url: 'http://192.168.0.214:8006/api/v1/place/' + id
+      url: 'http://192.168.0.88:8006/api/v1/place/' + id
     }).then((response) => {
       return response;
     });
@@ -105,7 +105,7 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
   this.getReviews = () => {
     return $http({
       method: 'GET',
-      url: 'http://192.168.0.214:8006/api/v1/reviews'
+      url: 'http://192.168.0.88:8006/api/v1/reviews'
     }).then((response) => {
       return response;
     });
@@ -114,7 +114,7 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
   this.getPlaceReviews = (id, reviewId) => {
     return $http({
       method: 'GET',
-      url: 'http://192.168.0.214:8006/api/v1/place/' + id + '/review/' + reviewId
+      url: 'http://192.168.0.88:8006/api/v1/place/' + id + '/review/' + reviewId
     });
   };
 
@@ -122,7 +122,7 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
   this.createReview = (review) => {
     return $http({
       method: 'POST',
-      url: 'http://192.168.0.214:8006/api/v1/review',
+      url: 'http://192.168.0.88:8006/api/v1/review',
       data: review
     });
   };
@@ -130,7 +130,7 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
   this.editReview = (id, upReview) => {
     return $http({
       method: 'PUT',
-      url: 'http://192.168.0.214:8006/api/v1/review/' + id,
+      url: 'http://192.168.0.88:8006/api/v1/review/' + id,
       data: upReview
     });
   };
@@ -138,7 +138,7 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
   this.deleteReview = (id, reviewId) => {
     return $http({
       method: 'DELETE',
-      url: 'http://192.168.0.214:8006/api/v1/place/' + id + '/review/' + reviewId
+      url: 'http://192.168.0.88:8006/api/v1/place/' + id + '/review/' + reviewId
     });
   };
 
