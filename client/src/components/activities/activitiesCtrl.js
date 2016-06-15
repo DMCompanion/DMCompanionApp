@@ -71,12 +71,12 @@ angular.module( 'companion' )
 	};
 
 	$scope.categoryList = [];
-	for (var i = 0; i < $scope.categories.length; i++) {
+	for (let i = 0; i < $scope.categories.length; i++) {
 		$scope.categoryList.push(false);
 	}
 	$scope.checkCategories = () => {
 		$scope.newActivity.category = [];
-		for (var i = 0; i < $scope.categoryList.length; i++) {
+		for (let i = 0; i < $scope.categoryList.length; i++) {
 			if ($scope.categoryList[i]) {
 				$scope.newActivity.category.push($scope.categories[i]);
 			}
@@ -120,7 +120,7 @@ angular.module( 'companion' )
 		activitiesSvc.createActivity(userActivity)
 		.then((response) => {
 			console.log(response);
-
+			$scope.newActivity = {};
 		});
 	};
 
