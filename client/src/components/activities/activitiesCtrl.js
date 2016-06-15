@@ -103,7 +103,6 @@ angular.module( 'companion' )
 
 	$ionicModal.fromTemplateUrl('templates/activityCategoryModal.html', {
 		scope: $scope
-<<<<<<< HEAD
 	}).then( (modal) => {
 		$scope.categoryModal = modal;
 	});
@@ -111,11 +110,6 @@ angular.module( 'companion' )
 	$scope.getNumber = (num) => {
     return new Array(num);
 	}
-
-=======
-	}).then( (modal) => { $scope.categoryModal = modal; });
-// ---  MODALS  --- //
->>>>>>> master
 
 
 // CRUD ACTIVITIES
