@@ -1,7 +1,7 @@
 <ion-modal-view class='event-page'>
   <ion-header-bar class="bar bar-header bar-positive">
     <h1 class="title">EVENT</h1>
-    <button class="button button-clear" ng-click="closeEventModal()">
+    <button class="button button-clear" ng-click="closeEventModal(); showEvents()">
             <span class="icon ion-ios-close-empty"></span>
         </button>
   </ion-header-bar>
@@ -23,43 +23,75 @@
             <h3>at</h3>
             <h3>{{event.time}}</h3>
           </div>
+          <div ng-if="event.location" class="event-info-row">
+
+            <h3>Location: {{event.location}}</h3>
+          </div>
           <div class="event-info-row">
 
             <h3 ng-if="event.location">Location: {{event.location}}</h3>
             <h3 ng-if="event.cost">Cost: {{event.cost}}</h3>
+            <h3 ng-if='event.peopleGoing.length >= 1'>Going: {{event.peopleGoing.length}}</h3>
           </div>
-          <div class="event-info-row">
-            <button class="button button-positive" ng-click="goToEvent(event._id)">Join</button>
+          <div class="event-info-row" id='join-event-container'>
+            <button ng-if='joinBtn' class="button button-positive" ng-click="goToEvent(event._id)" ng-if=''>Join</button>
+            <button ng-if='cancelBtn' class="button button-positive" ng-click="cancelGoingToEvent(event._id)" ng-if=''>Cancel</button>
           </div>
         </div>
       </div>
       <div class="event-options-container">
-        <button class="button button-positive">Comments</button>
+        <button class="button button-positive" ng-click='showComments()'>Comments</button>
         <!-- <button class="button button-positive">Photos</button> -->
-        <button class="button button-positive">People Going</button>
+        <button class="button button-positive" ng-click='showGoing()'>People Going</button>
       </div>
-      <div class="comments-container" ng-if="event.comments.length >= 1">
+      <div class="comments-container" ng-if="event.comments.length >= 1 && commentSection">
         <div class="comment-container" ng-repeat="comment in event.comments | orderBy: '-createdAt'">
           <div class='comment-wrapper'>
-            <div class='thumbnail-container'>
-              <img id='thumbnail' ng-src='{{comment.postedBy.profilePic}}' />
+            <div class='comment-name-time-container'>
+              <div class='thumbnail-container'>
+                <img id='thumbnail' ng-src='{{comment.postedBy.profilePic}}' />
+              </div>
+              <div class='comment-name-container'>
+                <h5 class='comment-name'>{{comment.postedBy.name.first}}</h5>
+                <h5 class='comment-name'>{{comment.postedBy.name.last}}</h5>
+              </div>
             </div>
-            <div class='comment-name-container'>
-              {{comment.postedBy.name.first}}
-              {{comment.postedBy.name.last}}
+            <div class='actual-comment-container'>
+              <p class='event-comment'>{{comment.comment}}</p>
             </div>
-            <h3>{{comment.comment}}</h3>
-            <h5>{{comment.createdAt | date: 'shortTime'}}</h5>
-            <i class="icon ion-trash-a"></i>
+            <div class='trash-container' ng-if='trashCan'>
+              <div class='comment-time-container'>
+                <h5 class='comment-time'>{{comment.createdAt | timeAgo}}</h5>
+              </div>
+
+              <i class="icon ion-trash-a" ng-click='deleteCommentConfirm(comment._id)'></i>
+            </div>
           </div>
         </div>
       </div>
-      <div class="post-comment-container">
+      <div class="post-comment-container" ng-if='commentSection'>
         <label class="item item-input commentText">
-          <input id="comment-input" type="text" ng-model="newComment.comment" class="comment-input" placeholder="Post a comment for this event!">
+          <textarea id="comment-input" type="text" ng-model="newComment.comment" class="comment-input" placeholder="Write a comment for this event!"></textarea>
         </label>
 
+
+
         <button class="button button-positive reviewButton" ng-click="postComment(newComment, event._id)">Post Comment</button>
+      </div>
+      <div class='going-container' ng-if='goingSection'>
+        <div ng-show='event.peopleGoing.length < 1' class='be-first-container'>
+          <h1 class='be-the-first'>Be the first to go,</h1>
+          <h3 class='be-the-first'>Click <span class='be-first-join'>'Join'</span> up above!</h3>
+        </div>
+        <div class='person-container' ng-repeat='person in event.peopleGoing'>
+          <div class='thumbnail-container'>
+            <img id='thumbnail' ng-src='{{person.profilePic}}' />
+          </div>
+          <div class='person-name-container'>
+            <h5 class='person-name'>{{person.name.first}} {{person.name.last}}</h5>
+            <!-- <h5 class='person-name'>{{person.name.last}}</h5> -->
+          </div>
+        </div>
       </div>
     </div>
    </ion-content>
