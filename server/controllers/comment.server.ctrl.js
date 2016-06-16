@@ -48,7 +48,7 @@ module.exports = {
         });
     },
     deleteComment: (req, res) => {
-        Comment.findByIdAndRemove(req.params.id, (err, review) => {
+        Comment.findByIdAndRemove(req.params.id, (err, comment) => {
             if (err) {
                 res.status(500).send(err);
             } else {
@@ -60,7 +60,7 @@ module.exports = {
                     if (err) {
                         res.status(500).send(err);
                     }
-                    res.status(200).send(place);
+                    res.status(200).send(event);
                 });
             }
         });
