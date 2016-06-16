@@ -216,7 +216,6 @@ angular.module('companion')
         url: 'http://192.168.0.214:8006/api/v1/comment/' + id
       });
     };
-} );
 
     // CRUD ACTIVITIES
     this.getActivities = () => {
