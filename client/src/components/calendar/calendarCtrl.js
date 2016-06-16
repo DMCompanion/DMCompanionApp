@@ -25,10 +25,39 @@ angular.module('companion')
       $scope.eventModal = modal;
     });
 
+    let getEvent = (eventId) => {
+      calendarSvc.getEvent(eventId).then((response) => {
+        $scope.event = response;
+      });
+    };
+
     $scope.showEventModal = (event) => {
       console.log(event);
       $scope.eventModal.show();
       $scope.event = event;
+      $scope.people = event.peopleGoing;
+      for (let i = 0; i < $scope.event.peopleGoing.length; i++) {
+        console.log($scope.event.peopleGoing[i]);
+        if ($scope.event.peopleGoing[i]._id === $scope.user._id) {
+          $scope.cancelBtn = true;
+          $scope.joinBtn = false;
+
+        }
+      }
+      for (let i = 0; i < $scope.event.comments.length; i++) {
+        console.log($scope.event.comments[i]);
+        if ($scope.event.comments[i].postedBy._id === $scope.user._id) {
+          $scope.trashCan = true;
+        }
+      }
+
+      if ($scope.isAdmin === true) {
+        $scope.trashCan = true;
+      }
+      // calendarSvc.getEvent(event._id).then((response) => {
+      //   $scope.event = response;
+      //
+      // });
 
     };
 
@@ -118,6 +147,7 @@ angular.module('companion')
       }
     };
 
+
     $scope.filterEvents = (events) => {
       let approvedEvents = [];
       let unapprovedEvents = [];
@@ -125,13 +155,13 @@ angular.module('companion')
       let unapprovedCounter = 0;
       for (var i = 0; i < events.length; i++) {
         console.log(events[i].date);
-        newTime = events[i].date.toLocaleString().split('T').shift() + 'T' + events[i].time;
-        events[i].time = events[i].time.split(':');
-        events[i].time.pop();
-        events[i].time = events[i].time.join(':');
-        events[i].date = newTime.split('T').join(' ');
-        events[i].newTime = moment(newTime).fromNow();
-        console.log(events[i].newTime);
+        // newTime = events[i].date.toLocaleString().split('T').shift() + 'T' + events[i].time;
+        // events[i].time = events[i].time.split(':');
+        // events[i].time.pop();
+        // events[i].time = events[i].time.join(':');
+        // events[i].date = newTime.split('T').join(' ');
+        // events[i].newTime = moment(newTime).fromNow();
+        // console.log(events[i].newTime);
         if (events[i].approved) {
           approvedEvents.push(events[i]);
         } else if (i === events.length && unapprovedCounter === 0) {
@@ -171,6 +201,7 @@ angular.module('companion')
       newEvent.time = userEvent.time.toLocaleString().split(', ');
       newEvent.time = newEvent.time[1];
       newEvent.date = userEvent.date.toLocaleString().split(',').shift().split('/');
+      newEvent.approved = 'true';
       $scope.swapElement(newEvent.date, 2, 0);
       $scope.swapElement(newEvent.date, 1, 2);
       newEvent.date = newEvent.date.join('-');
@@ -228,8 +259,45 @@ angular.module('companion')
       console.log(eventId);
       let userId = '5757247c1029c50428f4b680';
       calendarSvc.goToEvent(userId, eventId).then((response) => {
-        calendarSvc.getEvent(eventId);
+        getEvent(eventId);
       });
+      $scope.cancelBtn = true;
+      $scope.joinBtn = false;
+    };
+
+    $scope.cancelGoingToEvent = (eventId) => {
+      console.log(eventId);
+      let userId = '5757247c1029c50428f4b680';
+      calendarSvc.cancelGoingToEvent(userId, eventId).then((response) => {
+        calendarSvc.getEvent(eventId).then((response) => {
+          console.log(response);
+          $scope.event = response;
+        });
+      });
+
+      $scope.cancelBtn = false;
+      $scope.joinBtn = true;
+    };
+
+    $scope.commentSection = true;
+    $scope.goingSection = false;
+
+    $scope.showComments = () => {
+      if (!$scope.commentSection) {
+        $scope.goingSection = false;
+        $scope.commentSection = true;
+      }
+    };
+
+    $scope.showGoing = () => {
+      if (!$scope.goingSection) {
+        $scope.commentSection = false;
+        $scope.goingSection = true;
+        if ($scope.event.peopleGoing.length < 1) {
+          $scope.noOne = true;
+        }
+      }
+
     };
 
     $scope.newComment = {};
@@ -247,6 +315,39 @@ angular.module('companion')
       $scope.newComment.comment = '';
     };
 
+    // $scope.deleteComment = (commentId) => {
+    //   $scope.showConfirm();
+    //   calendarSvc.deleteComment(commentId).then(() => {
+    //     getEvent($scope.event._id);
+    //   });
+    // };
+
+    $scope.deleteCommentConfirm = (commentId) => {
+      let confirmPopup = $ionicPopup.confirm({
+        title: 'DELETE',
+        template: 'Are you sure you want to delete this?'
+      });
+
+      confirmPopup.then((res) => {
+        if (res) {
+          calendarSvc.deleteComment(commentId).then(() => {
+            getEvent($scope.event._id);
+          });
+          console.log('You are sure');
+        } else {
+          console.log('You are not sure');
+        }
+      });
+    };
+
+
+
     $scope.showEvents();
+
+    $scope.user = {
+      _id: '5757247c1029c50428f4b680'
+    };
+
+    $scope.joinBtn = true;
 
   });

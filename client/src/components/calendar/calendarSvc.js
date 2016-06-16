@@ -82,4 +82,8 @@ angular.module('companion').service('calendarSvc', function($http) {
 
   };
 
+  this.deleteComment = (commentId) => {
+    return $http.delete('http://192.168.0.204:8006/api/v1/comment/' + commentId);
+  };
+
 });
