@@ -239,73 +239,73 @@ angular.module('companion')
         url: 'http://192.168.0.214:8006/api/v1/comment/' + id
       });
     };
-  });
 
-// CRUD ACTIVITIES
-this.getActivities = () => {
-  return $http({
-    method: 'GET',
-    url: 'http://192.168.0.88:8006/api/v1/activities'
-  }).then((response) => {
-    return response;
-  });
-};
 
-this.createActivity = (activity) => {
-  return $http({
-    method: 'POST',
-    url: 'http://192.168.0.88:8006/api/v1/activity',
-    data: activity
-  });
-};
+    // CRUD ACTIVITIES
+    this.getActivities = () => {
+      return $http({
+        method: 'GET',
+        url: 'http://192.168.0.88:8006/api/v1/activities'
+      }).then((response) => {
+        return response;
+      });
+    };
 
-this.editActivity = (id, upActivity) => {
-  return $http({
-    method: 'PUT',
-    url: 'http://192.168.0.88:8006/api/v1/activity/' + id,
-    data: upActivity
-  }).then((response) => {
-    return response;
-  });
-};
+    this.createActivity = (activity) => {
+      return $http({
+        method: 'POST',
+        url: 'http://192.168.0.88:8006/api/v1/activity',
+        data: activity
+      });
+    };
 
-this.deleteActivity = (id) => {
-  return $http({
-    method: 'DELETE',
-    url: 'http://192.168.0.88:8006/api/v1/activity/' + id
-  }).then((response) => {
-    return response;
-  });
-};
+    this.editActivity = (id, upActivity) => {
+      return $http({
+        method: 'PUT',
+        url: 'http://192.168.0.88:8006/api/v1/activity/' + id,
+        data: upActivity
+      }).then((response) => {
+        return response;
+      });
+    };
 
-//CRUD COMMENTS
-this.getComments = () => {
-  return $http({
-    method: 'GET',
-    url: 'http://192.168.0.88:8006/api/v1/comments'
-  });
-};
+    this.deleteActivity = (id) => {
+      return $http({
+        method: 'DELETE',
+        url: 'http://192.168.0.88:8006/api/v1/activity/' + id
+      }).then((response) => {
+        return response;
+      });
+    };
 
-this.createComment = (comment) => {
-  return $http({
-    method: 'POST',
-    url: 'http://192.168.0.88:8006/api/v1/comment',
-    data: comment
-  });
-};
+    //CRUD COMMENTS
+    this.getComments = () => {
+      return $http({
+        method: 'GET',
+        url: 'http://192.168.0.88:8006/api/v1/comments'
+      });
+    };
 
-this.editComment = (id, upComment) => {
-  return $http({
-    method: 'PUT',
-    url: 'http://192.168.0.88:8006/api/v1/comment/' + id,
-    data: upComment
-  });
-};
+    this.createComment = (comment) => {
+      return $http({
+        method: 'POST',
+        url: 'http://192.168.0.88:8006/api/v1/comment',
+        data: comment
+      });
+    };
 
-this.deleteComment = (id) => {
-return $http({
-  method: 'DELETE',
-  url: 'http://192.168.0.88:8006/api/v1/comment/' + id,
-});
-};
-});
+    this.editComment = (id, upComment) => {
+      return $http({
+        method: 'PUT',
+        url: 'http://192.168.0.88:8006/api/v1/comment/' + id,
+        data: upComment
+      });
+    };
+
+    this.deleteComment = (id) => {
+      return $http({
+        method: 'DELETE',
+        url: 'http://192.168.0.88:8006/api/v1/comment/' + id
+      });
+    };
+  });
