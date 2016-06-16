@@ -133,24 +133,23 @@ angular.module('companion')
     this.goBack = () => { $ionicHistory.goBack(); };
 
     // CRUD ACTIVITIES
-//     this.getActivities = (category) => {
-//       return $http({
-//         method: 'GET',
-//         url: 'http://192.168.0.51:8006/api/v1/activities?category=' + category
-//       }).then((response) => {
-//         return response;
-//     });
-// };
-
-    this.getActivities = () => {
+    this.getActivities = (category) => {
       return $http({
         method: 'GET',
-        url: 'http://192.168.0.51:8006/api/v1/activities'
+        url: 'http://192.168.0.51:8006/api/v1/activities?category=' + category + '&&approved=true'
       }).then((response) => {
         return response;
     });
 };
-// -----------------------------------
+
+    this.getUnapprovedActivities = () => {
+      return $http({
+        method: 'GET',
+        url: 'http://192.168.0.51:8006/api/v1/activities?approved=false'
+      }).then((response) => {
+        return response;
+    });
+};
     this.createActivity = (activity) => {
       return $http({
         method: 'POST',
