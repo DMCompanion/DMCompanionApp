@@ -3,6 +3,7 @@ import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
 import connectMongo from 'connect-mongo';
+import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import config from '../config';
@@ -31,6 +32,11 @@ require('./config/mongoose.js')(config);
 const MongoStore = connectMongo(session);
 const Schema = mongoose.Schema;
 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+
 app.use(require('express-session')({
     secret: config.sessionSecret,
     resave: true,
@@ -45,8 +51,7 @@ app.use(require('express-session')({
     saveUninitialized: true
 }));
 
-app.use(bodyParser.json());
-
+// app.use(morgan('dev'));
 app.set('view engine', 'html');
 
 // cors init
@@ -112,6 +117,8 @@ app.delete('/api/v1/activity/:id', activityCtrl.deleteActivity);
 app.post('/api/v1/event', eventCtrl.postEvent);
 app.get('/api/v1/events', eventCtrl.getEvents);
 app.put('/api/v1/event/:id', eventCtrl.editEvent);
+app.put('/api/v1/event/:id/goToEvent', eventCtrl.goToEvent);
+app.put('/api/v1/event/:id/dontGoToEvent', eventCtrl.notGoingToEvent);
 app.delete('/api/v1/event/:id', eventCtrl.deleteEvent);
 
 // Review Routes
