@@ -1,7 +1,7 @@
 /* jshint esversion: 6 */
 import passport from 'passport';
 import mongoose from 'mongoose';
-import devmtnAuthConfig from '../devmtnAuthConfig';
+import devmtnAuthConfig from './../devmtnAuthConfig';
 
 // DevMtn Auth Init
 import Devmtn from 'devmtn-auth';

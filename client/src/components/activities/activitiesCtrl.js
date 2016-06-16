@@ -5,31 +5,38 @@ angular.module( 'companion' )
 	// Temp status to show unapproved activities
 	$scope.isAdmin = true;
 	$scope.hasUnapprovedActivity = true;
-	$scope.unapprovedActivities = [
-		{
-			category:  `Arts & Entertainment`,
-			items: [
-				{
-					name: `Cinemark 16`,
-					description: `Super awesome movie theater with great seats, ATM-style ticket purchasing, and great popcorn!`,
-					rating: 5
-				}
-			]
-		},{
-			category:  `Outdoors`,
-			items: [
-				{
-					name: `Skate Park`,
-					description: `If you are a beginner or a hard core skateboarding fool you will find some cool shiz here brah!`,
-					rating: 5
-				}
-			]
-		}
-	];
+	// $scope.unapprovedActivities = [
+	// 	{
+	// 		category:  `Arts & Entertainment`,
+	// 		items: [
+	// 			{
+	// 				name: `Cinemark 16`,
+	// 				description: `Super awesome movie theater with great seats, ATM-style ticket purchasing, and great popcorn!`,
+	// 				rating: 5
+	// 			}
+	// 		]
+	// 	},{
+	// 		category:  `Outdoors`,
+	// 		items: [
+	// 			{
+	// 				name: `Skate Park`,
+	// 				description: `If you are a beginner or a hard core skateboarding fool you will find some cool shiz here brah!`,
+	// 				rating: 5
+	// 			}
+	// 		]
+	// 	}
+	// ];
 
 
 	// Temp data for dev work
-	// $scope.activities = activitiesSvc.getActivities();
+	$scope.getActivities = () => {
+		activitiesSvc.getUnapprovedActivities()
+		.then(function(response) {
+			$scope.unapprovedActivities = response.data;
+			console.log(response.data);
+		});
+	};
+	$scope.getActivities();
 
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
 
@@ -86,6 +93,13 @@ angular.module( 'companion' )
 		console.log($scope.newActivity.category);
 	};
 
+	$scope.approveActivity = (activity) => {
+		activitiesSvc.editActivity(activity._id, {approved:true})
+		.then(function(response) {
+		    $scope.getActivities();
+		});
+	};
+
 
 
 // ---  MODALS  --- //
@@ -127,6 +141,7 @@ angular.module( 'companion' )
 		.then((response) => {
 			$state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 			console.log(response);
+			$scope.getActivities();
 			$scope.newActivity = {};
 		});
 	};
@@ -162,7 +177,7 @@ angular.module( 'companion' )
 		activitiesSvc.deleteActivity(id)
 		.then((response) => {
 			console.log(response);
-
+			$scope.getActivities();
 		});
 	};
 

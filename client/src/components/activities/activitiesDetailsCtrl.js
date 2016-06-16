@@ -10,14 +10,28 @@ angular.module( 'companion' )
 	$scope.thisCategory = $stateParams.category;
 	console.log(`category that was passed over -> ${$scope.thisCategory}`);
 
-	$scope.allActivities = activitiesSvc.getActivities($scope.thisCategory);
+// Get $scope.allActivities ------------------------
+	$scope.getActivities = () => {
+		activitiesSvc.getActivities($scope.thisCategory)
+			.then( (response) => {
+				console.log(response);
+			    $scope.allActivities = response.data;
+				$scope.getActivities();
+		});
+	};
+	$scope.getActivities();
+
+// Get $scope.activityTypes and $scope.categories
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
 	$scope.categories = activitiesSvc.getCategories();
-	console.log(`item reviews below`);
-	console.log( $scope.reviews);
+
+	$scope.reviews = activitiesSvc.getReviews();  // This doesn't work yet <------------
+console.log(`item reviews below`);
+console.log( $scope.reviews);
 
 
 // find activities that match the category passsed in url
+// Get $scope.activities
 	$scope.getActivities = () => {
 		let matches = [];
 		for (let i = 0; i < $scope.allActivities.length; i++) {
@@ -29,17 +43,16 @@ angular.module( 'companion' )
 			}
 		}
 	};
-	$scope.getActivities();
-
-
-	console.log(`matched activities`);
-	console.log($scope.activities);
+console.log(`matched activities`);
+console.log($scope.activities);
 
 	$scope.getRatingAvg = (activity) => {
 		console.log(`the single activity`);
 		console.log(activity);
 		// get all the ratings from all the reviews from each $scope.activities
 		let ratingsArray = [];
+		$scope.numReviews = activity.reviews.length;
+console.log($scope.numReviews);
 		for (let i = 0; i < activity.reviews.length; i++) {
 			ratingsArray.push(activity.reviews[i].rating);
 		}
@@ -88,17 +101,18 @@ angular.module( 'companion' )
 
 		confirmPopup.then((res) => {
 			if(res) {
-				activitiesSvc.deleteDeal(id)
+				activitiesSvc.deleteActivity(id)
 				.then((response) => { console.log(response); });
 				console.log('You are sure');
 			} else {
 				console.log('You are not sure');
 			}
 		});
+		$scope.getActivities();
 	};
 
-		$scope.getNumber = (num) => {
-			return new Array(num);
-		};
+	$scope.getNumber = (num) => {
+		return new Array(num);
+	};
 
 });
