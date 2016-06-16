@@ -14,7 +14,7 @@ var paths = {
   es6: ['./src/**/*.js']
 };
 
-gulp.task('default', ['babel', 'sass']);
+gulp.task('default', ['babel', 'sass', 'watch']);
 
 gulp.task('sass', function(done) {
   gulp.src('./sass/**/ionic.app.sass')
@@ -24,15 +24,19 @@ gulp.task('sass', function(done) {
     .pipe(minifyCss({
       keepSpecialComments: 0
     }))
-    .pipe(rename({ extname: '.min.css' }))
+    .pipe(rename({
+      extname: '.min.css'
+    }))
     .pipe(gulp.dest('./www/css/'))
     .on('end', done);
 });
 
-gulp.task("babel", function () {
+gulp.task("babel", function() {
   return gulp.src(paths.es6)
     .pipe(plumber())
-    .pipe(babel({presets: ['es2015']}))
+    .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(gulp.dest("./www/js"));
 });
 
