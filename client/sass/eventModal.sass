@@ -39,12 +39,32 @@
   .post-comment-container
     display: flex
     flex-flow: column
-    padding: 0 5vw
+    padding: 3vh 5vw
     // align-items: center
   .post-comment-container > label
-    // width: 90vw !important
+    width: 90vw !important
     // align-self: center
     border-radius: 4px
   .post-comment-container > button
     width: 60vw !important
     align-self: center
+  .comment-container
+    display: flex
+    flex-flow: column nowrap
+    padding: 0 5vw
+    .comment-wrapper
+      background-color: #FFF
+      margin: 1vh 0
+      border-radius: 4px
+      padding: .5vh 3vw
+      display: flex
+        .thumbnail-container > img
+          height: 36px
+	        width: 36px
+	        display: block
+	        margin: 0 auto
+	        border-radius: 50%
+	        border: 1px solid #cccfd0
+	        overflow: hidden
+	        position: relative
+	        margin-right: 15px
