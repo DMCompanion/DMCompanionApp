@@ -6,19 +6,21 @@ import Event from '../models/eventModel';
 module.exports = {
 
     postComment: (req, res) => {
+        console.log(req.body);
         Comment.create(req.body, (err, comment) => {
             if (err) {
+                console.log(err);
                 res.status(500).send(err);
             } else {
                 Event.findByIdAndUpdate(comment.ref, {
                     $addToSet: {
                         'comments': comment._id
                     }
-                }, (err, comment) => {
+                }, (err, event) => {
                     if (err) {
                         res.status(500).send(err);
                     } else {
-                        res.status(200).send(comment);
+                        res.status(200).send(event);
                     }
                 });
             }
@@ -46,7 +48,7 @@ module.exports = {
         });
     },
     deleteComment: (req, res) => {
-        Comment.findByIdAndRemove(req.params.id, (err, review) => {
+        Comment.findByIdAndRemove(req.params.id, (err, comment) => {
             if (err) {
                 res.status(500).send(err);
             } else {
@@ -58,7 +60,7 @@ module.exports = {
                     if (err) {
                         res.status(500).send(err);
                     }
-                    res.status(200).send(place);
+                    res.status(200).send(event);
                 });
             }
         });
