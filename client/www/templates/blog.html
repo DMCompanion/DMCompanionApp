@@ -5,39 +5,41 @@
     <h1 class="title">Blog</h1>
 
     <div class="add">
-      <!-- add ng-show="isAdmin" to above div-->
       <a ng-click="modal.show()">
         <button class="button button-icon icon ion-plus"></button>
       </a>
     </div>
   </div>
 
-  <ion-content class="padding has-header" on-swipe-right="swipeRight()">
+  <ion-content class="padding has-header">
 
-    <div class="card" ng-repeat="blog in blogs track by $index">
-      <div class="item item-text-wrap">
-        {{blog.title}}
-      </div>
-      <div class="item item-text-wrap">
-        {{blog.tagline}}
-      </div>
-      <div class="item item-text-wrap">
-        {{blog.image}}
-      </div>
-      <div class="item item-text-wrap">
-        {{blog.story}}
-      </div>
+    <div class="adminApprove">
+      <div class="card" ng-repeat="blog in blogs track by $index">
 
-      <div class="adminContainer" >
-        <a class="editButton" ng-click="editModal.show(); edit(blog);">
-          <i class="icon ion-ios-compose"></i>
-        </a>
+        <div class="item item-text-wrap">
+          {{blog.title}}
+        </div>
+        <div class="item item-text-wrap">
+          {{blog.tagline}}
+        </div>
+        <div class="item item-text-wrap">
+          {{blog.image}}
+        </div>
+        <div class="item item-text-wrap">
+          {{blog.story}}
+        </div>
 
-        <a class="rashButton" ng-click="showConfirm(blog._id)">
-          <i class="icon ion-trash-a"></i>
-        </a>
+        <div class="adminContainer">
+          <a class="editButton" ng-click="editModal.show(); edit(blog);">
+            <i class="icon ion-ios-compose"></i>
+          </a>
+
+          <a class="rashButton" ng-click="showConfirm(blog._id)">
+            <i class="icon ion-trash-a"></i>
+          </a>
+        </div>
+
       </div>
-
     </div>
 
     <div class="card">
