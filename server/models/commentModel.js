@@ -22,4 +22,12 @@ const CommentSchema = new Schema({
     timestamps: true
 });
 
+CommentSchema.pre('find', function(next) {
+    this.populate({
+        path: 'postedBy',
+        select: 'profilePic name _id'
+    });
+    next();
+});
+
 module.exports = mongoose.model('Comment', CommentSchema);
