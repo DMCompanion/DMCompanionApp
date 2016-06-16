@@ -65,8 +65,6 @@ angular.module('companion').service('calendarSvc', function($http) {
     ).then((response) => {
       return response;
     });
-
-
   };
 
   this.postComment = (comment) => {

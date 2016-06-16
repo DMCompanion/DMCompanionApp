@@ -39,9 +39,16 @@
         <button class="button button-positive">People Going</button>
       </div>
       <div class="comments-container" ng-if="event.comments.length >= 1">
-        <div class="comment" ng-repeat="comment in event.comments">
-          <div class='comment-container'>
+        <div class="comment-container" ng-repeat="comment in event.comments | orderBy: '-createdAt'">
+          <div class='comment-wrapper'>
+            {{comment.postedBy.name.first}}
+            {{comment.postedBy.name.last}}
+            <div class='thumbnail-container'>
+
+              <img class='thumbnail' ng-src='{{comment.postedBy.profilePic}}' />
+            </div>
             <h3>{{comment.comment}}</h3>
+            <h5>{{comment.createdAt | date: 'shortTime'}}</h5>
             <i class="icon ion-trash-a"></i>
           </div>
         </div>

@@ -151,7 +151,7 @@ angular.module('companion')
       calendarSvc.getEvents()
         .then((response) => {
           console.log(response);
-          $scope.events = $scope.filterEvents(response);
+          $scope.events = $scope.filterEvents(response.data);
           console.log($scope.unapprovedEvents);
           // $ionicHistory.clearCache();
           // $state.go($state.current, {}, {reload: true});
