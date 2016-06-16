@@ -14,7 +14,7 @@
 
   <ion-content class="padding has-header" on-swipe-right="swipeRight()">
 
-    <div class="card">
+    <div class="card" ng-repeat="blog in blogs track by $index">
       <div class="item item-text-wrap">
         {{blog.title}}
       </div>
