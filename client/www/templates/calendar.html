@@ -51,15 +51,15 @@
 
       </div>
 
-    <div class="card" ng-repeat="event in dateEvents | orderBy: 'time' track by $index">
-      <div class="item item-divider">
+    <div class="card" ng-repeat="event in dateEvents | orderBy: '-time' track by $index">
+      <div class="item item-divider" ng-click="showEventModal(event)">
         {{event.title}}
       </div>
-      <div class="item item-text-wrap">
+      <div class="item item-text-wrap" ng-click="showEventModal(event)">
         {{ event.description }}
         <p/>
         <div class="when">
-          <strong>When: {{event.time}}</strong>
+          <strong>When: {{event.time | date: 'shortTime' }}</strong>
         </div>
       </div>
       <div class="adminContainer" ng-hide="!isAdmin && !hasUnapprovedEvents">
