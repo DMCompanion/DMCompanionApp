@@ -23,8 +23,9 @@
             {{deal.deal}}
           </div>
           <div class="item item-divider">
-            {{deal.date.start}}
-            {{deal.date.end}}
+            {{deal.date.start | date: 'shortDate'}}
+            -
+            {{deal.date.end | date: 'shortDate'}}
           </div>
           <div class="item item-divider">
             {{deal.tagline}}
