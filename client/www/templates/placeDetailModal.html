@@ -1,0 +1,33 @@
+<ion-modal-view class='event-page'>
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title"></h1>
+    <button class="button button-clear" ng-click="placeModal.hide(); showEvents()">
+            <span class="icon ion-ios-close-empty"></span>
+        </button>
+  </ion-header-bar>
+  <ion-content on-swipe-right="swipeRight()" on-swipe-down="placeModal.hide()">
+    <div class="placeModal">
+      <div class="card">
+          <img ng-src= "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{copyPlace.photos[0].photo_reference}}&key={{googleKey}}"/>
+        <div id="mmmm">{{copyPlace.name}}</div>
+        <div class="" id="mmmm">
+          {{copyPlace.formatted_address}}
+        </div>
+        <div class="money">
+          <div ng-repeat="m in money">
+            <p>$</p>
+          </div>
+        </div>
+        <div class="" id="mmmm">
+          Distance: {{copyPlace.distance}}
+        </div>
+        <div class="" id="mmmm">
+          Drive Time: {{copyPlace.duration}}
+        </div>
+        <div ng-repeat="hour in hours">
+          {{hour}}
+        </div>
+      </div>
+    </div>
+   </ion-content>
+</ion-modal-view>
