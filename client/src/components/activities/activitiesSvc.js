@@ -239,10 +239,6 @@ angular.module('companion')
         url: 'http://192.168.0.214:8006/api/v1/comment/' + id
       });
     };
-<<<<<<< HEAD
-=======
-
->>>>>>> 157c0fe34a6c8b56fa122d1a554046f0a01ed004
 
     // CRUD ACTIVITIES
     this.getActivities = () => {
@@ -281,34 +277,4 @@ angular.module('companion')
       });
     };
 
-    //CRUD COMMENTS
-    this.getComments = () => {
-      return $http({
-        method: 'GET',
-        url: 'http://192.168.0.88:8006/api/v1/comments'
-      });
-    };
-
-    this.createComment = (comment) => {
-      return $http({
-        method: 'POST',
-        url: 'http://192.168.0.88:8006/api/v1/comment',
-        data: comment
-      });
-    };
-
-    this.editComment = (id, upComment) => {
-      return $http({
-        method: 'PUT',
-        url: 'http://192.168.0.88:8006/api/v1/comment/' + id,
-        data: upComment
-      });
-    };
-
-    this.deleteComment = (id) => {
-      return $http({
-        method: 'DELETE',
-        url: 'http://192.168.0.88:8006/api/v1/comment/' + id
-      });
-    };
   });
