@@ -13,7 +13,8 @@ const ReviewSchema = new Schema({
         required: true
     },
     rating: {
-        type: Number
+        type: Number,
+        required: true
     },
     type: {
         type: String,
@@ -30,6 +31,14 @@ const ReviewSchema = new Schema({
     }
 }, {
     timestamps: true
+});
+
+ReviewSchema.pre('find', function(next) {
+    this.populate({
+        path: 'postedBy',
+        select: 'profilePic name _id'
+    });
+    next();
 });
 
 module.exports = mongoose.model('Review', ReviewSchema);

@@ -20,21 +20,12 @@
             <!-- Show unapproved items -->
             <div class="card" ng-repeat="unapprovedActivity in unapprovedActivities track by $index">
                 <div class="item item-divider">
-                    <h3>Category: {{unapprovedActivity.category[0]}}</h3>
-                    <h3>Category: {{unapprovedActivity.category[1]}}</h3>
-                    <h3>Category: {{unapprovedActivity.category[2]}}</h3>
-                    <h3>Category: {{unapprovedActivity.category[3]}}</h3>
-                    <h3>Category: {{unapprovedActivity.category[4]}}</h3>
-                    <h3>Category: {{unapprovedActivity.category[5]}}</h3>
-                    <h3>Category: {{unapprovedActivity.category[6]}}</h3>
-                    <h3>Category: {{unapprovedActivity.category[7]}}</h3>
-                    <h3>Category: {{unapprovedActivity.category[8]}}</h3>
-                    <h3>Category: {{unapprovedActivity.category[9]}}</h3>
-                    <h3>Category: {{unapprovedActivity.category[10]}}</h3>
+                    <h3>Categories:</h3>
+                    <h3 class='activity-category' ng-repeat="category in unapprovedActivity.category"> {{category}}</h3>
                 </div>
                 <div class="eventDescription item item-text-wrap">
                     <p>Name: {{unapprovedActivity.name}}</p>
-                    <p>Rating: {{unapprovedActivity.rating}}-stars</p>
+                    <!-- <p>Rating: {{unapprovedActivity.rating}}-stars</p> -->
                     <p>Description: {{unapprovedActivity.description}}</p>
                 </div>
                 <!-- approve or disapprove each item -->

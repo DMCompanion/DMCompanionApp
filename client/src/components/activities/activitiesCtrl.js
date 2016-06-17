@@ -29,14 +29,14 @@ angular.module( 'companion' )
 
 
 	// Temp data for dev work
-	$scope.getActivities = () => {
+	$scope.getUnapprovedActivities = () => {
 		activitiesSvc.getUnapprovedActivities()
 		.then(function(response) {
 			$scope.unapprovedActivities = response.data;
 			console.log(response.data);
 		});
 	};
-	$scope.getActivities();
+	$scope.getUnapprovedActivities();
 
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
 
@@ -95,9 +95,7 @@ angular.module( 'companion' )
 
 	$scope.approveActivity = (activity) => {
 		activitiesSvc.editActivity(activity._id, {approved:true})
-		.then(function(response) {
-		    $scope.getActivities();
-		});
+		.then( (response) => { $scope.getUnapprovedActivities(); });
 	};
 
 
@@ -121,7 +119,7 @@ angular.module( 'companion' )
 		$scope.categoryModal = modal;
 	});
 
-	$scope.getNumber = (num) => {
+	$scope.getNumber = (num) => {  // what is this for????????
 		return new Array(num);
 	};
 
@@ -141,7 +139,7 @@ angular.module( 'companion' )
 		.then((response) => {
 			$state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
 			console.log(response);
-			$scope.getActivities();
+			$scope.getUnapprovedActivities();
 			$scope.newActivity = {};
 		});
 	};
@@ -177,7 +175,7 @@ angular.module( 'companion' )
 		activitiesSvc.deleteActivity(id)
 		.then((response) => {
 			console.log(response);
-			$scope.getActivities();
+			$scope.getUnapprovedActivities();
 		});
 	};
 
