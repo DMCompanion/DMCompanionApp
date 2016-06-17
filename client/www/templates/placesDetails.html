@@ -37,7 +37,7 @@
     <div class="places--container" ng-repeat="place in places | orderBy: 'distance' | filter:searchText | filter:{placeType: searchType}">
        <!-- ng-show="place.opening_hours.open_now" -->
 
-      <div class="card">
+      <div class="card" ng-click="placeModal.show()">
 
         <div class="place-image">
             <img ng-src= "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{place.photos[0].photo_reference}}&key={{googleKey}}"/>
