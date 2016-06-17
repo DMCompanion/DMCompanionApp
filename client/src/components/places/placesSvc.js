@@ -11,38 +11,15 @@ angular.module('companion').service('placesSvc', function($http, $ionicHistory) 
   const dummyActivities = [{
     id: 0,
     name: 'Restaurants',
-    items: [{
-      name: 'Yoga',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      rating: `5-stars`
-    }, {
-      name: 'Biking',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      rating: `5-stars`
-    }, {
-      name: 'Climbing',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      rating: `5-stars`
-    }],
     img: 'http://provofb.com/wp-content/uploads/2015/11/20160302-590-ProvoFoodBar3-1-640x425.jpg'
   }, {
     id: 1,
-
     name: 'Shopping',
-    items: [{
-      name: 'Movies',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      rating: `5-stars`
-    }, {
-      name: 'Concerts',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      rating: `5-stars`
-    }, {
-      name: 'Museum',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      rating: `5-stars`
-    }],
     img: 'http://reachprovo.com/wp-content/uploads/2016/04/Downtown-Provo-Utah-Center-Street.jpg'
+  }, {
+    id: 1,
+    name: 'Groceries',
+    img: 'http://ilv-pullzone1.ilovevegan.netdna-cdn.com/wp-content/uploads/2014/06/groceries-week-3-vegetables5-688x442.jpg'
   }];
 
   // CRUD PLACES

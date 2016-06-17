@@ -14,7 +14,7 @@
   </div>
   <ion-content class="has-header">
 
-    <div class="adminApprove" ng-hide="isAdmin && hasUnapprovedEvents">
+    <div class="adminApprove" ng-hide="!isAdmin && !hasUnapprovedEvents">
       <div>
         <h4 class="eventHeader">Unapproved Events</h4>
       </div>
@@ -62,7 +62,7 @@
           <strong>When: {{event.time | date: 'shortTime' }}</strong>
         </div>
       </div>
-      <div class="adminContainer" >
+      <div class="adminContainer" ng-hide="!isAdmin && !hasUnapprovedEvents">
         <a class="editButton" ng-click="editModal.show(); edit(event);">
           <i class="icon ion-ios-compose"></i>
         </a>

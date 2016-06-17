@@ -51,7 +51,7 @@ app.use(require('express-session')({
     saveUninitialized: true
 }));
 
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 app.set('view engine', 'html');
 
 // cors init

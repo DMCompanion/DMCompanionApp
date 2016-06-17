@@ -1,6 +1,8 @@
 angular.module('companion')
   .controller('calendarCtrl', ($scope, $http, $state, $ionicHistory, $ionicModal, calendarSvc, $ionicPopup, $timeout, $stateParams) => {
 
+    $scope.isAdmin = true;
+
     $scope.$on('$ionicView.beforeEnter', function() {
       // update campaigns everytime the view becomes active
       // (on first time added to DOM and after the view becomes active after cached
@@ -87,14 +89,11 @@ angular.module('companion')
       confirmPopup.then((res) => {
         if (res) {
           calendarSvc.deleteEvent(id)
-            .then((response) => {
-              $state.transitionTo($state.current, $state.$current.params, {
-                reload: true,
-                inherit: true,
-                notify: true
-              });
-              console.log(response);
-            });
+          .then((response) => {
+            $state.transitionTo($state.current, $state.$current.params, { reload: true, inherit: true, notify: true });
+            console.log(response);
+            $scope.showEvents();
+          });
           console.log('You are sure');
         } else {
           console.log('You are not sure');
@@ -105,8 +104,6 @@ angular.module('companion')
     // FLEXCALENDAR
 
     let today = new Date().toLocaleString().split(',').shift();
-
-    $scope.isAdmin = true;
 
     $scope.events = [{
       title: 'derp',
@@ -155,9 +152,31 @@ angular.module('companion')
       let approvedEvents = [];
       let unapprovedEvents = [];
       let newTime = '';
+      let AMPM = 0;
+      let tempArr = [];
       let unapprovedCounter = 0;
       for (var i = 0; i < events.length; i++) {
         console.log(events[i].date);
+        newTime = events[i].date.toLocaleString().split('T').shift() + 'T' + events[i].time;
+
+        events[i].time = events[i].time.split(':');
+        console.log("TIME BEFORE: ", events[i].time);
+        // AMPM = events[i].time[events[i].time.length - 1].split(' ').pop();
+        // events[i].time.pop();
+        // tempArr = events[i].time.slice(0, 2);
+        // events[i].time[0] = tempArr.join(':');
+        // events[i].time[1] = AMPM;
+        // console.log("TEMP: ", tempArr);
+        events[i].time = events[i].time.join(':');
+        console.log("TIME 2: ", events[i].time);
+
+        // events[i].time = events[i].time.split(':');
+        // events[i].time.pop();
+        // events[i].time = events[i].time.join(':');
+
+        events[i].date = newTime.split('T').join(' ');
+        events[i].newTime = moment(newTime).fromNow();
+        console.log(events[i].newTime);
         // newTime = events[i].date.toLocaleString().split('T').shift() + 'T' + events[i].time;
         // events[i].time = events[i].time.split(':');
         // events[i].time.pop();
@@ -176,6 +195,7 @@ angular.module('companion')
         }
       }
       $scope.unapprovedEvents = unapprovedEvents;
+      console.log("Unapproved shit: ", unapprovedEvents);
       return approvedEvents;
     };
 
