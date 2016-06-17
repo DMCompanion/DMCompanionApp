@@ -72,6 +72,12 @@ angular.module('companion')
     $scope.modal = modal;
   });
 
+  $ionicModal.fromTemplateUrl('templates/placeDetailModal.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.placeModal = modal;
+  });
+
   $scope.createContact = function(u) {
     $scope.contacts.push({
       name: u.firstName + ' ' + u.lastName
