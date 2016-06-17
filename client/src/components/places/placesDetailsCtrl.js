@@ -1,8 +1,10 @@
 angular.module('companion')
 
-.controller('placesDetailsCtrl', ($scope, $http, $ionicModal, placesSvc, $ionicHistory, $state, $stateParams) => {
+.controller('placesDetailsCtrl', ($scope, $http, $ionicModal, placesSvc, secretService, $ionicHistory, $state, $stateParams) => {
 
   $scope.searchQuery = $stateParams.category;
+
+  $scope.googleKey = secretService.getSecretKey();
 
   (() => {
     let startPos;
@@ -77,13 +79,19 @@ angular.module('companion')
     $scope.modal.hide();
   };
 
+  $scope.swipeRight = () => {
+    window.history.back();
+  };
+
   // CRUD ACTIVITIES
   $scope.showPlaces = (userLat, userLong, query) => {
     placesSvc.getPlaces(userLat, userLong, query)
       .then((response) => {
         document.getElementById("loader").style.display = "none";
         console.log("Ctrl place response: ", response);
+
         $scope.placeResponse = response.data.results;
+
         for (var i = 0; i < $scope.placeResponse.length; i++) {
           $scope.places.push({});
           let index = i;
@@ -98,6 +106,7 @@ angular.module('companion')
               $scope.places[index].ratingsArr.push(j);
               // console.log("ratings arr: ", index, $scope.places[index].ratingsArr);
             }
+
           });
 
           // oooh shit
