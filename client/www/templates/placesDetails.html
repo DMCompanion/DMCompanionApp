@@ -38,7 +38,7 @@
        <!-- ng-show="place.opening_hours.open_now" -->
         <div class="place-image">
 
-      <div class="item card item-thumbnail-left" ng-click="placeModal.show()">
+      <div class="item card item-thumbnail-left" ng-click="placeModal.show(); modalJump(place)">
 
             <img ng-src= "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{place.photos[0].photo_reference}}&key={{googleKey}}"/>
 

@@ -78,6 +78,17 @@ angular.module('companion')
     $scope.placeModal = modal;
   });
 
+  $scope.modalJump = (p) => {
+    $scope.copyPlace = p;
+    let cash = [];
+    let length = p.price_level;
+    for(var i = 0; i < length; i++) {
+      cash.push(i);
+    }
+    $scope.money = cash;
+    $scope.hours = p.opening_hours.weekday_text;
+  }
+
   $scope.createContact = function(u) {
     $scope.contacts.push({
       name: u.firstName + ' ' + u.lastName
