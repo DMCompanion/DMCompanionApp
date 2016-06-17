@@ -1,6 +1,5 @@
 angular.module('companion').service('calendarSvc', function($http) {
 
-<<<<<<< HEAD
     // CRUD EVENTS
     this.getEvents = () => {
       return $http({
@@ -37,47 +36,9 @@ angular.module('companion').service('calendarSvc', function($http) {
         return response;
       })
     }
-=======
-
-  // CRUD EVENTS
-  this.getEvents = () => {
-    return $http({
-      method: 'GET',
-      url: 'http://192.168.0.204:8006/api/v1/events'
-    }).then((response) => {
-      return response;
-    });
-  };
-
-  this.createEvent = (event) => {
-    return $http({
-      method: 'POST',
-      url: 'http://192.168.0.204:8006/api/v1/event',
-      data: event
-    });
-  };
-
-  this.editEvent = (id, upEvent) => {
-    return $http({
-      method: 'PUT',
-      url: 'http://192.168.0.204:8006/api/v1/event/' + id,
-      data: upEvent
-    }).then((response) => {
-      return response;
-    });
-  };
-
-  this.deleteEvent = (id) => {
-    return $http({
-      method: 'DELETE',
-      url: 'http://192.168.0.204:8006/api/v1/event/' + id
-    }).then((response) => {
-      return response;
-    });
-  };
 
   this.getEvent = (eventId) => {
-    return $http.get('http://192.168.0.204:8006/api/v1/events?_id=' + eventId).then((response) => {
+    return $http.get('http://192.168.0.214:8006/api/v1/events?_id=' + eventId).then((response) => {
       console.log(response);
       return response.data[0];
     });
@@ -85,7 +46,7 @@ angular.module('companion').service('calendarSvc', function($http) {
 
   this.goToEvent = (userId, eventId) => {
     console.log(userId);
-    return $http.put('http://192.168.0.204:8006/api/v1/event/' + eventId + '/goToEvent', {
+    return $http.put('http://192.168.0.214:8006/api/v1/event/' + eventId + '/goToEvent', {
         user: userId
       }
 
@@ -96,7 +57,7 @@ angular.module('companion').service('calendarSvc', function($http) {
   };
 
   this.cancelGoingToEvent = (userId, eventId) => {
-    return $http.put('http://192.168.0.204:8006/api/v1/event/' + eventId + '/dontGoToEvent', {
+    return $http.put('http://192.168.0.214:8006/api/v1/event/' + eventId + '/dontGoToEvent', {
         user: userId
       }
 
@@ -113,7 +74,7 @@ angular.module('companion').service('calendarSvc', function($http) {
       ref: comment.ref
     };
     // console.log(newComment);
-    return $http.post('http://192.168.0.204:8006/api/v1/comment', newComment).then((response) => {
+    return $http.post('http://192.168.0.214:8006/api/v1/comment', newComment).then((response) => {
       return response;
     });
 
@@ -121,8 +82,7 @@ angular.module('companion').service('calendarSvc', function($http) {
   };
 
   this.deleteComment = (commentId) => {
-    return $http.delete('http://192.168.0.204:8006/api/v1/comment/' + commentId);
+    return $http.delete('http://192.168.0.214:8006/api/v1/comment/' + commentId);
   };
 
->>>>>>> 157c0fe34a6c8b56fa122d1a554046f0a01ed004
 });
