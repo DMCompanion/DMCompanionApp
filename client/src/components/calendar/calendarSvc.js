@@ -1,6 +1,5 @@
 angular.module('companion').service('calendarSvc', function($http) {
-
-
+    
   // CRUD EVENTS
   this.getEvents = () => {
     return $http({

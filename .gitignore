@@ -4,6 +4,7 @@
 # Spicy Secrets
 config.js
 devmtnAuthConfig.js
+secretService.js
 
 # Node / Bower
 node_modules/

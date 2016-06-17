@@ -6,7 +6,7 @@ import Cohort from '../models/Cohort';
 
 module.exports = (config) => {
     mongoose.connect(config.mongo.URI);
-    mongoose.set('debug', true);
+    // mongoose.set('debug', true);
     var db = mongoose.connection;
     db.on('error', console.error.bind(console, 'Database connection error...'));
     db.once('open', function() {
