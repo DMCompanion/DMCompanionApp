@@ -154,7 +154,6 @@ angular.module('companion')
       let unapprovedCounter = 0;
       for (var i = 0; i < events.length; i++) {
         console.log(events[i].date);
-<<<<<<< HEAD
         newTime = events[i].date.toLocaleString().split('T').shift() + 'T' + events[i].time;
 
         events[i].time = events[i].time.split(':');
@@ -175,7 +174,6 @@ angular.module('companion')
         events[i].date = newTime.split('T').join(' ');
         events[i].newTime = moment(newTime).fromNow();
         console.log(events[i].newTime);
-=======
         // newTime = events[i].date.toLocaleString().split('T').shift() + 'T' + events[i].time;
         // events[i].time = events[i].time.split(':');
         // events[i].time.pop();
@@ -183,7 +181,6 @@ angular.module('companion')
         // events[i].date = newTime.split('T').join(' ');
         // events[i].newTime = moment(newTime).fromNow();
         // console.log(events[i].newTime);
->>>>>>> 157c0fe34a6c8b56fa122d1a554046f0a01ed004
         if (events[i].approved) {
           approvedEvents.push(events[i]);
         } else if (i === events.length && unapprovedCounter === 0) {
