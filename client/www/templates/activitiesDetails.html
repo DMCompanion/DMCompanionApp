@@ -1,8 +1,10 @@
 <ion-view class="activitiesDetails">
-    <ion-nav-bar class="bar-header bar-dark">
-        <ion-nav-back-button></ion-nav-back-button>
-        <h1 class="title">{{category}}</h1>
-    </ion-nav-bar>
+    <ion-header-bar class="bar bar-header bar-dark">
+      <h1 class="title">{{thisCategory}}</h1>
+      <a href="/#/home">
+          <img src="./img/devmtnlogo_notext.png" class="headerBarLogo" />
+      </a>
+    </ion-header-bar>
     <ion-content on-swipe-right="swipeRight()">
         <ion-list>
 
@@ -37,18 +39,19 @@
 
                 <div class="item item-text-wrap" ng-click="modal.show(); modalItems(activity); getRatingAvg(activity)">
                   <h2>{{activity.name}}</h2>
-                  <p>{{activity.rating}}-stars image here</p>
-                </div>
-
-                <div class="adminContainer">
-                  <a class="editButton" ng-click="editModal.show(); edit(item);">
-                    <i class="icon ion-ios-compose"></i>
-                  </a>
-
-                  <a class="rashButton" ng-click="showConfirm(activity._id)">
-                    <i class="icon ion-trash-a"></i>
-                  </a>
-                </div>
+                  <p>{{activity.description}}</p>
+                  <!-- <div class="stars-container">
+                      ng-if='avgRating >=1' etc
+                    <i class="icon ion-android-star"></i>
+                    <i class="icon ion-android-star"></i>
+                    <i class="icon ion-android-star"></i>
+                    <i class="icon ion-android-star"></i>
+                    <i class="icon ion-android-star"></i>
+                    <div ng-if='avgRating'>
+                        <h1> {{avgRating}}/5 </h1>
+                    </div>
+                  </div> -->
+              </div>
 
             </div>
             <!-- END activity cards       -->

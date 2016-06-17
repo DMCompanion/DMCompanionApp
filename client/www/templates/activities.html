@@ -14,24 +14,25 @@
 
         <!-- Admin section for submited activities -->
         <div class="adminApprove" ng-show="isAdmin && hasUnapprovedActivity">
-            <div>
+            <div ng-show="hasUnapprovedActivity.length > 0">
                 <h4 class="eventHeader">Unapproved Activities</h4>
             </div>
             <!-- Show unapproved items -->
             <div class="card" ng-repeat="unapprovedActivity in unapprovedActivities track by $index">
                 <div class="item item-divider">
-                    <h3>Category: {{unapprovedActivity.category}}</h3>
+                    <h3>Categories:</h3>
+                    <h3 class='activity-category' ng-repeat="category in unapprovedActivity.category"> {{category}}</h3>
                 </div>
                 <div class="eventDescription item item-text-wrap">
-                    <p>Name: {{unapprovedActivity.items[0].name}}</p>
-                    <p>Rating: {{unapprovedActivity.items[0].rating}}-stars</p>
-                    <p>Description: {{unapprovedActivity.items[0].description}}</p>
+                    <p>Name: {{unapprovedActivity.name}}</p>
+                    <!-- <p>Rating: {{unapprovedActivity.rating}}-stars</p> -->
+                    <p>Description: {{unapprovedActivity.description}}</p>
                 </div>
                 <!-- approve or disapprove each item -->
                 <button class="disapprovalButton button button-assertive" ng-click="destroyActivity(unapprovedActivity._id)">
                     <i class="icon ion-close"></i>
                 </button>
-                <button class="approvalButton button button-balanced" ng-click="approveActivity(unapprovedActivity._id, unapprovedActivity)">
+                <button class="approvalButton button button-balanced" ng-click="approveActivity(unapprovedActivity)">
                     <i class="icon ion-checkmark"></i>
                 </button>
             </div>

@@ -1,10 +1,150 @@
 @import '_variables'
-.activityAddModal, .activityAddReviewModal, .activityAddPhotoModal, .activityCategoryModal
+.activityAddModal, .activityAddReviewModal, .activityAddPhotoModal, .activityCategoryModal, .activityItem
 
     ion-content
         background-color: $dmMidGray !important
         position: absolute
         top: calc($headerW + 10px)
+    .card
+        background-color: #FFF
+        margin: 0
+        .card-container
+            display: flex
+            flex-flow: column nowrap
+            width: 100%
+            padding: 3vw
+            h1
+                margin-bottom: 7px
+            .activity-info
+                font-size: 2.7vh
+                margin: 0
+                font-weight: 400
+                margin-bottom: 7px
+                span
+                    font-weight: 500
+            .ratingContainer
+                padding: 0
+                display: flex
+                flex-flow: row nowrap
+                width: 100%
+                position: relative
+                height: 5vh
+                .stars-container
+                    margin: 0
+                    line-height: 5vh
+                    width: 100%
+                    display: flex
+                    align-items: center
+                    i
+                        margin-right: 1vw
+                        font-size: 2.7vh
+                        color: $flatYellow
+
+            div > #numberOfReviews
+                margin: 0
+                font-size: 2.7vh
+                float: right
+                line-height: 5vh
+                margin-right: 21px
+            .add-review-container
+                width: 100%
+                display: flex
+                justify-content: flex-end
+    .review-header-container
+        display: flex
+        justify-content: center
+        padding: 3vw 0
+        margin: 0 auto
+        width: 90vw
+        border-bottom: 1px solid #FFF
+        h1
+            color: #FFF
+            margin: 0
+    .post-review-container
+      display: flex
+      flex-flow: column
+      padding: 3vh 5vw
+      // align-items: center
+    .post-review-container > label
+      padding: 1vw
+      width: 90vw !important
+      // align-self: center
+      border-radius: 4px
+      height: 9vh
+      textarea
+        height: 9vh
+        margin: 0
+        padding: 2vw
+        font-size: 2.5vh
+        // line-height: 1.7
+        resize: none
+      textarea:focus
+        padding: 2
+    .post-review-container > button
+      width: 60vw !important
+      align-self: center
+      line-height: 0
+    .review-container
+      display: flex
+      flex-flow: column nowrap
+      padding: 0 5vw
+      .review-wrapper
+        background-color: #FFF
+        margin: 1vh 0
+        border-radius: 4px
+        padding: 1vh 3vw
+        display: flex
+        width: 100%
+        flex-flow: row wrap
+        .review-name-time-container
+          height: 100%
+          width: 100%
+          display: flex
+          align-items: center
+          .thumbnail-container
+            height: 100%
+            #thumbnail
+              height: 6vh
+              width: 11vw
+              display: block
+              border-radius: 50%
+              border: 1px solid #cccfd0
+              overflow: hidden
+              position: relative
+          .review-name-container
+            display: flex
+            height: 6vh
+            width: 63%
+            align-items: center
+            margin-left: 1.5vw
+            .review-name
+              width: 100
+              margin: 0 .5vw
+              font-size: 2.8vh
+              color: #2999E3
+        .actual-review-container
+          width: 100%
+          display: flex
+          margin: 1vh 0
+          flex-flow: row
+          .event-review
+            font-size: 2.7vh
+            width: 100%
+        .trash-container
+          display: flex
+          justify-content: space-between
+          align-items: center
+          width: 100%
+          .review-time-container
+            // height: 6vh
+            margin-left: .5vw
+            .review-time
+              font-size: 2vh
+              margin: 0
+              color: #d3d3d3
+          i
+            font-size: 3vh
+            color: #2999E3
     .photoButtons
         width: 100%
         display: flex
@@ -35,3 +175,7 @@
         overflow: hidden
         white-space: nowrap
         text-overflow: ellipsis
+    .stars
+        width: 100%
+        display: flex
+        justify-content: center

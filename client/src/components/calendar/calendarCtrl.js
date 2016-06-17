@@ -65,6 +65,9 @@ angular.module('companion')
 
     $scope.closeEventModal = () => {
       $scope.eventModal.hide();
+      $state.go($state.current, {}, {
+				reload: true
+			});
     };
 
 
