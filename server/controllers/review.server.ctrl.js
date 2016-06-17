@@ -58,6 +58,9 @@ module.exports = {
     },
     deleteReview: (req, res) => {
         Review.findByIdAndRemove(req.params.id, (err, review) => {
+            console.log(review);
+            // const deletedReview = review;
+            // console.log(deletedReview.type);
             if (err) {
                 res.status(500).send(err);
             } else if (review.type === 'place') {
@@ -76,11 +79,11 @@ module.exports = {
                     $pull: {
                         'reviews': review.ref
                     }
-                }, (err, place) => {
+                }, (err, activity) => {
                     if (err) {
                         res.status(500).send(err);
                     }
-                    res.status(200).send(place);
+                    res.status(200).send(activity);
                 });
             }
         });

@@ -4,6 +4,10 @@ angular.module( 'companion' )
 	// Temp status to show unapproved activities
 	$scope.isAdmin = true;
 	$scope.isUser = true;
+
+	if($scope.isAdmin === true) {
+		$scope.trashCan = true;
+	}
 	// $scope.isAdmin = false;
 	// $scope.isUser = false;
 
@@ -15,8 +19,23 @@ angular.module( 'companion' )
 		activitiesSvc.getActivities($scope.thisCategory)
 			.then( (response) => {
 				console.log(response);
-			    $scope.allActivities = response.data;
-				$scope.getActivities();
+			    $scope.activities = response.data;
+				let reviewAggregate = 0;
+				let avg = 0;
+				let averages = [];
+				for (let i = 0; i < $scope.activities.length; i++) {
+					for (let j = 0; j < $scope.activities[i].reviews.length; j++) {
+						reviewAggregate += $scope.activities[i].reviews[j].rating;
+						console.log(reviewAggregate);
+
+						averages.push(Math.round(reviewAggregate / $scope.activities[i].reviews.length));
+
+						}
+
+					}
+					$scope.avgs = averages;
+					console.log($scope.avgs);
+
 		});
 	};
 	$scope.getActivities();
@@ -25,24 +44,6 @@ angular.module( 'companion' )
 	$scope.activityTypes = activitiesSvc.getActivityTypes();
 	$scope.categories = activitiesSvc.getCategories();
 
-	$scope.reviews = activitiesSvc.getReviews();  // This doesn't work yet <------------
-console.log(`item reviews below`);
-console.log( $scope.reviews);
-
-
-// find activities that match the category passsed in url
-// Get $scope.activities
-	$scope.getActivities = () => {
-		let matches = [];
-		for (let i = 0; i < $scope.allActivities.length; i++) {
-			for (let j = 0; j < $scope.allActivities[i].category.length; j++) {
-				if ($scope.allActivities[i].category[j] === $stateParams.category) {
-					matches.push($scope.allActivities[i]);
-					$scope.activities = matches;
-				}
-			}
-		}
-	};
 console.log(`matched activities`);
 console.log($scope.activities);
 
@@ -52,7 +53,7 @@ console.log($scope.activities);
 		// get all the ratings from all the reviews from each $scope.activities
 		let ratingsArray = [];
 		$scope.numReviews = activity.reviews.length;
-console.log($scope.numReviews);
+		console.log($scope.numReviews);
 		for (let i = 0; i < activity.reviews.length; i++) {
 			ratingsArray.push(activity.reviews[i].rating);
 		}
@@ -74,7 +75,7 @@ console.log($scope.numReviews);
 
 
 // ---  MODALS  --- //
-	$scope.modalItems = (activity) => { $scope.singleActivity = activity; };
+	$scope.modalItems = (activity) => { $scope.activity = activity; };
 
 	$ionicModal.fromTemplateUrl('templates/activityItemModal.html', {
 	      scope: $scope,
@@ -115,4 +116,56 @@ console.log($scope.numReviews);
 		return new Array(num);
 	};
 
+	$scope.goToReview = () => {
+		document.getElementById("addReview").scrollIntoView();
+	};
+
+	$scope.newReview = {};
+	$scope.postReview = (review, activityId) => {
+		review.type = 'activity';
+		review.ref = activityId;
+		review.postedBy = '57588822a07655b34050f8f0';
+		console.log(review);
+		activitiesSvc.postReview(review).then((response) => {
+		    activitiesSvc.getActivity(activityId).then((response) => {
+				$scope.activity = response;
+			});
+		});
+		$scope.newReview = {};
+	};
+
+	let getActivity = (id) => {
+      activitiesSvc.getActivity(id).then((response) => {
+        $scope.activity = response;
+      });
+    };
+	$scope.deleteReviewConfirm = (id) => {
+      let confirmPopup = $ionicPopup.confirm({
+        title: 'DELETE',
+        template: 'Are you sure you want to delete this?'
+      });
+
+      confirmPopup.then((res) => {
+        if (res) {
+          activitiesSvc.deleteReview(id)
+            .then((response) => {
+
+
+				getActivity($scope.activity._id);
+
+              console.log(response);
+            });
+          console.log('You are sure');
+        } else {
+          console.log('You are not sure');
+        }
+      });
+    };
+
+	$scope.closeEventModal = () => {
+      $scope.modal.hide();
+	  $state.go($state.current, {}, {
+				reload: true
+			});
+    };
 });

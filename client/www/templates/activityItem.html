@@ -1,0 +1,57 @@
+<ion-view class="activitiesDetails">
+    <ion-nav-bar class="bar-header bar-dark">
+        <ion-nav-back-button></ion-nav-back-button>
+        <h1 class="title">{{activity.name}}</h1>
+        <button class="button button-clear" ng-click="modal.hide()">
+            <span class="icon ion-ios-close-empty"></span>
+        </button>
+    </ion-nav-bar>
+    <ion-content on-swipe-right="swipeRight()">
+        <!-- <div class="card padding">
+            <p>{{rating}}-stars</p>
+            <p>{{singleActivity.description}}</p>
+            <div class="admin clearFloat" ng-show="isAdmin || isUser">
+                <a class="editButton padding" ng-click="updateItem(item._id)">
+                    <i class="icon ion-compose"></i>
+                </a>
+                <a class="trashButton padding" ng-click="destroyItem(item._id)">
+                    <i class="icon ion-trash-a"></i>
+                </a>
+            </div>
+        </div> -->
+        <div class="card">
+          <div>
+            <div class="ratingContainer"><div class="displayStars" ng-repeat="i in getNumber(rating) track by $index"></div><p id="numberOfReviews">{{numReviews}} Reviews</p></div>
+            <!-- <p>{{rating}}-stars</p> -->
+            <p>{{singleActivity.description}}</p>
+          </div>
+            <div class="adminContainer" ng-show="isAdmin || isUser">
+              <a class="editButton" ng-click="editModal.show(); edit(deal);">
+                <i class="icon ion-ios-compose"></i>
+              </a>
+
+              <a class="rashButton" ng-click="showConfirm(deal._id)">
+                <i class="icon ion-trash-a"></i>
+              </a>
+            </div>
+
+        </div>
+
+        <div class="item-review card" ng-repeat="review in singleActivity.reviews track by $index">
+            <div class="ratingContainer"><div class="displayStars" ng-repeat="i in getNumber(userRating) track by $index"></div></div>
+
+            <p>{{review.review}}</p>
+
+            <div class="adminContainer" >
+              <a class="editButton" ng-click="editModal.show()">
+                <i class="icon ion-ios-compose"></i>
+              </a>
+
+              <a class="rashButton" ng-click="showConfirm()">
+                <i class="icon ion-trash-a"></i>
+              </a>
+            </div>
+        </div>
+    </ion-content>
+
+</ion-view>
